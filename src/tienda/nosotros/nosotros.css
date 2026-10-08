@@ -17,7 +17,7 @@ body {
 
 }
 
-#problemaYSolucion {
+#problemaYPublicoObjetivo {
     margin-top: 20PX;
     margin-left: 15px;
     border: none;
@@ -27,4 +27,8 @@ body {
 .card {
     background-color: #c1ecdd;
     border-color: #ffecd1;
+}
+
+#publicoObjetivo {
+    margin-top: 35px;
 }
