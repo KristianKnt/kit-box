@@ -1,0 +1,16 @@
+.nuestro-equipo { /*styles de contenedor principal*/
+  margin: 0 auto; /*se centra la seccion*/
+  padding: 48px 32px; /*espaciado interno*/
+}
+
+.nuestro-equipo-titulo {
+  font-size: 32px;
+  color: #1E3A30;
+  margin: 0 0 24px;
+}
+
+.nuestro-equipo-contenedor-tarjetas {
+    display: grid; /*Tipo grila para organizar las tarjetas*/
+    gap: 24px;
+    grid-template-columns: repeat(5, 1fr); // 
+}
