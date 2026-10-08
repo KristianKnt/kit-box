@@ -1,0 +1,24 @@
+:rooT{
+    --color-verdeClaro:#7a8f5a;
+    --color-verdeOscuro:#2f4A3a;
+    --color-naranja:#ff7f50;
+    --color-Blanco:#ffffff;
+    --color-gris:#D9D9D9;
+    }
+.texto-inter{
+    font-family: 'inter';
+}
+
+body{
+    background-color: #D9D9D9;
+}
+
+
+.card-body-valores{
+    background-color: var(--color-gris);
+    border:1px solid var(--color-verdeOscuro);  
+}
+.card-body-valores:hover{
+    background-color: #ff7f50;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+}
