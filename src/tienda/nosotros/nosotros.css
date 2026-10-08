@@ -22,3 +22,15 @@ body{
     background-color: #ff7f50;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
 }
+#vision{
+    background-color: var(--color-Blanco);
+}
+#mision{
+    background-color:var(--color-Blanco);
+}
+#vision:hover{
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+}
+#mision:hover{
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+}
