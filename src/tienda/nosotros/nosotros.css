@@ -1,16 +1,68 @@
+:root {
+    --texto-tarjetas: #1E3A30;
+    --fondo-tarjetas: #fff;
+    --borde-tarjetas: #DCD8CC;
+    --borde-foto: #DCD8CC;
+    --texto-suave: #3B5448;
+
+}
+
 .nuestro-equipo { /*styles de contenedor principal*/
   margin: 0 auto; /*se centra la seccion*/
   padding: 48px 32px; /*espaciado interno*/
+  font-family: 'Inter' , Helvetica;
 }
 
 .nuestro-equipo-titulo {
   font-size: 32px;
-  color: #1E3A30;
+  color: var(--texto-tarjetas) ;
   margin: 0 0 24px;
 }
 
-.nuestro-equipo-contenedor-tarjetas {
+.nuestro-equipo-contenedor-tarjetas { /*configuracion del contenedor de tarjetas*/
     display: grid; /*Tipo grila para organizar las tarjetas*/
-    gap: 24px;
-    grid-template-columns: repeat(5, 1fr); // 
+    gap: 60px;
+    grid-template-columns: repeat(5, 1fr); /*5 columnas de la misma fraccion*/
+    text-align: center;
+
+}
+
+.nuestro-equipo-integrante {
+    background-color: var(--fondo-tarjetas); /*fondo de tarjeta*/
+    border: 1px solid var(--borde-tarjetas); /*borde de tarjta*/
+    border-radius: 20px; /*Redondear bordes*/
+    padding: 28px 20px; /*espaciado interno de tarjeta*/
+    place-items: center; /*centramos la foto*/
+}
+
+.nuestro-equipo-integrante-foto {
+    width: 140px; /*ancho de foto*/ 
+    height: 140px;  /*alto d foto*/ 
+    border-radius: 50%; /*forma de circulo, dandole radio a foto*/
+    overflow: hidden; /*adapta la foto dentro del circulo*/
+    border: 4px solid var(--borde-foto); /*borde de fotos*/
+    text-align: center; /*centrado de foto*/
+}
+
+.nuestro-equipo-nombre-integrante {
+    font-size: 18px; 
+    color: var(--texto-tarjetas);
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.nuestro-equipo-rol-integrante {
+    background: #E4E8D8;
+    color: var(--texto-tarjetas);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 13px;
+    margin-bottom: 1px;
+    display: inline-block;
+    margin-top: -7px;
+}
+
+.nuestro-equipo-integrante-descripcion {
+    color: var(--texto-suave);
+    font-size: 12px;
 }
