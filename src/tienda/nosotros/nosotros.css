@@ -1,17 +1,19 @@
-@import url('https://googleapis.com');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 :root {
     --texto-tarjetas: #1E3A30;
     --fondo-tarjetas: #fff;
     --borde-tarjetas: #DCD8CC;
     --borde-foto: #DCD8CC;
     --texto-suave: #3B5448;
+    --paleta-naranja: #B4532F;
+
 
 }
 
 .nuestro-equipo { /*styles de contenedor principal*/
   margin: 0 auto; /*se centra la seccion*/
   padding: 48px 32px; /*espaciado interno*/
-  font-family: 'Inter' , Helvetica;
+  font-family: 'Inter', Helvetica, sans-serif; /*fuente principal y de respaldo*/
 }
 
 .nuestro-equipo-titulo {
@@ -22,18 +24,22 @@
 
 .nuestro-equipo-contenedor-tarjetas { /*configuracion del contenedor de tarjetas*/
     display: grid; /*Tipo grila para organizar las tarjetas*/
-    gap: 60px;
+    gap: 30px;
     grid-template-columns: repeat(5, 1fr); /*5 columnas de la misma fraccion*/
     text-align: center;
 
 }
 
-.nuestro-equipo-integrante {
+.nuestro-equipo-integrante { /*tarjetaa!*/
     background-color: var(--fondo-tarjetas); /*fondo de tarjeta*/
-    border: 1px solid var(--borde-tarjetas); /*borde de tarjta*/
+    border: 1.5px solid var(--borde-tarjetas); /*borde de tarjta*/
     border-radius: 20px; /*Redondear bordes*/
-    padding: 28px 20px; /*espaciado interno de tarjeta*/
+    padding: 24px 20px ; /*espaciado interno de tarjeta*/
     place-items: center; /*centramos la foto*/
+    padding-bottom: 5px; /*espaciado de abajo de la tarjeta*/
+    transition: border-color 0.25s ease, box-shadow 0.25s ease; /*transition: propiedad duración curva 
+    retrasa el efecto del borde para que no sea tan brusco*/
+    
 }
 
 .nuestro-equipo-integrante-foto {
@@ -41,12 +47,21 @@
     height: 140px;  /*alto d foto*/ 
     border-radius: 50%; /*forma de circulo, dandole radio a foto*/
     overflow: hidden; /*adapta la foto dentro del circulo*/
-    border: 4px solid var(--borde-foto); /*borde de fotos*/
+    border: 3px solid var(--borde-foto); /*borde de fotos*/
     text-align: center; /*centrado de foto*/
+    margin: 0; /*centra la caja del circulo*/
+    transition: border-color 0.25s ease, box-shadow 0.25s ease; /*transition: propiedad duración curva 
+    retrasa el efecto del borde para que no sea tan brusco. ease: arranca y termina suave*/
+}
+
+.nuestro-equipo-integrante-foto img {
+    object-fit: cover; /*recorta la foto para llenar sin deformarla*/
+    width: 100%; /*imagen ocupa todo el ancho*/
+    height: 100%; /*imagen ocupa todo el alto*/
 }
 
 .nuestro-equipo-nombre-integrante {
-    font-size: 18px; 
+    font-size: 19px; 
     color: var(--texto-tarjetas);
     margin-top: 20px;
     margin-bottom: 5px;
@@ -55,18 +70,54 @@
 .nuestro-equipo-rol-integrante {
     background: #E4E8D8;
     color: var(--texto-tarjetas);
-    border-radius: 6px;
+    border-radius: 6px; /*redondea esquinas de rol*/
     padding: 4px 10px;
     font-size: 13px;
     margin-bottom: 1px;
-    display: inline-block;
-    margin-top: -7px;
+    display: inline-block;    
 }
 
 .nuestro-equipo-integrante-descripcion {
     color: var(--texto-suave);
-    font-size: 12px;
+    font-size: 14px;
+    line-height: 1.5; /*separacion entre lineas*/
+    min-height: 7.5em; /*reserva espacio para 5 lineas (1.5 x 5)*/
+    margin-top: 10px;
+
 }  
+
+/**animaciones y hover*/
+.nuestro-equipo-integrante-foto:hover { /*hover de fotos*/
+    border-color: var(--paleta-naranja);  /*color de borde al pasar el mouse*/
+    box-shadow: 0 0 10px var(--paleta-naranja); /*pequeña sombra naranja alrededor del borde*/
+}
+
+.nuestro-equipo-integrante:hover { /*animacion tarjetas*/
+    box-shadow: 0 0 15px var(--borde-tarjetas);
+    transform: translateY(-6px); /*efecto de elevacion de la tarjeta */
+}
+
+/*animacion de entrada*/
+.nuestro-equipo-integrante { /*estado inicial de la tarjeta*/
+    opacity: 0; /*empieza invisible*/
+}
+
+/*2. Cuando el JS le pone la clase "visible" al contenedor, se animan*/
+.nuestro-equipo-contenedor-tarjetas.visible .nuestro-equipo-integrante {
+    animation: aparecerIntegrantes 1.9s ease forwards;
+}
+
+
+@keyframes aparecerIntegrantes { /*que pasa en la animacion*/
+    from { opacity: 0; translate: 0 100px; } /*punto inicio*/
+    to   { opacity: 1; translate: 0 0; } /*visibilidad de la tarjeta, tarjeta posicion*/
+} /*se usa traslate */
+
+/*hijos del contenedor (tarjetas) con retraso de 0.3seg*/
+
+
+
+
 
 body {
     background-color: #F8F9FA;
