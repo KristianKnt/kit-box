@@ -1,0 +1,25 @@
+<footer style="background-color: #222; color: #bbb; padding: 2rem 1rem; font-family: sans-serif; text-align: center;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem;">
+        
+        <!-- Enlaces rápidos de navegación -->
+        <nav style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+            <a href="#privacidad" style="color: #bbb; text-decoration: none; font-size: 0.9rem;">Política de Privacidad</a>
+            <a href="#terminos" style="color: #bbb; text-decoration: none; font-size: 0.9rem;">Términos de Servicio</a>
+            <a href="#soporte" style="color: #bbb; text-decoration: none; font-size: 0.9rem;">Soporte</a>
+        </nav>
+
+        <!-- Línea divisoria sutil -->
+        <hr style="border: 0; border-top: 1px solid #444; margin: 0.5rem 0;">
+
+        <!-- Derechos de autor -->
+        <p style="margin: 0; font-size: 0.85rem;">
+            &copy; <span id="year"></span> Mi Sitio Web. Todos los derechos reservados.
+        </p>
+        
+    </div>
+
+    <!-- Script opcional para actualizar el año automáticamente -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</footer>
