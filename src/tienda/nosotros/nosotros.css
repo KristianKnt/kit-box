@@ -6,9 +6,43 @@
     --borde-foto: #DCD8CC;
     --texto-suave: #3B5448;
     --paleta-naranja: #B4532F;
+    --color-verdeClaro:#7a8f5a;
+    --color-verdeOscuro:#2f4A3a;
+    --color-naranja:#ff7f50;
+    --color-Blanco:#ffffff;
+    --color-gris:#D9D9D9;
 
 
 }
+
+/* inicio estilos diana */
+.texto-inter{
+    font-family: 'inter';
+}
+
+.card-body-valores{
+    background-color: var(--color-gris);
+    border:1px solid var(--color-verdeOscuro);  
+}
+.card-body-valores:hover{
+    background-color: #ff7f50;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+}
+#vision{
+    background-color: var(--color-Blanco);
+}
+#mision{
+    background-color:var(--color-Blanco);
+}
+#vision:hover{
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+}
+#mision:hover{
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+}
+/* fin estilos diana */
+
+
 
 .nuestro-equipo { /*styles de contenedor principal*/
   margin: 0 auto; /*se centra la seccion*/
