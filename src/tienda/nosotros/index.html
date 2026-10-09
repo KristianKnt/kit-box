@@ -1,13 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="nosotros.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
+  <link href="https://googleapis.com" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+  <link rel="stylesheet" href="nosotros.css">
 </head>
+
 <body>
-    
-    script src="nosotros.js"></script>
+  <!-- HEADER -->
+  <div id="header"></div>
+
+  <div id="imagenAcercaDeNosotros">
+    <img id="imagenAcercaDeNosotrosTop" src="../../assets/imagenes/nosotros/img_pagina_nosotros.jpg" alt="">
+  </div>
+
+  <div id="problemaYPublicoObjetivo">
+    <div id="problema" class="row">
+      <div class="sm:col-6 mb-3 sm:mb-0">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Problema</h4>
+            <p class="card-text">Actualmente, las personas que desean iniciar una nueva actividad, afrontar una
+              situación específica o desarrollar un proyecto personal deben buscar y comprar
+              individualmente los diferentes productos que necesitan. Esto puede generar
+              pérdida de tiempo, desconocimiento sobre qué elementos son realmente
+              necesarios, compras innecesarias y dificultades para encontrar todos los productos
+              en un mismo lugar. </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="publicoObjetivo" class="sm:col-6">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Público Objetivo</h4>
+            <p class="card-text">Nuestro público objetivo son personas entre 18 y 45 años, principalmente
+              consumidores digitales que compran por internet y buscan practicidad, ahorro de
+              tiempo y soluciones listas para usar. </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!---titulo Nuestro equipio-->
+  <section class="nuestro-equipo">
+    <h2 class="nuestro-equipo-titulo">Nuestro Equipo de Desarrollo</h2>
+
+    <!---contenedor de tarjetas-->
+    <div class="nuestro-equipo-contenedor-tarjetas">
+      <article class="nuestro-equipo-integrante"> <!---inicio de tarjeta-->
+        <div class="nuestro-equipo-integrante-foto"> <!--div de foto del integrante-->
+          <img src="../../assets/imagenes/nosotros/Foto_CBeltran.png" alt="Foto de Cristhian Beltrán">
+        </div>
+        <h3 class="nuestro-equipo-nombre-integrante">Cristhian Beltrán</h3>
+        <h4 class="nuestro-equipo-rol-integrante">Rol</h4>
+        <p class="nuestro-equipo-integrante-descripcion">Breve descripcion</p>
+      </article> <!---cierre de la tarjeta-->
+
+
+      <article class="nuestro-equipo-integrante"> <!---inicio de tarjeta-->
+        <div class="nuestro-equipo-integrante-foto"> <!--div de foto del integrante-->
+          <img src="../../assets/imagenes/nosotros/Foto_DianaO.jpg" alt="Foto de Diana Ocampo">
+        </div>
+        <h3 class="nuestro-equipo-nombre-integrante">Diana Ocampo</h3>
+        <h4 class="nuestro-equipo-rol-integrante">Desarrolladora Backend</h4>
+        <p class="nuestro-equipo-integrante-descripcion">Estudiante de Ingeniería de Sistemas con experiencia industrial, hoy se forma en Full Stack con Java en Generation.</p>
+      </article> <!---cierre de la tarjeta-->
+
+
+      <article class="nuestro-equipo-integrante"> <!---inicio de tarjeta-->
+        <div class="nuestro-equipo-integrante-foto"> <!--div de foto del integrante-->
+          <img src="../../assets/imagenes/nosotros/Foto_CRojas.png" alt="Foto de Cristian Rojas">
+        </div>
+        <h3 class="nuestro-equipo-nombre-integrante">Cristian Rojas</h3>
+        <h4 class="nuestro-equipo-rol-integrante">Desarrollador Backend</h4>
+        <p class="nuestro-equipo-integrante-descripcion">Desarrollador backend encargado de la lógica del servidor, la base de datos y la seguridad de la aplicación</p>
+      </article> <!---cierre de la tarjeta-->
+
+      <article class="nuestro-equipo-integrante"> <!---inicio de tarjeta-->
+        <div class="nuestro-equipo-integrante-foto"> <!--div de foto del integrante-->
+          <img src="../../assets/imagenes/nosotros/Foto_JulianaB.jpeg" alt="Foto de Juliana Bernal">
+        </div>
+        <h3 class="nuestro-equipo-nombre-integrante">Juliana Bernal</h3>
+        <h4 class="nuestro-equipo-rol-integrante">Frontend & Backend</h4>
+        <p class="nuestro-equipo-integrante-descripcion">Desarrolladora Full Stack con Java, enfocada en backend con Spring Boot, SQL y APIs REST, y con buen manejo del frontend
+        </p>
+      </article> <!---cierre de la tarjeta-->
+
+      <article class="nuestro-equipo-integrante"> <!---inicio de tarjeta-->
+        <div class="nuestro-equipo-integrante-foto"> <!--div de foto del integrante-->
+          <img src="../../assets/imagenes/nosotros/Foto_DayanaV.png" alt="Foto de Dayana Vallejo">
+        </div>
+        <h3 class="nuestro-equipo-nombre-integrante">Dayana Vallejo</h3>
+        <h4 class="nuestro-equipo-rol-integrante">Frontend & Backend</h4>
+        <p class="nuestro-equipo-integrante-descripcion">Desarrolladora de software junior con enfoque Frontend y Backend, aprendiz SENA en ADSO.
+          Aprendiz SENA ADSO</p>
+      </article> <!---cierre de la tarjeta-->
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div id="footer"></div>
+
+
+  <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL"
+    crossorigin="anonymous"></script>
+
+  <!-- COMPONENTES -->
+  <script src="../../js/components.js"></script>
+  <script src="nosotros.js"></script>
 </body>
+
 </html>
