@@ -1,3 +1,4 @@
+@import url('https://googleapis.com');
 :root {
     --texto-tarjetas: #1E3A30;
     --fondo-tarjetas: #fff;
@@ -65,4 +66,37 @@
 .nuestro-equipo-integrante-descripcion {
     color: var(--texto-suave);
     font-size: 12px;
+}  
+
+body {
+    background-color: #F8F9FA;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+#imagenAcercaDeNosotrosTop {
+    width: 95%;
+    max-width: 95%;
+    display: block;
+    height: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    border-radius: 10px;
+
+}
+
+#problemaYPublicoObjetivo {
+    margin-top: 20PX;
+    margin-left: 15px;
+    border: none;
+    background-color: #F8F9FA;
+}
+
+.card {
+    background-color: #c1ecdd;
+    border-color: #ffecd1;
+}
+
+#publicoObjetivo {
+    margin-top: 35px;
 }
