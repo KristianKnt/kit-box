@@ -102,7 +102,7 @@
     opacity: 0; /*empieza invisible*/
 }
 
-/*2. Cuando el JS le pone la clase "visible" al contenedor, se animan*/
+/*clase que se coloca con el interruptor toggle en el js*/
 .nuestro-equipo-contenedor-tarjetas.visible .nuestro-equipo-integrante {
     animation: aparecerIntegrantes 1.9s ease forwards;
 }
@@ -112,11 +112,6 @@
     from { opacity: 0; translate: 0 100px; } /*punto inicio*/
     to   { opacity: 1; translate: 0 0; } /*visibilidad de la tarjeta, tarjeta posicion*/
 } /*se usa traslate */
-
-/*hijos del contenedor (tarjetas) con retraso de 0.3seg*/
-
-
-
 
 
 body {
