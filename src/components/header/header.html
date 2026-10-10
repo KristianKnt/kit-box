@@ -1,17 +1,27 @@
-<header style="background-color: #222; color: #fff; padding: 1rem 2rem; font-family: sans-serif; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
-    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-        
-        <!-- Logotipo -->
-        <div style="font-size: 1.4rem; font-weight: bold; letter-spacing: 1px;">
-            <a href="/" style="color: #fff; text-decoration: none;">MI SITIO WEB</a>
+<header>
+    <link rel="stylesheet" href="header.css">
+    
+    <div class="contenedor-principal"> <!---contenedor principal-->
+        <div class="contenedor-logo">
+            <img src="../../assets/imagenes/nosotros/Logo.svg" alt="Imagen Logo kit box"><span id="logo-text">kit-box</span>
         </div>
+    
+       <div class="contenedor-menu">
 
         <!-- Menú de Navegación -->
-        <nav style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-            <a href="#inicio" style="color: #fff; text-decoration: none; font-size: 1rem; transition: color 0.3s;" onmouseover="this.style.color='#bbb'" onmouseout="this.style.color='#fff'">Inicio</a>
-            <a href="#servicios" style="color: #fff; text-decoration: none; font-size: 1rem; transition: color 0.3s;" onmouseover="this.style.color='#bbb'" onmouseout="this.style.color='#fff'">Servicios</a>
-            <a href="#contacto" style="color: #fff; text-decoration: none; font-size: 1rem; transition: color 0.3s;" onmouseover="this.style.color='#bbb'" onmouseout="this.style.color='#fff'">Contacto</a>
+        <nav class="menu-navegacion">
+            <a href="#inicio">Inicio</a>
+            <a href="#catalogo">Catálago</a>
+            <a href="#acercade" >Acerca de</a>
+            <a href="#contactanos" >Contáctanos</a>
         </nav>
+       </div>
 
+     <div class="contenedor-carrito-sesion">
+        <div>
+            <img src="../../assets/imagenes/nosotros/Carrito.svg" alt="Icono Carrito de Compras">
+        </div>
+        <button class="btn-iniciar-sesion">Iniciar Sesión</button>
+       
     </div>
 </header>
