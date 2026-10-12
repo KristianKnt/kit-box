@@ -6,6 +6,7 @@
     --paleta-botones: #886F56; /*paleta*/
     --paleta-fondo: #E7E8E3; /*paleta*/
     --paleta-header-footer: #586F57; /*paleta*/
+    --tamaño-titulo-banner: 40px;
 
 
 }
@@ -18,11 +19,11 @@ body {
 /*estilos banner*/
 .banner-sobre-nosotros-fondo { /*fondo de banner contenedor*/
     width: 100%; /*le damos el 100% de ancho*/
-    height: 250px;
-    background-image: url("../../assets/imagenes/nosotros/banner-sobre-nosotros5.png"); /*ingresamos la imagen como fondo*/
+    height: 280px;
+    background-image: url("../../assets/imagenes/nosotros/banner-sobre-nosotros6.png"); /*ingresamos la imagen como fondo*/
     background-size: cover; /*el fondo se adapta a su contenedor*/
     background-position: center; /*centramos*/
-    padding: 18px 60px;
+    padding: 25px 190px;
     background-color: color-mix(in srgb, var(--paleta-formulario) 30% , transparent) ;
 
 
@@ -38,20 +39,18 @@ body {
 }
 
 .banner-nosotros-titulo {
-    font-weight: 700; /*peso de titulo 6oo semibold*/
-    font-size: 2rem; /*tamaño titulo banner*/
-    padding: 8px 0;
+    max-width: 26ch; /*espaciado de caracteres*/
+    margin-top: 20px;
+    font-size: var(--tamaño-titulo-banner);
+    font-weight: 600;
     line-height: 1.3;
-    
 }
-.banner-nosotros-texto { /*descripcion inicial sobre nosotros*/
-    max-width: 50ch; /*espaciado de caracteres*/
-    font-size: 1rem;
 
 
-}
 .nosotros-botones {
-    padding: 5px 0;
+    padding: 25px 0;
+    display: flex;
+    gap: 20px
 }
 
 
@@ -61,7 +60,7 @@ body {
     background-color: var(--paleta-primary);
     color: var(--paleta-fondo);
     padding: 6px 10px;
-    font-size:0.9rem;
+    font-size:1.2rem;
     border: none;
     cursor: pointer;
     text-decoration: none;
@@ -120,7 +119,20 @@ body {
 
 .tarjeta-mision-vision:hover {
     box-shadow: 0 8px 20px rgba(30, 68, 55, 0.14);
+    transform: translateY(-5px);
 }
+
+.tarjeta-publico:hover {
+    box-shadow: 0 8px 20px rgba(30, 68, 55, 0.14);
+    transform: translateY(-5px);    
+}
+
+.tarjeta-problema:hover{
+    transform: translateY(-5px);  
+    box-shadow: 0 8px 20px rgba(30, 68, 55, 0.14);
+
+}
+
 
 /*circulo decorativo */
 .tarjeta-circulo {
@@ -170,8 +182,13 @@ body {
 
 .tarjeta-publico .tarjeta-icono,
 .tarjeta-publico .tarjeta-etiqueta {
-    background-color: rgba(255, 255, 255, 0);
-    color: #ffffff;
+    background-color: #ffffff;
+    color: var(--paleta-header-footer);
+}
+
+#tarjeta-etiqueta-problema {
+    background-color: #ffffff;
+    color: var(--paleta-header-footer);
 }
 
 .tarjeta-mision-vision .tarjeta-icono {
@@ -200,16 +217,10 @@ body {
 
 
 /*titulos*/
-.tarjeta-titulo,
-.tarjeta-texto,
-.dato-destacado,
-.chips-publico {
-    position: relative;
-}
 
 .tarjeta-titulo {
     margin: 20px 0 0;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 600;
     color: var(--paleta-primary);
 }
@@ -245,22 +256,6 @@ body {
     color: var(--paleta-color3);
 }
 
-.chips-publico {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 14px;
-}
-
-.chip-publico {
-    padding: 2px 10px;
-    border-radius: 999px;
-    background-color: rgba(255, 255, 255, 0.12);
-    color: #ffffff;
-    font-size: 12px;
-}
-
-/*valores*/
 .valores-titulo {
     margin: 0;
     text-align: center;
@@ -268,8 +263,8 @@ body {
     font-weight: 600;
     color: var(--paleta-primary);
 }
-
-.valores-titulo::after {
+ 
+.valores-titulo::after { /*linea de abaho del circulo*/
     content: "";
     display: block;
     width: 48px;
@@ -332,8 +327,8 @@ body {
   margin-bottom: 60px;
 }
 
-.nuestro-equipo-titulo::after {
-    content: "";
+.nuestro-equipo-titulo::after { /*linea de abajo del titulo*/
+    content: ""; 
     display: block;
     width: 48px;
     height: 3px;
@@ -400,7 +395,7 @@ body {
 
 .nuestro-equipo-integrante-descripcion {
     color: var(--texto-suave);
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.5; /*separacion entre lineas*/
     min-height: 7.5em; /*reserva espacio para 5 lineas (1.5 x 5)*/
     margin-top: 10px;

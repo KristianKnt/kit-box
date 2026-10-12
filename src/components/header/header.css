@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 :root {
-  --fondo-header: #586F57;
+  --fondo-header: #586F57; /*paleta*/
   --color-texto: #fff;
+  --paleta-primary: #1E4437; /*paleta*/
   --fuente-principal: 'Inter', sans-serif;
+  --tamaño-fuente-menu: 20px;
 }
 
 .contenedor-principal {
@@ -12,6 +14,9 @@
   height: 70px;
   background-color: var(--fondo-header);
   font-family: var(--fuente-principal);
+  -webkit-backdrop-filter: blur(100px); /*blur para cuando est efijo en el body*/
+  backdrop-filter: blur(700px);
+  background-color: color-mix(in srgb, var(--fondo-header) 87%, transparent);
   padding: 0 55px;
 }
 
@@ -19,19 +24,22 @@
 {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 2rem;
 }
 
 .menu-navegacion {
   display: flex;
   gap: 1.5rem;
   flex-wrap: wrap;
+  font-size: var(--tamaño-fuente-menu);
+
   
 }
 
-nav a {
+.contenedor-menu nav a {
   text-decoration: none;
   color : var(--color-texto); 
+
 }
 
 #logo-text {
@@ -49,13 +57,24 @@ nav a {
 }
 
 .btn-iniciar-sesion {
-  background-color: transparent;
-  border: 1px solid var(--color-texto);
+  background-color: var(--paleta-primary);
   color: var(--color-texto);
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
+  padding: 0.4rem 0.5rem;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.btn-iniciar-sesion:hover {
+  transform: translateY(-1px);
+
+}
+
+#header {
+    position: sticky; /*fijar header.*/
+    top: 0; /*margen desde arriba*/
+    z-index: 1000; /*el header pasa por encima de las tarjetas y del banner cuando estas suben por debajo*/
 }
 
 /*RESPONSIVE*/
@@ -82,3 +101,4 @@ nav a {
         font-size: 1.5rem;
     }
 }
+
