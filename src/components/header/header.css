@@ -12,7 +12,7 @@
   height: 70px;
   background-color: var(--fondo-header);
   font-family: var(--fuente-principal);
-  padding: 0 24px;
+  padding: 0 55px;
 }
 
 .contenedor-carrito-sesion 
@@ -56,4 +56,29 @@ nav a {
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
+}
+
+/*RESPONSIVE*/
+@media (max-width: 900px) {
+    .contenedor-principal {
+        height: auto;
+        flex-wrap: wrap;
+        padding: 12px 20px;
+        gap: 10px;
+    }
+
+    .contenedor-menu {
+        order: 3;
+        width: 100%;
+    }
+
+    .menu-navegacion {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    #logo-text {
+        font-size: 1.5rem;
+    }
 }

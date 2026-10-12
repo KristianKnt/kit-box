@@ -7,37 +7,315 @@
     --paleta-fondo: #E7E8E3; /*paleta*/
     --paleta-header-footer: #586F57; /*paleta*/
 
+
 }
 
-/* inicio estilos diana */
-.texto-inter{
-    font-family: 'inter';
+body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: color-mix(in srgb, var(--paleta-fondo) 30%,  transparent)
 }
 
-.card-body-valores{
-    background-color: var(--color-gris);
-    border:1px solid var(--color-verdeOscuro);  
+/*estilos banner*/
+.banner-sobre-nosotros-fondo { /*fondo de banner contenedor*/
+    width: 100%; /*le damos el 100% de ancho*/
+    height: 250px;
+    background-image: url("../../assets/imagenes/nosotros/banner-sobre-nosotros5.png"); /*ingresamos la imagen como fondo*/
+    background-size: cover; /*el fondo se adapta a su contenedor*/
+    background-position: center; /*centramos*/
+    padding: 18px 60px;
+    background-color: color-mix(in srgb, var(--paleta-formulario) 30% , transparent) ;
+
+
 }
-.card-body-valores:hover{
-    background-color: #ff7f50;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+
+.banner-sobre-nosotros-fondo img {
+    opacity: 0.2;
 }
-#vision{
-    background-color: var(--color-Blanco);
+
+.banner-nosotros-informacion {
+    color: var(--paleta-primary);
+
 }
-#mision{
-    background-color:var(--color-Blanco);
+
+.banner-nosotros-titulo {
+    font-weight: 700; /*peso de titulo 6oo semibold*/
+    font-size: 2rem; /*tamaño titulo banner*/
+    padding: 8px 0;
+    line-height: 1.3;
+    
 }
-#vision:hover{
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+.banner-nosotros-texto { /*descripcion inicial sobre nosotros*/
+    max-width: 50ch; /*espaciado de caracteres*/
+    font-size: 1rem;
+
+
 }
-#mision:hover{
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+.nosotros-botones {
+    padding: 5px 0;
 }
-/* fin estilos diana */
 
 
 
+.nosotros-botones a { /*botones de banner*/
+    border-radius: 10px; 
+    background-color: var(--paleta-primary);
+    color: var(--paleta-fondo);
+    padding: 6px 10px;
+    font-size:0.9rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.nosotros-botones a:hover {
+    background-color: var(--paleta-header-footer);
+    transform: translateY(-2px);
+}
+
+/*grilla y secciones*/
+.seccion-tarjetas, /*las dps secciones tiene  el mismo espaciado*/
+.seccion-valores {
+    padding: 0 40px; /*padding contenedor principañ*/
+    box-sizing: border-box;  /*padding dentro del ancho para evitar scroll horizontal*/
+}
+
+.seccion-tarjetas {
+    display: grid; /*grid para manejo de tarjetas*/
+    grid-template-columns: 1fr 1fr; /*dos columnas*/
+    gap: 50px; /*espaciado de tarjetas*/
+    margin-top: 56px; /*separacion top*/
+}
+
+.seccion-mision-vision {
+    grid-template-columns: 1fr 1fr; /*dos columnas iguales*/
+    margin-top: 24px; /*separacion top*/
+}
+
+.seccion-valores {
+    margin-top: 60px; /*separacion top*/
+}
+
+/*tarjeta base reglas de las 4 tarjetas base*/
+.tarjeta {
+    position: relative;
+    overflow: hidden; /*lo que salga de la tarjeta se corta. regla para cortar ciruclo*/
+    padding: 40px; /*espacio entre el borde y el contenido*/
+    border-radius: 28px; 
+}
+
+.tarjeta-problema {
+    background-color: var(--paleta-formulario);
+}
+
+.tarjeta-publico {
+    background-color: var(--paleta-header-footer)
+}
+
+.tarjeta-mision-vision {
+    background-color: #ffffff;
+    border: 1px solid var(--paleta-fondo);
+    box-shadow: 0 2px 12px rgba(30, 68, 55, 0.06);
+    transition: box-shadow 0.3s;
+}
+
+.tarjeta-mision-vision:hover {
+    box-shadow: 0 8px 20px rgba(30, 68, 55, 0.14);
+}
+
+/*circulo decorativo */
+.tarjeta-circulo {
+    position: absolute; 
+    right: -60px;
+    bottom: -80px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: var(--paleta-color3);
+    opacity: 0.16;
+}
+
+/*Cabecera iconos y etiqueta*/
+.tarjeta-cabecera {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.tarjeta-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    color: var(--paleta-header-footer);
+}
+
+.tarjeta-icono svg {
+    width: 20px;
+    height: 20px;
+}
+
+.tarjeta-etiqueta {
+    padding: 4px 8px;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: var(--paleta-header-footer);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.tarjeta-publico .tarjeta-icono,
+.tarjeta-publico .tarjeta-etiqueta {
+    background-color: rgba(255, 255, 255, 0);
+    color: #ffffff;
+}
+
+.tarjeta-mision-vision .tarjeta-icono {
+    width: 48px;
+    height: 48px;
+    background-color: var(--paleta-formulario);
+}
+
+.tarjeta-mision-vision .tarjeta-etiqueta {
+    background-color: var(--paleta-fondo);
+}
+
+.tarjeta-problema .tarjeta-circulo {
+    top: -80px;
+    bottom: auto;
+    width: 20px;
+    height: 220px;
+}
+
+.tarjeta-publico .tarjeta-circulo {
+    top: -80px;
+    bottom: auto;
+    width: 20px;
+    height: 220px;
+}
+
+
+/*titulos*/
+.tarjeta-titulo,
+.tarjeta-texto,
+.dato-destacado,
+.chips-publico {
+    position: relative;
+}
+
+.tarjeta-titulo {
+    margin: 20px 0 0;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--paleta-primary);
+}
+
+.tarjeta-texto {
+    margin: 12px 0 0;
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--paleta-primary);
+}
+
+.tarjeta-publico .tarjeta-titulo {
+    color: #ffffff;
+}
+
+.tarjeta-publico .tarjeta-texto {
+    color: rgba(255, 255, 255, 1);
+}
+
+.dato-destacado {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    margin: 12px 0 0;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 1);
+}
+
+.dato-destacado span {
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 0.9;   
+    color: var(--paleta-color3);
+}
+
+.chips-publico {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.chip-publico {
+    padding: 2px 10px;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    font-size: 12px;
+}
+
+/*valores*/
+.valores-titulo {
+    margin: 0;
+    text-align: center;
+    font-size: 34px;
+    font-weight: 600;
+    color: var(--paleta-primary);
+}
+
+.valores-titulo::after {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 3px;
+    margin: 14px auto 0;
+    border-radius: 2px;
+    background-color: var(--paleta-color3);
+}
+
+.valores-lista {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 36px;
+}
+
+.valor-tarjeta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+    padding: 20px 24px;
+    border: 1px solid var(--paleta-fondo);
+    border-radius: 18px;
+    background-color: var(--paleta-formulario);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.valor-tarjeta:hover {
+    background-color: var(--paleta-header-footer);
+    transform: translateY(-2px);
+}
+
+.valor-nombre {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--paleta-primary);
+    transition: color 0.3s;
+}
+
+.valor-tarjeta:hover .valor-nombre {
+    color: #ffffff;
+}
+
+
+/*Estilos de Tarjetas Juliana*/
 .nuestro-equipo { /*styles de contenedor principal*/
   margin: 0 auto; /*se centra la seccion*/
   padding: 48px 32px; /*espaciado interno*/
@@ -48,6 +326,20 @@
   font-size: 32px;
   color: var(--paleta-primary) ;
   margin: 0 0 24px;
+  line-height: 1.7;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.nuestro-equipo-titulo::after {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 3px;
+    margin: 14px auto 0;
+    border-radius: 2px;
+    background-color: var(--paleta-color3);
 }
 
 .nuestro-equipo-contenedor-tarjetas { /*configuracion del contenedor de tarjetas*/
@@ -55,16 +347,17 @@
     gap: 30px;
     grid-template-columns: repeat(5, 1fr); /*5 columnas de la misma fraccion*/
     text-align: center;
+    margin-bottom: 30px;
 
 }
 
 .nuestro-equipo-integrante { /*tarjetaa!*/
-    background-color: color-mix(in srgb, var(--paleta-formulario) 20%, transparent); /*fondo de tarjeta*/
+    background-color: color-mix(in srgb, var(--paleta-formulario) 30%, transparent); /*fondo de tarjeta*/
     border: 1.5px solid color-mix(in srgb, var(--paleta-primary) 20%, transparent); /*borde de tarjta*/
     border-radius: 20px; /*Redondear bordes*/
     padding: 24px 20px ; /*espaciado interno de tarjeta*/
     place-items: center; /*centramos la foto*/
-    padding-bottom: 5px; /*espaciado de abajo de la tarjeta*/
+    padding-bottom: 20px; /*espaciado de abajo de la tarjeta*/
     transition: border-color 0.25s ease, box-shadow 0.25s ease; /*transition: propiedad duración curva 
     retrasa el efecto del borde para que no sea tan brusco*/
 
@@ -102,7 +395,7 @@
     padding: 4px 10px;
     font-size: 13px;
     margin-bottom: 1px;
-    display: inline-block;    
+    display: inline-block;  /*permite dejar la posicion y modificar el tamaño*/
 }
 
 .nuestro-equipo-integrante-descripcion {
@@ -114,14 +407,36 @@
 
 }  
 
+.nuestro-equipo-integrante-redes {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.nuestro-equipo-integrante-redes a { /*linkedin y github*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid #c9d4c0;
+    color: #3c4a3f;
+    transition: background-color 0.3s, color 0.3s;
+}
+.nuestro-equipo-integrante-redes a :hover {
+    color: var(--paleta-botones);
+}
+
 /**animaciones y hover*/
 .nuestro-equipo-integrante-foto:hover { /*hover de fotos*/
     border-color: var(--paleta-header-footer);  /*color de borde al pasar el mouse*/
-    box-shadow: 0 0 10px var(--paleta-naranja); /*pequeña sombra naranja alrededor del borde*/
+    box-shadow: 0 0 10px var(--paleta-botones); /*pequeña sombra naranja alrededor del borde*/
 }
 
 .nuestro-equipo-integrante:hover { /*animacion tarjetas*/
-    box-shadow: 0 0 7px color-mix(in srgb, var(--paleta-primary) 30%,transparent);
+    box-shadow: 0 0 8px color-mix(in srgb, var(--paleta-botones) 30%,transparent);
     transform: translateY(-6px); /*efecto de elevacion de la tarjeta */
 }
 
@@ -135,60 +450,83 @@
     animation: aparecerIntegrantes 1.9s ease forwards;
 }
 
-
 @keyframes aparecerIntegrantes { /*que pasa en la animacion*/
     from { opacity: 0; translate: 0 100px; } /*punto inicio*/
     to   { opacity: 1; translate: 0 0; } /*visibilidad de la tarjeta, tarjeta posicion*/
 } /*se usa traslate */
 
 
-body {
-    background-color: #F8F9FA;
-    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
-
-#imagenAcercaDeNosotrosTop {
-    width: 95%;
-    max-width: 95%;
-    display: block;
-    height: 250px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
-    border-radius: 10px;
-
-}
-
-#problemaYPublicoObjetivo {
-    margin-top: 20PX;
-    margin-left: 15px;
-    border: none;
-    background-color: #F8F9FA;
-}
-
-.card {
-    background-color: #c1ecdd;
-    border-color: #ffecd1;
-}
-
-#publicoObjetivo {
-    margin-top: 35px;
-}
-
-/*estilos banner*/
-.banner-sobre-nosotros-fondo {
-    width: 100%; /*le damos el 100% de ancho*/
-    height: 250px;
-    background-image: url("../../assets/imagenes/nosotros/banner-sobre-nosotros.jpg"); /*ingresamos la imagen como fondo*/
-    background-size: cover; /*el fondo se adapta a su contenedor*/
-    background-position: center; /*centramos*/
-
-    padding: 10px 200px;
-
-}
-
-.banner-nosotros-texto {
-    max-width: 40ch;
+#footer {
+    width: 100%;
 }
 
 
+
+/*RESPONSIVE*/
+
+/*Portatil pequeño*/
+@media (max-width: 1100px) {
+    .nuestro-equipo-contenedor-tarjetas {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .banner-sobre-nosotros-fondo {
+        height: auto;
+        padding: 32px 24px 190px;
+        background-size: auto 170px;
+        background-position: right bottom;
+        background-repeat: no-repeat;
+    }
+
+    .seccion-tarjetas,
+    .seccion-mision-vision {
+        grid-template-columns: 1fr;
+    }
+
+    .valores-lista {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .nuestro-equipo-contenedor-tarjetas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/*ccelular */
+@media (max-width: 576px) {
+    .banner-nosotros-titulo {
+        font-size: 1.6rem;
+    }
+
+    .seccion-tarjetas,
+    .seccion-valores {
+        padding: 0 20px;
+    }
+
+    .tarjeta {
+        padding: 28px;
+    }
+
+    .tarjeta-titulo {
+        font-size: 26px;
+    }
+
+    .valores-lista {
+        grid-template-columns: 1fr;
+    }
+
+    .nuestro-equipo {
+        padding: 40px 20px;
+    }
+
+    .nuestro-equipo-contenedor-tarjetas {
+        grid-template-columns: 1fr;
+    }
+
+    .nuestro-equipo-integrante-descripcion {
+        min-height: auto;
+    }
+}
