@@ -12,7 +12,17 @@
 
 }
 
+*, *::before, *::after {
+    box-sizing: border-box; /*reset de pagina*/
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 body {
+    margin: 0;
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background-color: color-mix(in srgb, var(--paleta-fondo) 30%,  transparent)
 }
@@ -24,7 +34,7 @@ body {
     background-image: url("../../assets/imagenes/nosotros/banner-sobre-nosotros6.png"); /*ingresamos la imagen como fondo*/
     background-size: cover; /*el fondo se adapta a su contenedor*/
     background-position: center; /*centramos*/
-    padding: 25px 110px;
+    padding: 20px clamp(190px, 10vw, 240px);
     background-color: color-mix(in srgb, var(--paleta-formulario) 30% , transparent) ;
 
 
@@ -283,11 +293,11 @@ body {
 .valor-tarjeta {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: flex-start; /*acomoda el icono*/
     min-height: 40px;
     gap: 20px;
-    padding: 20px 70px;
-    border: 1px solid var(--paleta-fondo);
+    padding: 20px clamp(20px, 3vw, 70px); /*evita desbbordamiento de tarjetas (900-1100)*/
+    border: 1px solid var(--paleta-fondo); 
     border-radius: 18px;
     background-color: var(--paleta-formulario);
     transition: background-color 0.3s, transform 0.3s;
@@ -363,15 +373,18 @@ body {
 }
 
 .nuestro-equipo-contenedor-tarjetas { /*configuracion del contenedor de tarjetas*/
-    display: grid; /*Tipo grila para organizar las tarjetas*/
+    display: flex; /*tarjetas se acomodan*/
+    flex-wrap: wrap; /*se obliga a mostarse en otra linea ayuda a responsive*/
+    justify-content: center;
     gap: 30px;
-    grid-template-columns: repeat(5, 1fr); /*5 columnas de la misma fraccion*/
-    text-align: center;
     margin-bottom: 30px;
 
 }
 
 .nuestro-equipo-integrante { /*tarjetaa!*/
+    flex: 1 1 200px;
+    max-width: 240px;
+    opacity: 0;
     display: flex;/*alineacion logos de abajo*/
     flex-direction: column;/*alineacion logos de abajo*/
     align-items: center; /*alineacion logos de abajo*/
@@ -427,6 +440,7 @@ body {
     line-height: 1.5; /*separacion entre lineas*/
     min-height: 7.5em; /*reserva espacio para 5 lineas (1.5 x 5)*/
     margin-top: 10px;
+    text-align: center;
 
 }  
 
@@ -484,22 +498,34 @@ body {
     width: 100%;
 }
 
-
-
 /*RESPONSIVE*/
+@media (max-width: 1280px) {
+    .banner-sobre-nosotros-fondo {
+        padding-left: var(--espacio-lateral); /* 55px: alineado con el logo del header y las tarjetas */
+    }
+}
 
-/*Portatil pequeño*/
-@media (max-width: 1100px) {
-    .nuestro-equipo-contenedor-tarjetas {
-        grid-template-columns: repeat(3, 1fr);
+@media (min-width: 901px) and (max-width: 1280px) {
+    .banner-sobre-nosotros-fondo {
+        background-size: auto 85%;   /* la imagen ocupa todo el ancho, sin recortar los lados */
+        background-position: 20% center;
+        background-repeat: no-repeat;
+        padding-left: 130px;          /* el título se corre a la derecha para no quedar sobre la hoja */
     }
 }
 
 /* Tablet */
 @media (max-width: 900px) {
-    .banner-sobre-nosotros-fondo { /*recorte de banner oara tablet*/
+    .seccion-tarjetas,
+    .seccion-valores,
+    .nuestro-equipo {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .banner-sobre-nosotros-fondo { /*recorte de banner para tablet*/
         height: auto;
-        padding: 32px 24px 190px;
+        padding: 32px 20px 190px;
         background-size: auto 170px;
         background-position: right bottom;
         background-repeat: no-repeat;
@@ -507,24 +533,23 @@ body {
 
     .seccion-tarjetas,
     .seccion-mision-vision {
-        grid-template-columns: 1fr; /*una columna en tarjetas de mision vision proble y publico*/
+        grid-template-columns: 1fr; /*una columna: problema, público, misión y visión*/
     }
 
     .valores-lista {
         grid-template-columns: repeat(2, 1fr); /*dos columnas en valores*/
     }
 
-    .nuestro-equipo-contenedor-tarjetas {
-        grid-template-columns: repeat(2, 1fr); /*dos columnas en tarjetas equipo*/
+    .tarjeta {
+        padding: 28px 44px;
     }
 }
 
-/*ccelular */
-@media (max-width: 576px) { 
-    .banner-nosotros-titulo { /*titulo banner*/
+/* Celular */
+@media (max-width: 576px) {
+    .banner-nosotros-titulo {
         font-size: 1.6rem;
     }
-
 
     .tarjeta {
         padding: 28px;
@@ -535,12 +560,7 @@ body {
     }
 
     .valores-lista {
-        grid-template-columns: 1fr;
-    }
-
-
-    .nuestro-equipo-contenedor-tarjetas {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /*una columna en valores*/
     }
 
     .nuestro-equipo-integrante-descripcion {
