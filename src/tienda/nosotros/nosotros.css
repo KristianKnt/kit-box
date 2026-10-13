@@ -7,6 +7,7 @@
     --paleta-fondo: #E7E8E3; /*paleta*/
     --paleta-header-footer: #586F57; /*paleta*/
     --tamaño-titulo-banner: 40px;
+    --espacio-lateral: 55px;
 
 
 }
@@ -23,7 +24,7 @@ body {
     background-image: url("../../assets/imagenes/nosotros/banner-sobre-nosotros6.png"); /*ingresamos la imagen como fondo*/
     background-size: cover; /*el fondo se adapta a su contenedor*/
     background-position: center; /*centramos*/
-    padding: 25px 190px;
+    padding: 25px 110px;
     background-color: color-mix(in srgb, var(--paleta-formulario) 30% , transparent) ;
 
 
@@ -60,7 +61,7 @@ body {
     background-color: var(--paleta-primary);
     color: var(--paleta-fondo);
     padding: 6px 10px;
-    font-size:1.2rem;
+    font-size:1.1rem;
     border: none;
     cursor: pointer;
     text-decoration: none;
@@ -74,7 +75,10 @@ body {
 /*grilla y secciones*/
 .seccion-tarjetas, /*las dps secciones tiene  el mismo espaciado*/
 .seccion-valores {
-    padding: 0 40px; /*padding contenedor principañ*/
+    max-width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 var(--espacio-lateral); /*padding contenedor principañ*/
     box-sizing: border-box;  /*padding dentro del ancho para evitar scroll horizontal*/
 }
 
@@ -92,22 +96,26 @@ body {
 
 .seccion-valores {
     margin-top: 60px; /*separacion top*/
+    padding: 0 var(--espacio-lateral);
 }
 
 /*tarjeta base reglas de las 4 tarjetas base*/
 .tarjeta {
     position: relative;
     overflow: hidden; /*lo que salga de la tarjeta se corta. regla para cortar ciruclo*/
-    padding: 40px; /*espacio entre el borde y el contenido*/
+    padding: 26px 120px 44px 44px;
     border-radius: 28px; 
 }
 
 .tarjeta-problema {
     background-color: var(--paleta-formulario);
+    background-image: url(../../assets/imagenes/nosotros/espiga-tarjetas.png);
+    
 }
 
 .tarjeta-publico {
-    background-color: var(--paleta-header-footer)
+    background-color: var(--paleta-header-footer);
+    background-image: url(../../assets/imagenes/nosotros/espiga-tarjetas2.png);
 }
 
 .tarjeta-mision-vision {
@@ -201,46 +209,32 @@ body {
     background-color: var(--paleta-fondo);
 }
 
-.tarjeta-problema .tarjeta-circulo {
-    top: -80px;
-    bottom: auto;
-    width: 20px;
-    height: 220px;
-}
-
-.tarjeta-publico .tarjeta-circulo {
-    top: -80px;
-    bottom: auto;
-    width: 20px;
-    height: 220px;
-}
-
 
 /*titulos*/
 
-.tarjeta-titulo {
-    margin: 20px 0 0;
-    font-size: 24px;
+.tarjeta-titulo { /*titulo de todas las tarjetas*/
+    margin: 17px 0 0;
+    font-size: 22px;    
     font-weight: 600;
     color: var(--paleta-primary);
 }
 
-.tarjeta-texto {
-    margin: 12px 0 0;
-    font-size: 15px;
-    line-height: 1.75;
+.tarjeta-texto { /*texto de todas las tarjetas*/
+    margin: 10px 0 0;
+    font-size: 13.8px;  
+    line-height: 1.7;
     color: var(--paleta-primary);
 }
 
-.tarjeta-publico .tarjeta-titulo {
+.tarjeta-publico .tarjeta-titulo { /*titulo tarjeta publico*/
     color: #ffffff;
 }
 
-.tarjeta-publico .tarjeta-texto {
+.tarjeta-publico .tarjeta-texto { /*texto de tarjeta publico*/
     color: rgba(255, 255, 255, 1);
 }
 
-.dato-destacado {
+.dato-destacado { /*dato años*/
     display: flex;
     align-items: baseline;
     gap: 5px;
@@ -249,14 +243,14 @@ body {
     color: rgba(255, 255, 255, 1);
 }
 
-.dato-destacado span {
+.dato-destacado span { /*dato de 18-45*/
     font-size: 40px;
     font-weight: 600;
     line-height: 0.9;   
     color: var(--paleta-color3);
 }
 
-.valores-titulo {
+.valores-titulo { /*estilos titulo de tarjetas valores*/
     margin: 0;
     text-align: center;
     font-size: 34px;
@@ -284,9 +278,10 @@ body {
 .valor-tarjeta {
     display: flex;
     align-items: center;
-    justify-content: center;
-    min-height: 60px;
-    padding: 20px 24px;
+    justify-content: flex-start;
+    min-height: 40px;
+    gap: 20px;
+    padding: 20px 70px;
     border: 1px solid var(--paleta-fondo);
     border-radius: 18px;
     background-color: var(--paleta-formulario);
@@ -296,10 +291,11 @@ body {
 .valor-tarjeta:hover {
     background-color: var(--paleta-header-footer);
     transform: translateY(-2px);
+    
 }
 
 .valor-nombre {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 600;
     color: var(--paleta-primary);
     transition: color 0.3s;
@@ -309,22 +305,46 @@ body {
     color: #ffffff;
 }
 
+.valor-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    color: var(--paleta-header-footer);
+    transition: background-color 0.3s, color 0.3s;
+}
 
-/*Estilos de Tarjetas Juliana*/
+.valor-icono svg {
+    width: 22px;
+    height: 22px;
+}
+
+.valor-tarjeta:hover .valor-icono {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+
+}
+
+
+/*Estilos de Tarjetas */
 .nuestro-equipo { /*styles de contenedor principal*/
   margin: 0 auto; /*se centra la seccion*/
-  padding: 48px 32px; /*espaciado interno*/
+  padding: 48px var(--espacio-lateral); /*espaciado interno*/
   font-family: 'Inter', Helvetica, sans-serif; /*fuente principal y de respaldo*/
 }
 
 .nuestro-equipo-titulo {
   font-size: 32px;
   color: var(--paleta-primary) ;
-  margin: 0 0 24px;
+  margin: 0 0 20px;
   line-height: 1.7;
   font-weight: 600;
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 .nuestro-equipo-titulo::after { /*linea de abajo del titulo*/
@@ -347,6 +367,9 @@ body {
 }
 
 .nuestro-equipo-integrante { /*tarjetaa!*/
+    display: flex;/*alineacion logos de abajo*/
+    flex-direction: column;/*alineacion logos de abajo*/
+    align-items: center; /*alineacion logos de abajo*/
     background-color: color-mix(in srgb, var(--paleta-formulario) 30%, transparent); /*fondo de tarjeta*/
     border: 1.5px solid color-mix(in srgb, var(--paleta-primary) 20%, transparent); /*borde de tarjta*/
     border-radius: 20px; /*Redondear bordes*/
@@ -363,7 +386,7 @@ body {
     height: 140px;  /*alto d foto*/ 
     border-radius: 50%; /*forma de circulo, dandole radio a foto*/
     overflow: hidden; /*adapta la foto dentro del circulo*/
-    border: 3px solid color-mix(in srgb, var(--paleta-color3) 60%, transparent); /*borde de fotos*/
+    border: 4px solid color-mix(in srgb, var(--paleta-color3) 60%, transparent); /*borde de fotos*/
     text-align: center; /*centrado de foto*/
     margin: 0; /*centra la caja del circulo*/
     transition: border-color 0.25s ease, box-shadow 0.25s ease; /*transition: propiedad duración curva 
@@ -406,7 +429,8 @@ body {
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-top: 16px;
+    margin-top: auto;
+    padding-top: 16px;
 }
 
 .nuestro-equipo-integrante-redes a { /*linkedin y github*/
@@ -468,7 +492,7 @@ body {
 
 /* Tablet */
 @media (max-width: 900px) {
-    .banner-sobre-nosotros-fondo {
+    .banner-sobre-nosotros-fondo { /*recorte de banner oara tablet*/
         height: auto;
         padding: 32px 24px 190px;
         background-size: auto 170px;
@@ -478,28 +502,24 @@ body {
 
     .seccion-tarjetas,
     .seccion-mision-vision {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /*una columna en tarjetas de mision vision proble y publico*/
     }
 
     .valores-lista {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /*dos columnas en valores*/
     }
 
     .nuestro-equipo-contenedor-tarjetas {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /*dos columnas en tarjetas equipo*/
     }
 }
 
 /*ccelular */
-@media (max-width: 576px) {
-    .banner-nosotros-titulo {
+@media (max-width: 576px) { 
+    .banner-nosotros-titulo { /*titulo banner*/
         font-size: 1.6rem;
     }
 
-    .seccion-tarjetas,
-    .seccion-valores {
-        padding: 0 20px;
-    }
 
     .tarjeta {
         padding: 28px;
@@ -513,9 +533,6 @@ body {
         grid-template-columns: 1fr;
     }
 
-    .nuestro-equipo {
-        padding: 40px 20px;
-    }
 
     .nuestro-equipo-contenedor-tarjetas {
         grid-template-columns: 1fr;

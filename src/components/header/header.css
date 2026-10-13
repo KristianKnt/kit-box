@@ -4,7 +4,9 @@
   --color-texto: #fff;
   --paleta-primary: #1E4437; /*paleta*/
   --fuente-principal: 'Inter', sans-serif;
-  --tamaño-fuente-menu: 20px;
+  --tamaño-fuente-menu: 18px;
+  --espacio-lateral: 55px;
+
 }
 
 .contenedor-principal {
@@ -17,7 +19,7 @@
   -webkit-backdrop-filter: blur(100px); /*blur para cuando est efijo en el body*/
   backdrop-filter: blur(700px);
   background-color: color-mix(in srgb, var(--fondo-header) 87%, transparent);
-  padding: 0 55px;
+  padding: 0 var(--espacio-lateral);
 }
 
 .contenedor-carrito-sesion 

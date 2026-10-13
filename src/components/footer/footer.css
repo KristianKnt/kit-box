@@ -3,16 +3,25 @@
   --fondo-footer: #586F57;
   --color-texto: #fff;
   --fuente-principal: 'Inter', sans-serif;
+  --espacio-lateral: 55px;
+
 
 }
+
 
 .footer-contenido-principal {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    min-height: 200px;
-    padding: 30px 180px;
-    gap: 40px;
+    min-height: 250px;
+    gap: 10px; 
+    padding:30px var(--espacio-lateral); /*alineado con el boton inicio sesion del header*/
+    text-decoration: none;
+}
+
+.footer-contenido-principal a {
+    text-decoration: none;
+
 }
 .footer-copy {
     flex: 1 1 100%;     
@@ -22,11 +31,15 @@
 }
 
 footer {
-    text-decoration: none;
     color: var(--color-texto);
     font-family: 'Inter',sans-serif;
     font-size: 13.5px;
-    background-color: var(--fondo-footer);
+    background-image: url("../../assets/imagenes/nosotros/Group\ 41.png"); /*ingresamos la imagen como fondo*/
+}
+
+footer nav a {
+    text-decoration: none;
+    color: var(--color-texto);
 }
 
 .footer-logo-lema {
@@ -38,6 +51,7 @@ footer {
     flex: 1;
     min-width: 200px;
 }
+
 
 .columna-explorar {
     display: flex;
@@ -94,6 +108,9 @@ footer h4 {
     color: var(--color-texto);
 }
 
+
+
+/*RESPONSIVE*/
 @media (max-width: 900px) {
     .footer-contenido-principal {
         padding: 30px 20px;
