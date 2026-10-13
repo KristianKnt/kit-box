@@ -385,6 +385,7 @@ body {
     flex: 1 1 200px;
     max-width: 240px;
     opacity: 0;
+        color: color-mix(in srgb, var(--paleta-primary) 70%, black 30%);
     display: flex;/*alineacion logos de abajo*/
     flex-direction: column;/*alineacion logos de abajo*/
     align-items: center; /*alineacion logos de abajo*/
