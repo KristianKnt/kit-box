@@ -6,7 +6,7 @@
     --paleta-botones: #886F56; /*paleta*/
     --paleta-fondo: #E7E8E3; /*paleta*/
     --paleta-header-footer: #586F57; /*paleta*/
-    --tamaño-titulo-banner: 40px;
+    --tamaño-titulo-banner: clamp(1.6rem, 4.5vw, 40px);
     --espacio-lateral: 55px;
 
 
@@ -34,7 +34,7 @@ body {
     background-image: url("../../assets/imagenes/nosotros/banner-sobre-nosotros6.png"); /*ingresamos la imagen como fondo*/
     background-size: cover; /*el fondo se adapta a su contenedor*/
     background-position: center; /*centramos*/
-    padding: 20px clamp(190px, 10vw, 240px);
+    padding: 20px clamp(100px, 10vw, 240px);
     background-color: color-mix(in srgb, var(--paleta-formulario) 30% , transparent) ;
 
 
@@ -510,7 +510,7 @@ body {
         background-size: auto 85%;   /* la imagen ocupa todo el ancho, sin recortar los lados */
         background-position: 20% center;
         background-repeat: no-repeat;
-        padding-left: 130px;          /* el título se corre a la derecha para no quedar sobre la hoja */
+        padding-left: 100px;          /* el título se corre a la derecha para no quedar sobre la hoja */
     }
 }
 
@@ -523,14 +523,22 @@ body {
         padding-right: 20px;
     }
 
-    .banner-sobre-nosotros-fondo { /*recorte de banner para tablet*/
-        height: auto;
-        padding: 32px 20px 190px;
-        background-size: auto 170px;
-        background-position: right bottom;
-        background-repeat: no-repeat;
+    .banner-sobre-nosotros-fondo {
+        height: 280px;
+        padding: 25px 20px;
+        background-image:
+            linear-gradient(90deg, rgba(244, 242, 236, 0.95) 0%, rgba(244, 242, 236, 0.8) 45%, rgba(244, 242, 236, 0) 75%),
+            url("../../assets/imagenes/nosotros/banner-sobre-nosotros6.png");
+        background-size: cover;
+        background-position: right center;
     }
 
+.banner-nosotros-informacion {
+    max-width: 60%;
+}
+    .banner-nosotros-informacion {
+        max-width: 60%; /* el texto no se mete sobre la caja de la imagen */
+    }
     .seccion-tarjetas,
     .seccion-mision-vision {
         grid-template-columns: 1fr; /*una columna: problema, público, misión y visión*/
