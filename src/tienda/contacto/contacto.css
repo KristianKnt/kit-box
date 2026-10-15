@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+:root {
+    --paleta-primary: #1E4437; /*paleta*/
+    --paleta-formulario: #EFEBE2; /*paleta*/
+    --paleta-color3: #8FAE9A; /*paleta*/
+    --paleta-botones: #886F56; /*paleta*/
+    --paleta-fondo: #E7E8E3; /*paleta*/
+    --paleta-header-footer: #586F57; /*paleta*/
+    --tamaño-titulo-banner: clamp(1.6rem, 4.5vw, 40px);
+    --espacio-lateral: 55px;
+
+
+}
+
+*, *::before, *::after {
+    box-sizing: border-box; /*reset de pagina*/
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: color-mix(in srgb, var(--paleta-fondo) 30%,  transparent)
+}
+
+#footer {
+    width: 100%;
+}
+
+/*RESPONSIVE*/
+@media (max-width: 1280px) {
+    .banner-sobre-nosotros-fondo {
+        padding-left: var(--espacio-lateral); /* 55px: alineado con el logo del header y las tarjetas */
+    }
+}
+
+@media (min-width: 901px) and (max-width: 1280px) {
+    .banner-sobre-nosotros-fondo {
+        background-size: auto 85%;   /* la imagen ocupa todo el ancho, sin recortar los lados */
+        background-position: 20% center;
+        background-repeat: no-repeat;
+        padding-left: 100px;          /* el título se corre a la derecha para no quedar sobre la hoja */
+    }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .seccion-tarjetas,
+    .seccion-valores,
+    .nuestro-equipo {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .banner-sobre-nosotros-fondo {
+        height: 280px;
+        padding: 25px 20px;
+        background-image:
+            linear-gradient(90deg, rgba(244, 242, 236, 0.95) 0%, rgba(244, 242, 236, 0.8) 45%, rgba(244, 242, 236, 0) 75%),
+            url("../../assets/imagenes/nosotros/banner-sobre-nosotros6.png");
+        background-size: cover;
+        background-position: right center;
+    }
+
+.banner-nosotros-informacion {
+    max-width: 60%;
+}
+    .banner-nosotros-informacion {
+        max-width: 60%; /* el texto no se mete sobre la caja de la imagen */
+    }
+    .seccion-tarjetas,
+    .seccion-mision-vision {
+        grid-template-columns: 1fr; /*una columna: problema, público, misión y visión*/
+    }
+
+    .valores-lista {
+        grid-template-columns: repeat(2, 1fr); /*dos columnas en valores*/
+    }
+
+    .tarjeta {
+        padding: 28px 44px;
+    }
+}
+
+/* Celular */
+@media (max-width: 576px) {
+    .banner-nosotros-titulo {
+        font-size: 1.6rem;
+    }
+
+    .tarjeta {
+        padding: 28px;
+    }
+
+    .tarjeta-titulo {
+        font-size: 26px;
+    }
+
+    .valores-lista {
+        grid-template-columns: 1fr; /*una columna en valores*/
+    }
+
+    .nuestro-equipo-integrante-descripcion {
+        min-height: auto;
+    }
+}
+
+/*estilos banner*/
+.banner-sobre-nosotros-fondo { /*fondo de banner contenedor*/
+    width: 100%; /*le damos el 100% de ancho*/
+    height: 280px;
+    background-image: url("../../assets/imagenes/nosotros/banner-sobre-nosotros6.png"); /*ingresamos la imagen como fondo*/
+    background-size: cover; /*el fondo se adapta a su contenedor*/
+    background-position: center; /*centramos*/
+    padding: 20px clamp(100px, 10vw, 240px);
+    background-color: color-mix(in srgb, var(--paleta-formulario) 30% , transparent) ;
+
+
+}
+
+.banner-sobre-nosotros-fondo img {
+    opacity: 0.2;
+}
+
+.banner-nosotros-informacion {
+    color: var(--paleta-primary);
+
+}
+
+.banner-nosotros-titulo {
+    max-width: 26ch; /*espaciado de caracteres*/
+    margin-top: 20px;
+    font-size: var(--tamaño-titulo-banner);
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+
+.nosotros-botones {
+    padding: 25px 0;
+    display: flex;
+    gap: 20px
+}
+
+
+
+.nosotros-botones a { /*botones de banner*/
+    border-radius: 10px; 
+    background-color: var(--paleta-primary);
+    color: var(--paleta-fondo);
+    padding: 6px 10px;
+    font-size:1.1rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.nosotros-botones a:hover {
+    background-color: var(--paleta-header-footer);
+    transform: translateY(-2px);
+}
