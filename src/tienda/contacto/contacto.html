@@ -36,127 +36,122 @@
         </section>
 
         <!--seccion formulario y localizacion-->
-        <section>
+        <section calss="seccion_formulario_localizacion">
             <!-- IMPORTANTE: El contenedor padre debe tener class="row" -->
-            <div class="row">
-
+            <div class="row p-5">
                 <!-- Columna izquierda (Formulario): ocupa 8 espacios -->
-                <div class="row p-5">
+                <div class="col-8">
+                    <div class="p-2 p-md-5 border rounded shadow-sm fondo-formulario-contenedor">
+                        <h3 class="text-center mb-4">Contáctanos</h3>
 
-                    <!-- Columna izquierda (Formulario): ocupa 8 espacios -->
-                    <div class="col-8">
-                        <div class="p-2 p-md-5 border rounded shadow-sm fondo-formulario-contenedor">
-                            <h3 class="text-center mb-4">Contáctanos</h3>
+                        <!-- Separamos el id de las clases y centramos la caja del formulario -->
+                        <form id="formulario-contacto" class="formulario-centrado mx-auto" style="max-width: 1000px;">
 
-                            <!-- Separamos el id de las clases y centramos la caja del formulario -->
-                            <form id="formulario-contacto" class="formulario-centrado mx-auto"
-                                style="max-width: 1000px;">
+                            <!-- Nombre -->
+                            <div class="mb-3">
+                                <label for="dato-nombre" class="form-label">Nombre</label>
+                                <input class="form-control campo-input" type="text" id="dato-nombre"
+                                    placeholder="Nombre">
+                                <p id="error-dato-nombre" class="text-danger small"></p>
+                            </div>
 
-                                <!-- Nombre -->
-                                <div class="mb-3">
-                                    <label for="dato-nombre" class="form-label">Nombre</label>
-                                    <input class="form-control campo-input" type="text" id="dato-nombre"
-                                        placeholder="Nombre">
-                                    <p id="error-dato-nombre" class="text-danger small"></p>
-                                </div>
+                            <!-- Apellido -->
+                            <div class="mb-3">
+                                <label for="dato-apellido" class="form-label">Apellido</label>
+                                <input class="form-control campo-input" type="text" id="dato-apellido"
+                                    placeholder="Apellido">
+                                <p id="error-dato-apellido" class="text-danger small"></p>
+                            </div>
 
-                                <!-- Apellido -->
-                                <div class="mb-3">
-                                    <label for="dato-apellido" class="form-label">Apellido</label>
-                                    <input class="form-control campo-input" type="text" id="dato-apellido"
-                                        placeholder="Apellido">
-                                    <p id="error-dato-apellido" class="text-danger small"></p>
-                                </div>
+                            <!-- Email -->
+                            <div class="mb-3">
+                                <label for="dato-email" class="form-label">Email</label>
+                                <input class="form-control campo-input" type="email" id="dato-email"
+                                    placeholder="ejemplo@gmail.com">
+                                <p id="error-dato-email" class="text-danger small"></p>
+                            </div>
 
-                                <!-- Email -->
-                                <div class="mb-3">
-                                    <label for="dato-email" class="form-label">Email</label>
-                                    <input class="form-control campo-input" type="email" id="dato-email"
-                                        placeholder="ejemplo@gmail.com">
-                                    <p id="error-dato-email" class="text-danger small"></p>
-                                </div>
+                            <!-- Teléfono -->
+                            <div class="mb-3">
+                                <label for="dato-telefono" class="form-label">Teléfono</label>
+                                <input class="form-control campo-input" type="tel" id="dato-telefono"
+                                    placeholder="Solo números">
+                                <p id="error-dato-telefono" class="text-danger small"></p>
+                            </div>
 
-                                <!-- Teléfono -->
-                                <div class="mb-3">
-                                    <label for="dato-telefono" class="form-label">Teléfono</label>
-                                    <input class="form-control campo-input" type="tel" id="dato-telefono"
-                                        placeholder="Solo números">
-                                    <p id="error-dato-telefono" class="text-danger small"></p>
-                                </div>
+                            <!-- Descripción (Cambiado a textarea para mejor formato de mensaje) -->
+                            <div class="mb-3">
+                                <label for="dato-mensaje" class="form-label">Descripción</label>
+                                <textarea class="form-control campo-input" id="dato-mensaje" rows="3"
+                                    placeholder="Escribe aquí tu consulta..."></textarea>
+                                <p id="error-dato-mensaje" class="text-danger small"></p>
+                            </div>
 
-                                <!-- Descripción (Cambiado a textarea para mejor formato de mensaje) -->
-                                <div class="mb-3">
-                                    <label for="dato-mensaje" class="form-label">Descripción</label>
-                                    <textarea class="form-control campo-input" id="dato-mensaje" rows="3"
-                                        placeholder="Escribe aquí tu consulta..."></textarea>
-                                    <p id="error-dato-mensaje" class="text-danger small"></p>
-                                </div>
+                            <!-- Botón de Envío -->
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary"
+                                    id="boton-enviar-formulario-contacto">Enviar</button>
+                            </div>
 
-                                <!-- Botón de Envío -->
-                                <div class="d-grid">
-                                    <button type="submit" class="btn btn-primary"
-                                        id="boton-enviar-formulario-contacto">Enviar</button>
-                                </div>
-
-                            </form>
-                        </div>
+                        </form>
                     </div>
-
-
-                    <!-- Columna derecha (Información): ocupa 4 espacios -->
-                    <div class="col-4">
-
-                        <div class="p-3 border bg-light">
-                            <div id="div-mapa" class="border bg-light">
-                                <iframe id="mapa"
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4728.760427436858!2d-74.03874895911522!3d4.700773293452876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9aac03bdca95%3A0x5de5a9c7b536f920!2sCl.%20123%20%2345%20-%2067%2C%20Bogot%C3%A1!5e0!3m2!1ses-419!2sco!4v1792097532748!5m2!1ses-419!2sco"
-                                    width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"
-                                    referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                            </div>
-                        </div>
-
-                        <div id="div-informacion-contacto" class="p-0 border bg-light">
-                            <h3 class="text-break">Información de contacto</h3>
-                            <!--prueba-->
-                            <div class="row">
-                                <div class="col-4">
-                                    <img class="imagenes-contacto"
-                                        src="../../assets/imagenes/contacto/logo-telefono.png" alt="">
-                                </div>
-                                <div class="col-8">
-                                    <h5 class="text-break">Teléfono</h5>
-                                    <h6>+57-320-333-33-33</h6>
-                                    <p class="text-break">Lunes - Viernes 8am - 6pm</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <img class="imagenes-contacto"
-                                        src="../../assets/imagenes/contacto/location-logo.png" alt="">
-                                </div>
-                                <div class="col-8">
-                                    <h5 class="text-break">Ubicación</h5>
-                                    <h6>Calle 123 # 45 - 67</h6>
-                                    <p class="text-break">Bogotá, Colombia</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <img class="imagenes-contacto" src="../../assets/imagenes/contacto/correo-logo.png"
-                                        alt="">
-                                </div>
-                                <div class="col-8">
-                                    <h5 class="text-break">Correo Electrónico</h5>
-                                    <h6 class="text-break">timmyotoole@gmail.com</h6>
-                                    <p class="text-break">Respondemos dentro de las próximas 24 horas</p>
-                                </div>
-                            </div>
-                            <!--fin prueba-->
-
-                        </div>
-                    </div>
-
                 </div>
+
+
+                <!-- Columna derecha (Información): ocupa 4 espacios -->
+                <div class="col-4">
+
+                    <div class="p-3 border bg-light">
+                        <div id="div-mapa" class="border bg-light">
+                            <iframe id="mapa"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4728.760427436858!2d-74.03874895911522!3d4.700773293452876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9aac03bdca95%3A0x5de5a9c7b536f920!2sCl.%20123%20%2345%20-%2067%2C%20Bogot%C3%A1!5e0!3m2!1ses-419!2sco!4v1792097532748!5m2!1ses-419!2sco"
+                                width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                        </div>
+                    </div>
+
+                    <div id="div-informacion-contacto" class="p-0 border bg-light">
+                        <h3 class="text-break">Información de contacto</h3>
+                        <!--prueba-->
+                        <div class="row">
+                            <div class="col-4">
+                                <img class="imagenes-contacto" src="../../assets/imagenes/contacto/logo-telefono.png"
+                                    alt="">
+                            </div>
+                            <div class="col-8">
+                                <h5 class="text-break">Teléfono</h5>
+                                <h6>+57-320-333-33-33</h6>
+                                <p class="text-break">Lunes - Viernes 8am - 6pm</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <img class="imagenes-contacto" src="../../assets/imagenes/contacto/location-logo.png"
+                                    alt="">
+                            </div>
+                            <div class="col-8">
+                                <h5 class="text-break">Ubicación</h5>
+                                <h6>Calle 123 # 45 - 67</h6>
+                                <p class="text-break">Bogotá, Colombia</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <img class="imagenes-contacto" src="../../assets/imagenes/contacto/correo-logo.png"
+                                    alt="">
+                            </div>
+                            <div class="col-8">
+                                <h5 class="text-break">Correo Electrónico</h5>
+                                <h6 class="text-break">timmyotoole@gmail.com</h6>
+                                <p class="text-break">Respondemos dentro de las próximas 24 horas</p>
+                            </div>
+                        </div>
+                        <!--fin prueba-->
+
+                    </div>
+                </div>
+
+            </div>
         </section>
 
     </div>
