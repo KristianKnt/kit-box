@@ -163,3 +163,13 @@ body {
     background-color: var(--paleta-header-footer);
     transform: translateY(-2px);
 }
+
+#div-mapa {
+    background-color: none;
+}
+
+#mapa {
+    width: 100px;
+    height: 100px;
+    border: 0%;
+}
