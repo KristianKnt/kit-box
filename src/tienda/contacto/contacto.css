@@ -1,19 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
 :root {
-    --paleta-primary: #1E4437; /*paleta*/
-    --paleta-formulario: #EFEBE2; /*paleta*/
-    --paleta-color3: #8FAE9A; /*paleta*/
-    --paleta-botones: #886F56; /*paleta*/
-    --paleta-fondo: #E7E8E3; /*paleta*/
-    --paleta-header-footer: #586F57; /*paleta*/
+    --paleta-primary: #1E4437;
+    /*paleta*/
+    --paleta-formulario: #EFEBE2;
+    /*paleta*/
+    --paleta-color3: #8FAE9A;
+    /*paleta*/
+    --paleta-botones: #886F56;
+    /*paleta*/
+    --paleta-fondo: #E7E8E3;
+    /*paleta*/
+    --paleta-header-footer: #586F57;
+    /*paleta*/
     --tamaño-titulo-banner: clamp(1.6rem, 4.5vw, 40px);
     --espacio-lateral: 55px;
 
 
 }
 
-*, *::before, *::after {
-    box-sizing: border-box; /*reset de pagina*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    /*reset de pagina*/
 }
 
 img {
@@ -24,7 +34,7 @@ img {
 body {
     margin: 0;
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: color-mix(in srgb, var(--paleta-fondo) 30%,  transparent)
+    background-color: color-mix(in srgb, var(--paleta-fondo) 30%, transparent)
 }
 
 #footer {
@@ -33,23 +43,29 @@ body {
 
 /*RESPONSIVE*/
 @media (max-width: 1280px) {
+    .seccion_formulario_localizacion,
     .banner-sobre-nosotros-fondo {
-        padding-left: var(--espacio-lateral); /* 55px: alineado con el logo del header y las tarjetas */
+        padding-left: var(--espacio-lateral);
+        /* 55px: alineado con el logo del header y las tarjetas */
     }
 }
 
 @media (min-width: 901px) and (max-width: 1280px) {
+    .seccion_formulario_localizacion,
     .banner-sobre-nosotros-fondo {
-        background-size: auto 85%;   /* la imagen ocupa todo el ancho, sin recortar los lados */
+        background-size: auto 85%;
+        /* la imagen ocupa todo el ancho, sin recortar los lados */
         background-position: 20% center;
         background-repeat: no-repeat;
-        padding-left: 100px;          /* el título se corre a la derecha para no quedar sobre la hoja */
+        padding-left: 100px;
+        /* el título se corre a la derecha para no quedar sobre la hoja */
     }
 }
 
 /* Tablet */
 @media (max-width: 900px) {
-    .seccion-tarjetas,
+
+    .seccion_formulario_localizacion,
     .seccion-valores,
     .nuestro-equipo {
         padding-left: 20px;
@@ -66,19 +82,24 @@ body {
         background-position: right center;
     }
 
-.banner-nosotros-informacion {
-    max-width: 60%;
-}
     .banner-nosotros-informacion {
-        max-width: 60%; /* el texto no se mete sobre la caja de la imagen */
+        max-width: 60%;
     }
+
+    .banner-nosotros-informacion {
+        max-width: 60%;
+        /* el texto no se mete sobre la caja de la imagen */
+    }
+
     .seccion-tarjetas,
     .seccion-mision-vision {
-        grid-template-columns: 1fr; /*una columna: problema, público, misión y visión*/
+        grid-template-columns: 1fr;
+        /*una columna: problema, público, misión y visión*/
     }
 
     .valores-lista {
-        grid-template-columns: repeat(2, 1fr); /*dos columnas en valores*/
+        grid-template-columns: repeat(2, 1fr);
+        /*dos columnas en valores*/
     }
 
     .tarjeta {
@@ -88,6 +109,7 @@ body {
 
 /* Celular */
 @media (max-width: 576px) {
+
     .banner-nosotros-titulo {
         font-size: 1.6rem;
     }
@@ -100,8 +122,9 @@ body {
         font-size: 26px;
     }
 
-    .valores-lista {
-        grid-template-columns: 1fr; /*una columna en valores*/
+    .seccion_formulario_localizacion {
+        grid-template-columns: 1fr;
+        /*una columna en valores*/
     }
 
     .nuestro-equipo-integrante-descripcion {
@@ -110,14 +133,19 @@ body {
 }
 
 /*estilos banner*/
-.banner-sobre-nosotros-fondo { /*fondo de banner contenedor*/
-    width: 100%; /*le damos el 100% de ancho*/
+.banner-sobre-nosotros-fondo {
+    /*fondo de banner contenedor*/
+    width: 100%;
+    /*le damos el 100% de ancho*/
     height: 280px;
-    background-image: url("../../assets/imagenes/nosotros/banner-sobre-nosotros6.png"); /*ingresamos la imagen como fondo*/
-    background-size: cover; /*el fondo se adapta a su contenedor*/
-    background-position: center; /*centramos*/
+    background-image: url("../../assets/imagenes/nosotros/banner-sobre-nosotros6.png");
+    /*ingresamos la imagen como fondo*/
+    background-size: cover;
+    /*el fondo se adapta a su contenedor*/
+    background-position: center;
+    /*centramos*/
     padding: 20px clamp(100px, 10vw, 240px);
-    background-color: color-mix(in srgb, var(--paleta-formulario) 30% , transparent) ;
+    background-color: color-mix(in srgb, var(--paleta-formulario) 30%, transparent);
 
 
 }
@@ -132,7 +160,8 @@ body {
 }
 
 .banner-nosotros-titulo {
-    max-width: 26ch; /*espaciado de caracteres*/
+    max-width: 26ch;
+    /*espaciado de caracteres*/
     margin-top: 20px;
     font-size: var(--tamaño-titulo-banner);
     font-weight: 600;
@@ -148,12 +177,13 @@ body {
 
 
 
-.nosotros-botones a { /*botones de banner*/
-    border-radius: 10px; 
+.nosotros-botones a {
+    /*botones de banner*/
+    border-radius: 10px;
     background-color: var(--paleta-primary);
     color: var(--paleta-fondo);
     padding: 6px 10px;
-    font-size:1.1rem;
+    font-size: 1.1rem;
     border: none;
     cursor: pointer;
     text-decoration: none;
@@ -163,13 +193,72 @@ body {
     background-color: var(--paleta-header-footer);
     transform: translateY(-2px);
 }
-
-#div-mapa {
-    background-color: none;
+/*----------------------------------------------------Diana O-----------------------------------------------*/
+/* Estilos principal hoja*/
+.body{
+    background-color: var(--paleta-fondo);
 }
 
-#mapa {
-    width: 100px;
-    height: 100px;
-    border: 0%;
+/* Fin estilos principal hoja*/
+/*Formuario inicio estilos*/
+.fondo-formulario-contenedor{
+    background-color: var(--paleta-fondo);
+    border: var(--paleta-botones);
 }
+/* 1. Contenedor principal del formulario */
+#formulario-contacto {
+    background-color: var(--paleta-formulario, #ffffff);
+    padding: 50px;
+    border-radius: 8px;
+    border: 1px var(--paleta-botones);
+    max-width: 500px; 
+    margin: 0 auto;  
+}
+
+/* 2. Estilo unificado para todos los inputs y textareas */
+.formulario-centrado input,
+.formulario-centrado textarea,
+.campo-input {
+    width: 100%;            /* Ocupa el 100% de borde a borde del formulario */
+    box-sizing: border-box; /* Mantiene el padding dentro del ancho total */
+    padding: 10px 14px;     /* Relleno interno cómodo */
+    border: 1px var(--paleta-formulario);
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Efecto al hacer clic en un campo */
+.formulario-centrado input:focus,
+.formulario-centrado textarea:focus {
+    border-color: #1E4437;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(30, 68, 55, 0.2);
+}
+
+/* 3. Espaciado vertical entre campos */
+.mb-3 {
+    margin-bottom: 18px;
+}
+
+/* 4. Botón de envío */
+#boton-enviar-formulario-contacto {
+    width: 100%;            /* Ocupa todo el ancho alineado con los inputs */
+    padding: 12px 20px;     /* Relleno vertical u horizontal proporcional */
+    background-color: #1E4437;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/* Efecto al pasar el cursor sobre el botón */
+#boton-enviar-formulario-contacto:hover {
+    background-color: #143026;
+}
+/*Formuario Estilos fin */
+
+/*---------------------------------------------------- Fin Diana O-----------------------------------------------*/

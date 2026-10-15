@@ -13,7 +13,7 @@
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 
-<body>
+<body class="body">
     <!-- HEADER -->
     <div id="header"></div> <!--se carga con js-->
 
@@ -36,33 +36,64 @@
         </section>
 
         <!--seccion formulario y localizacion-->
-        <section>
-            <!-- IMPORTANTE: El contenedor padre debe tener class="row" -->
-            <div class="row">
+        <section calss="seccion_formulario_localizacion">
+            <!--El contenedor padre debe tener class="row" -->
+            <div class="row p-5">
 
                 <!-- Columna izquierda (Formulario): ocupa 8 espacios -->
                 <div class="col-8">
-                    <div class="p-3 border">
-                        <h3>Formulario</h3>
-                        <form>
-                            <!-- Tu formulario aquí -->
-                            <!--prueba-->
-                            <div>
-                                <label for="sizesInputSmall" class="form-label">Small input</label>
-                                <input class="form-control form-control-sm" type="text" id="sizesInputSmall"
-                                    placeholder="Small input" aria-label="Small input example">
+                    <div class="p-2 p-md-5 border rounded shadow-sm fondo-formulario-contenedor">
+                        <h3 class="text-center mb-4">Contáctanos</h3>
+
+                        <!-- Separamos el id de las clases y centramos la caja del formulario -->
+                        <form id="formulario-contacto" class="formulario-centrado mx-auto" style="max-width: 1000px;">
+
+                            <!-- Nombre -->
+                            <div class="mb-3">
+                                <label for="dato-nombre" class="form-label">Nombre</label>
+                                <input class="form-control campo-input" type="text" id="dato-nombre"
+                                    placeholder="Nombre">
+                                <p id="error-dato-nombre" class="text-danger small"></p>
                             </div>
-                            <div>
-                                <label for="sizesInputDefault" class="form-label">Default input</label>
-                                <input class="form-control" type="text" id="sizesInputDefault"
-                                    placeholder="Default input" aria-label="Default input example">
+
+                            <!-- Apellido -->
+                            <div class="mb-3">
+                                <label for="dato-apellido" class="form-label">Apellido</label>
+                                <input class="form-control campo-input" type="text" id="dato-apellido"
+                                    placeholder="Apellido">
+                                <p id="error-dato-apellido" class="text-danger small"></p>
                             </div>
-                            <div>
-                                <label for="sizesInputLarge" class="form-label">Large input</label>
-                                <input class="form-control form-control-lg" type="text" id="sizesInputLarge"
-                                    placeholder="Large input" aria-label="Large input example">
+
+                            <!-- Email -->
+                            <div class="mb-3">
+                                <label for="dato-email" class="form-label">Email</label>
+                                <input class="form-control campo-input" type="email" id="dato-email"
+                                    placeholder="ejemplo@gmail.com">
+                                <p id="error-dato-email" class="text-danger small"></p>
                             </div>
-                            <!--fin prueba-->
+
+                            <!-- Teléfono -->
+                            <div class="mb-3">
+                                <label for="dato-telefono" class="form-label">Teléfono</label>
+                                <input class="form-control campo-input" type="tel" id="dato-telefono"
+                                    placeholder="Solo números">
+                                <p id="error-dato-telefono" class="text-danger small"></p>
+                            </div>
+
+                            <!-- Descripción (Cambiado a textarea para mejor formato de mensaje) -->
+                            <div class="mb-3">
+                                <label for="dato-mensaje" class="form-label">Descripción</label>
+                                <textarea class="form-control campo-input" id="dato-mensaje" rows="3"
+                                    placeholder="Escribe aquí tu consulta..."></textarea>
+                                <p id="error-dato-mensaje" class="text-danger small"></p>
+                            </div>
+
+                            <!-- Botón de Envío -->
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary"
+                                    id="boton-enviar-formulario-contacto">Enviar</button>
+                            </div>
+
                         </form>
                     </div>
                 </div>
