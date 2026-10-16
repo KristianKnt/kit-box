@@ -45,7 +45,7 @@
             <h3 class="text-center mb-4">Contáctanos</h3>
 
             <!-- Separamos el id de las clases y centramos la caja del formulario -->
-            <form id="formulario-contacto" action="https://formspree.io/f/xbgdqylj" method="POST"
+            <form id="formulario-contacto" action="https://formspree.io/f/xbgdqylj" method="POST" novalidate
               class="formulario-centrado mx-auto" style="max-width: 1000px;">
 
               <!-- Nombre -->
@@ -75,7 +75,7 @@
               <div class="mb-3">
                 <label for="dato-telefono" class="form-label">Teléfono</label>
                 <input class="form-control campo-input" type="tel" id="dato-telefono" name="telefono"
-                  placeholder=" ej: 3001234567" inputmode="numeric" pattern="[0-9+]*" placeholder="+573001234567" required>
+                  placeholder=" ej: 3001234567" inputmode="numeric">
                 <p id="error-dato-telefono" class="text-danger small"></p>
               </div>
 
@@ -91,6 +91,7 @@
               <div class="d-grid">
                 <button type="submit" class="btn btn-primary" id="boton-enviar-formulario-contacto">Enviar</button>
               </div>
+              <div id="mensaje-envio"></div>
 
             </form>
           </div>
