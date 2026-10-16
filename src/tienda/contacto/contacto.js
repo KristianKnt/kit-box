@@ -121,3 +121,17 @@ function revisarMensaje (){
 entradaMensaje.addEventListener("blur", revisarMensaje);
 
 
+const formulario = document.getElementById("formulario-contacto");
+
+formulario.addEventListener("submit", (eventoSubmit)=>{
+eventoSubmit.preventDefault();
+const nombreValidado = revisarNombre();
+const apellidoValidado = revisarApellido();
+const telefonoValidado = revisarTelefono();
+const correoValidado = revisarCorreo();
+const mensajeValidado = revisarMensaje();
+    if (nombreValidado && apellidoValidado && telefonoValidado && correoValidado&& mensajeValidado === true){
+    console.log("formulario correcto")
+}
+
+});
