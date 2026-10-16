@@ -1,7 +1,7 @@
 /**reglas*/
 const reglaCorreo = /^[^\s@]+\@[^\s@]+\.[^\s@]+$/; /*regex \s espacio \@ apra el @ y \. para punto*/
 const reglaTelefono = /^\d{10}$/; /*regex para digitos con inicio y fin */
-const reglaNomApe = /^[A-Za-zÁÉÍÓÚáéíóúÜüÑñ\s]+$/; /*regex para aceptar mayus minus tildes ñ y ü */
+const reglaNomApe = /^[A-Za-zÁÉÍÓÚáéí'óúÜüÑñ\s]+$/; /*regex para aceptar mayus minus tildes ñ y ü */
 const minComentario = 30;
 const maxComentario = 3000;
 
