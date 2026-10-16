@@ -61,78 +61,63 @@ const campoValidacionTelefono = document.getElementById("error-dato-telefono")
 const campoValidacionCorreo = document.getElementById("error-dato-email")
 const campoValidacionMensaje = document.getElementById("error-dato-mensaje")
 
-/*escuchamos el evento blur que es cuando se sale del input y ejecutamos la funcion*/
-entradaNombre.addEventListener("blur", (e) => {
-    if(validarNombreYApellido(entradaNombre.value)===true) {
-        campoValidacionNombre.classList.remove("text-danger");
-        campoValidacionNombre.classList.add("text-success");
-        campoValidacionNombre.textContent = "✓ Nombre válido";
+function mostrarResultado (campo,esValido,textoValido,textoError) {
+    if(esValido===true) {
+        campo.classList.remove("text-danger");
+        campo.classList.add("text-success");
+        campo.textContent = textoValido;
     } else {
-        campoValidacionNombre.classList.remove("text-success");
-        campoValidacionNombre.classList.add("text-danger");
-        campoValidacionNombre.textContent = "X Nombre inválido"
+        campo.classList.remove("text-success");
+        campo.classList.add("text-danger");
+        campo.textContent = textoError;
     }
-        
-});
+}
+
+function revisarNombre (){
+    const nombreEsValido = validarNombreYApellido(entradaNombre.value);
+    mostrarResultado(campoValidacionNombre,nombreEsValido,"✓ Nombre válido","X Nombre inválido");
+    return nombreEsValido;
+}
+entradaNombre.addEventListener("blur", revisarNombre);
 
 
-entradaApellido.addEventListener("blur", (e) => {
-    if (validarNombreYApellido(entradaApellido.value)===true) {
-        campoValidacionApellido.classList.remove("text-danger");
-        campoValidacionApellido.classList.add("text-success");
-        campoValidacionApellido.textContent = "✓ Apellido válido";
+
+function revisarApellido (){
+    const ApellidoEsValido = validarNombreYApellido(entradaApellido.value);
+    mostrarResultado(campoValidacionApellido,ApellidoEsValido,"✓ Apellido válido","X Apellido inválido");
+    return ApellidoEsValido;
+}
+entradaApellido.addEventListener("blur", revisarApellido)
+
+
+function revisarTelefono (){
+    const TelefonoEsValido = validarTelefono(entradaTelefono.value);
+    mostrarResultado(campoValidacionTelefono,TelefonoEsValido,"✓ Teléfono válido","X Teléfono inválido (10 dígitos)");
+    return TelefonoEsValido;
+}
+entradaTelefono.addEventListener("blur", revisarTelefono)
+
+function revisarCorreo (){
+    const CorreoEsValido = validarCorreo(entradaEmail.value);
+    mostrarResultado(campoValidacionCorreo, CorreoEsValido,"✓ Correo válido", "X Correo inválido (Ej: alguien@dominio.com)");
+    return CorreoEsValido;
+}
+
+entradaEmail.addEventListener("blur", revisarCorreo);
+
+
+function revisarMensaje (){
+    let mensajeError;
+    if (entradaMensaje.value.trim().length < minComentario){
+        mensajeError = "X Mensaje demasiado corto. (min 30 caracteres)";
     } else {
-        campoValidacionApellido.classList.remove("text-success");
-        campoValidacionApellido.classList.add("text-danger");
-        campoValidacionApellido.textContent = "X Apellido inválido"
+        mensajeError = "X Mensaje demasiado largo. (max 3000 caracteres)";
     }
+    const mensajeEsValido = validarComentario(entradaMensaje.value);
+    mostrarResultado(campoValidacionMensaje,mensajeEsValido,"✓ Mensaje válido",mensajeError)
+    return mensajeEsValido;
+}
 
-})
-
-entradaTelefono.addEventListener("blur", (e) => {
-        if (validarTelefono(entradaTelefono.value)===true) {
-        campoValidacionTelefono.classList.remove("text-danger");
-        campoValidacionTelefono.classList.add("text-success");
-        campoValidacionTelefono.textContent = "✓ Teléfono válido"
-    } else {
-        campoValidacionTelefono.classList.remove("text-success");
-        campoValidacionTelefono.classList.add("text-danger");
-        campoValidacionTelefono.textContent = "X Teléfono inválido (10 dígitos)"
-    }
-
-})
-
-entradaEmail.addEventListener("blur", (e) => {
-    if (validarCorreo(entradaEmail.value)===true) {
-        campoValidacionCorreo.classList.remove("text-danger");
-        campoValidacionCorreo.classList.add("text-success");
-        campoValidacionCorreo.textContent = "✓ Correo válido"
-    } else {
-        campoValidacionCorreo.classList.remove("text-success");
-        campoValidacionCorreo.classList.add("text-danger");
-        campoValidacionCorreo.textContent = "X Correo inválido (Ej: alguien@dominio.com)"
-    }
-})
-
-entradaMensaje.addEventListener("blur", (e) => {
-    if (validarComentario(entradaMensaje.value)===true) {
-        campoValidacionMensaje.classList.remove("text-danger");
-        campoValidacionMensaje.classList.add("text-success");
-        campoValidacionMensaje.textContent = "✓ Mensaje válido"
-    } else {
-        if(entradaMensaje.value.length < minComentario){
-            campoValidacionMensaje.classList.remove("text-success");
-            campoValidacionMensaje.classList.add("text-danger");
-            campoValidacionMensaje.textContent = "X Mensaje demasiado corto. (min 30 caracteres)"
-
-        }
-        else {
-            campoValidacionMensaje.classList.remove("text-success");
-            campoValidacionMensaje.classList.add("text-danger");
-            campoValidacionMensaje.textContent = "X Mensaje demasiado largo. (max 3000 caracteres)"
-
-        }
-    }
-})
+entradaMensaje.addEventListener("blur", revisarMensaje);
 
 
