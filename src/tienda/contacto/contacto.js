@@ -55,33 +55,84 @@ const entradaApellido = document.getElementById("dato-apellido");
 const entradaTelefono = document.getElementById("dato-telefono");
 const entradaEmail = document.getElementById("dato-email");
 const entradaMensaje = document.getElementById("dato-mensaje")
-const campoValidacion = document.getElementById("error-dato-nombre")
-/*escuchamos el evento input y ejecutamos la funcion*/
-entradaNombre.addEventListener("input", (e) => {
+const campoValidacionNombre = document.getElementById("error-dato-nombre")
+const campoValidacionApellido = document.getElementById("error-dato-apellido")
+const campoValidacionTelefono = document.getElementById("error-dato-telefono")
+const campoValidacionCorreo = document.getElementById("error-dato-email")
+const campoValidacionMensaje = document.getElementById("error-dato-mensaje")
+
+/*escuchamos el evento blur que es cuando se sale del input y ejecutamos la funcion*/
+entradaNombre.addEventListener("blur", (e) => {
     if(validarNombreYApellido(entradaNombre.value)===true) {
-        campoValidacion.textContent = "Check"
+        campoValidacionNombre.classList.remove("text-danger");
+        campoValidacionNombre.classList.add("text-success");
+        campoValidacionNombre.textContent = "✓ Nombre válido";
     } else {
-        campoValidacion.textContent = "Nombre no válido"
+        campoValidacionNombre.classList.remove("text-success");
+        campoValidacionNombre.classList.add("text-danger");
+        campoValidacionNombre.textContent = "X Nombre inválido"
     }
         
 });
 
 
-entradaApellido.addEventListener("input", (e) => {
-    console.log(validarNombreYApellido(entradaApellido.value));
+entradaApellido.addEventListener("blur", (e) => {
+    if (validarNombreYApellido(entradaApellido.value)===true) {
+        campoValidacionApellido.classList.remove("text-danger");
+        campoValidacionApellido.classList.add("text-success");
+        campoValidacionApellido.textContent = "✓ Apellido válido";
+    } else {
+        campoValidacionApellido.classList.remove("text-success");
+        campoValidacionApellido.classList.add("text-danger");
+        campoValidacionApellido.textContent = "X Apellido inválido"
+    }
 
 })
 
-entradaTelefono.addEventListener("input", (e) => {
-    console.log(validarTelefono(entradaTelefono.value));
+entradaTelefono.addEventListener("blur", (e) => {
+        if (validarTelefono(entradaTelefono.value)===true) {
+        campoValidacionTelefono.classList.remove("text-danger");
+        campoValidacionTelefono.classList.add("text-success");
+        campoValidacionTelefono.textContent = "✓ Teléfono válido"
+    } else {
+        campoValidacionTelefono.classList.remove("text-success");
+        campoValidacionTelefono.classList.add("text-danger");
+        campoValidacionTelefono.textContent = "X Teléfono inválido (10 dígitos)"
+    }
+
 })
 
-entradaEmail.addEventListener("input", (e) => {
-    console.log(validarCorreo(entradaEmail.value));
+entradaEmail.addEventListener("blur", (e) => {
+    if (validarCorreo(entradaEmail.value)===true) {
+        campoValidacionCorreo.classList.remove("text-danger");
+        campoValidacionCorreo.classList.add("text-success");
+        campoValidacionCorreo.textContent = "✓ Correo válido"
+    } else {
+        campoValidacionCorreo.classList.remove("text-success");
+        campoValidacionCorreo.classList.add("text-danger");
+        campoValidacionCorreo.textContent = "X Correo inválido (Ej: alguien@dominio.com)"
+    }
 })
 
-entradaMensaje.addEventListener("input", (e) => {
-    console.log(validarComentario(entradaMensaje.value));
+entradaMensaje.addEventListener("blur", (e) => {
+    if (validarComentario(entradaMensaje.value)===true) {
+        campoValidacionMensaje.classList.remove("text-danger");
+        campoValidacionMensaje.classList.add("text-success");
+        campoValidacionMensaje.textContent = "✓ Mensaje válido"
+    } else {
+        if(entradaMensaje.value.length < minComentario){
+            campoValidacionMensaje.classList.remove("text-success");
+            campoValidacionMensaje.classList.add("text-danger");
+            campoValidacionMensaje.textContent = "X Mensaje demasiado corto. (min 30 caracteres)"
+
+        }
+        else {
+            campoValidacionMensaje.classList.remove("text-success");
+            campoValidacionMensaje.classList.add("text-danger");
+            campoValidacionMensaje.textContent = "X Mensaje demasiado largo. (max 3000 caracteres)"
+
+        }
+    }
 })
 
 
