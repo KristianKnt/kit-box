@@ -267,10 +267,8 @@ body {
 }
  
 .imagenes-contacto {
-    height: 50%;
-    width: 50%;
-    padding-top: 15px;
-    padding-left: 15px;
+   width: 40px;
+    height: auto;
 }
  
 #div-informacion-contacto {
