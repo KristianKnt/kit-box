@@ -55,10 +55,14 @@ const entradaApellido = document.getElementById("dato-apellido");
 const entradaTelefono = document.getElementById("dato-telefono");
 const entradaEmail = document.getElementById("dato-email");
 const entradaMensaje = document.getElementById("dato-mensaje")
-
+const campoValidacion = document.getElementById("error-dato-nombre")
 /*escuchamos el evento input y ejecutamos la funcion*/
 entradaNombre.addEventListener("input", (e) => {
-    console.log(validarNombreYApellido(entradaNombre.value));
+    if(validarNombreYApellido(entradaNombre.value)===true) {
+        campoValidacion.textContent = "Check"
+    } else {
+        campoValidacion.textContent = "Nombre no válido"
+    }
         
 });
 
