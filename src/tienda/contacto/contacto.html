@@ -13,33 +13,36 @@
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 
-<body class="body">
+<body>
     <!-- HEADER -->
     <div id="header"></div> <!--se carga con js-->
 
     <div class="container-fluid">
 
         <!--BANNER-->
-        <section class="banner-sobre-nosotros"> <!--inicio seccion banner-->
-            <div class="banner-sobre-nosotros-fondo"> <!--banner cargado en css como fondo de container-->
-                <div class="banner-nosotros-informacion"> <!--contenedor de texto banner-->
-                    <h1 class="banner-nosotros-titulo">Todo lo que necesitas para empezar, en una sola caja.
+        <section class="banner-contacto"> <!--inicio seccion banner-->
+            <div class="banner-contacto-fondo"> <!--banner cargado en css como fondo de container-->
+                <div class="banner-contacto-informacion"> <!--contenedor de texto banner-->
+                    <span class="banner-contacto-etiqueta">
+                        <img class="banner-contacto-icono" src="../../assets/imagenes/contacto/sobre.svg" alt="">Estamos aquí para ayudarte</span>
+                    <h1 class="banner-contacto-titulo">Contáctanos
                     </h1>
-                    <!--<p class="banner-nosotros-texto">Reunimos en un solo lugar lo necesario para comenzar una nueva actividad, un hobby o un proyecto, de forma sencilla y práctica.
-</p>--->
-                    <div class="nosotros-botones">
-                        <a href="#nuestro-equipo-seccion" class="nosotros-bt-conocenos">Conócenos ↓</a>
-                        <a href="#catalogo" class="nosotros-bt-explorar"> Explorar kits</a>
-                    </div>
+                    <p class="banner-contacto-texto">¿Tienes alguna duda, sugerencia o necesitas ayuda?
+                        Escríbenos, estaremos encantados de atenderte.</p>
+                    
                 </div>
             </div>
         </section>
 
         <!--seccion formulario y localizacion-->
+<<<<<<< HEAD
         <section class="seccion_formulario_localizacion">
             <!--El contenedor padre debe tener class="row" -->
+=======
+        <section calss="seccion_formulario_localizacion">
+            <!-- IMPORTANTE: El contenedor padre debe tener class="row" -->
+>>>>>>> 78a0ec9497cab1f0e5de0f23e8a982e176de4c0d
             <div class="row p-5">
-
                 <!-- Columna izquierda (Formulario): ocupa 8 espacios -->
                 <div class="col-8">
                     <div class="p-2 p-md-5 border rounded shadow-sm fondo-formulario-contenedor">
@@ -98,14 +101,57 @@
                     </div>
                 </div>
 
+
                 <!-- Columna derecha (Información): ocupa 4 espacios -->
                 <div class="col-4">
-                    <div class="p-3 border bg-light">
-                        <h3>Información</h3>
-                        <!--prueba-->
 
+                    <div class="p-3 border bg-light">
+                        <div id="div-mapa" class="border bg-light">
+                            <iframe id="mapa"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4728.760427436858!2d-74.03874895911522!3d4.700773293452876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9aac03bdca95%3A0x5de5a9c7b536f920!2sCl.%20123%20%2345%20-%2067%2C%20Bogot%C3%A1!5e0!3m2!1ses-419!2sco!4v1792097532748!5m2!1ses-419!2sco"
+                                width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                        </div>
+                    </div>
+
+                    <div id="div-informacion-contacto" class="p-0 border bg-light">
+                        <h3 class="text-break">Información de contacto</h3>
+                        <!--prueba-->
+                        <div class="row">
+                            <div class="col-4">
+                                <img class="imagenes-contacto" src="../../assets/imagenes/contacto/logo-telefono.png"
+                                    alt="">
+                            </div>
+                            <div class="col-8">
+                                <h5 class="text-break">Teléfono</h5>
+                                <h6>+57-320-333-33-33</h6>
+                                <p class="text-break">Lunes - Viernes 8am - 6pm</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <img class="imagenes-contacto" src="../../assets/imagenes/contacto/location-logo.png"
+                                    alt="">
+                            </div>
+                            <div class="col-8">
+                                <h5 class="text-break">Ubicación</h5>
+                                <h6>Calle 123 # 45 - 67</h6>
+                                <p class="text-break">Bogotá, Colombia</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <img class="imagenes-contacto" src="../../assets/imagenes/contacto/correo-logo.png"
+                                    alt="">
+                            </div>
+                            <div class="col-8">
+                                <h5 class="text-break">Correo Electrónico</h5>
+                                <h6 class="text-break">timmyotoole@gmail.com</h6>
+                                <p class="text-break">Respondemos dentro de las próximas 24 horas</p>
+                            </div>
+                        </div>
                         <!--fin prueba-->
-                        <p>Contenido más angosto aquí...</p>
+
                     </div>
                 </div>
 
