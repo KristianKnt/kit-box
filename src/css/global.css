@@ -1,0 +1,40 @@
+/* ===== GLOBAL kit-box: lo que comparten todas las páginas ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+:root {
+    /* paleta */
+    --paleta-primary: #1E4437;
+    --paleta-formulario: #EFEBE2;
+    --paleta-color3: #8FAE9A;
+    --paleta-botones: #886F56;
+    --paleta-fondo: #E7E8E3;
+    --paleta-header-footer: #586F57;
+
+    /* fuente */
+    --fuente-principal: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+    /* medidas */
+    --tamaño-titulo-banner: clamp(1.6rem, 4.5vw, 40px);
+    --espacio-lateral: 55px;
+}
+
+/* reset de página */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+body {
+    margin: 0;
+    font-family: var(--fuente-principal);
+    background-color: color-mix(in srgb, var(--paleta-fondo) 30%, transparent);
+}
+
+/* Breakpoints del equipo (úsenlos en el CSS de cada página):
+   @media (max-width: 1280px)  → portátil
+   @media (max-width: 900px)   → tablet
+   @media (max-width: 576px)   → celular */
