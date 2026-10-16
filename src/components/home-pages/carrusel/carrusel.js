@@ -1,5 +1,5 @@
 export function inicializarCarrusel() {
-  console.log("Carrusel inicializado");
+  
   const carrusel = document.querySelector(
     ".kits-destacados__carrusel"
   );
@@ -56,14 +56,10 @@ export function inicializarCarrusel() {
   }
 
   siguiente.addEventListener("click", () => {
-    console.log("Clic en siguiente");
-    console.log("Posición actual:", posicion);
-    console.log("Máximo permitido:", obtenerMaximo());
-
-    if (posicion < obtenerMaximo()) {
+        if (posicion < obtenerMaximo()) {
         posicion++;
         actualizarCarrusel();
-        console.log("Nueva posición:", posicion);
+        
     }
 });
 

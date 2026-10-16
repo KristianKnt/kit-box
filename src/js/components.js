@@ -37,7 +37,6 @@ async function inicializarComponentes() {
     );
 
     if (carruselCargado) {
-        console.log("HTML del carrusel cargado");
         inicializarCarrusel();
     }
 }
