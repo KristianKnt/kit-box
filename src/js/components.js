@@ -26,3 +26,8 @@ cargarComponente(
     "footer",
     "/src/components/footer/footer.html"
 );
+
+cargarComponente(
+    "kits-destacados",
+    "/src/components/home-pages/carrusel/carrusel.html"
+);
