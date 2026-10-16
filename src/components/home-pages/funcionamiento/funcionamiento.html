@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funcionamiento</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="./funcionamiento.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1 class="text-center">¿Cómo funciona?</h1>
+
+        <div id="contenedor-imagenes" class="row justify-content-center align-items-start gx-0 gy-4 text-center">
+
+            <div class="col-12 col-md-4">
+                <img class="imagenes-funcionamiento" src="../../../assets/imagenes/funcionamiento/icono-seleccionar.png" alt="">
+            </div>
+
+            <div id="imagen-envio" class="col-12 col-md-4">
+                <img class="imagenes-funcionamiento" src="../../../assets/imagenes/funcionamiento/icono-envio.png" alt="">
+            </div>
+
+            <div id="imagen-feliz" class="col-12 col-md-4">
+                <img class="imagenes-funcionamiento" src="../../../assets/imagenes/funcionamiento/icono-feliz.png" alt="">
+            </div>
+        
+        </div>
+
+        <div id="contenedor-botones" class="row justify-content-center">
+
+            <p id="espacio-botones" class="d-flex flex-column flex-md-row col-auto">
+                <a class="btn" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button"
+                    aria-expanded="false" aria-controls="multiCollapseExample1">Elige tu kit</a>
+                <button type="button" class="btn" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#multiCollapseExample2" aria-expanded="false"
+                    aria-controls="multiCollapseExample2">Recibelo en casa</button>
+                <button class="btn" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#multiCollapseExample3" aria-expanded="false"
+                    aria-controls="multiCollapseExample3" >Disfruta la experiencia</button>
+            </p>
+
+        </div>
+        
+        <div class="row">
+            <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                    <div class="card card-body text-center">
+                        Encuentra el paquete perfecto para tu
+                        necesidad específica entre nuestras categorías
+                        curadas.
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample2">
+                    <div class="card card-body text-center">
+                        Envío rápido y seguro directamente a tu
+                        puerta. Nos encargamos de toda la logística.
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample3">
+                    <div class="card card-body text-center">
+                        Todo lo que necesitas en una sola caja. Sin
+                        estrés, sin compras de último minuto.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
