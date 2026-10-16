@@ -142,7 +142,7 @@ formulario.addEventListener("submit", async (e) => { /*NUEVO: async para poder u
         botonEnviar.disabled = true;
         botonEnviar.textContent = "Enviando...";
  
-        /*NUEVO: try/catch por si falla el internet o formspree*/
+        /*try/catch por si falla el internet o formspree*/
     try {
             /*enviamos los datos a la direccion que esta en el action del form*/
        const respuesta = await fetch(formulario.action, {
