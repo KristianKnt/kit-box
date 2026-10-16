@@ -122,16 +122,62 @@ entradaMensaje.addEventListener("blur", revisarMensaje);
 
 
 const formulario = document.getElementById("formulario-contacto");
-
-formulario.addEventListener("submit", (eventoSubmit)=>{
-eventoSubmit.preventDefault();
-const nombreValidado = revisarNombre();
-const apellidoValidado = revisarApellido();
-const telefonoValidado = revisarTelefono();
-const correoValidado = revisarCorreo();
-const mensajeValidado = revisarMensaje();
-    if (nombreValidado && apellidoValidado && telefonoValidado && correoValidado&& mensajeValidado === true){
-    console.log("formulario correcto")
-}
-
+const botonEnviar = document.getElementById("boton-enviar-formulario-contacto"); /*NUEVO*/
+const mensajeEnvio = document.getElementById("mensaje-envio"); /*NUEVO: div donde sale la confirmacion*/
+ 
+formulario.addEventListener("submit", async (e) => { /*NUEVO: async para poder usar await*/
+    e.preventDefault();
+    mensajeEnvio.textContent = "";
+    mensajeEnvio.className = "";
+ 
+    const nombreValidado = revisarNombre();
+    const apellidoValidado = revisarApellido();
+    const telefonoValidado = revisarTelefono();
+    const correoValidado = revisarCorreo();
+    const mensajeValidado = revisarMensaje();
+ 
+    if (nombreValidado && apellidoValidado && telefonoValidado && correoValidado && mensajeValidado) {
+ 
+        /*NUEVO: bloqueamos el boton para que no lo presionen dos veces*/
+        botonEnviar.disabled = true;
+        botonEnviar.textContent = "Enviando...";
+ 
+        /*NUEVO: try/catch por si falla el internet o formspree*/
+    try {
+            /*enviamos los datos a la direccion que esta en el action del form*/
+       const respuesta = await fetch(formulario.action, {
+        method: "POST",
+        body: new FormData(formulario), /*junta todos los inputs que tengan name*/
+        headers: { "Accept": "application/json" }
+            });
+ 
+            if (respuesta.ok) {
+                /*se envio bien*/
+                mensajeEnvio.className = "alert alert-success";
+                mensajeEnvio.textContent = "¡Gracias! Tu mensaje fue enviado.";
+                formulario.reset(); /*vacia los inputs*/
+                /*borramos los textos de las alertas*/
+                campoValidacionNombre.textContent = "";
+                campoValidacionApellido.textContent = "";
+                campoValidacionTelefono.textContent = "";
+                campoValidacionCorreo.textContent = "";
+                campoValidacionMensaje.textContent = "";
+            } else {
+                /*formspree respondio con error*/
+                mensajeEnvio.className = "alert alert-danger";
+                mensajeEnvio.textContent = "No pudimos enviar tu mensaje. Intenta de nuevo.";
+            }
+ 
+    } catch (error) {
+            /*no hubo conexion*/
+            mensajeEnvio.className = "alert alert-danger";
+            mensajeEnvio.textContent = "Hubo un problema de conexión. Intenta de nuevo.";
+        }
+            /*volvemos a activar el boton*/
+        botonEnviar.disabled = false;
+        botonEnviar.textContent = "Enviar";
+    } else {
+        mensajeEnvio.className = "alert alert-warning";
+        mensajeEnvio.textContent = "Completa los datos correctamente para enviar el formulario.";
+    }
 });
