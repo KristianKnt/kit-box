@@ -1,0 +1,217 @@
+/* ===== SECCIÓN KITS DESTACADOS ===== */
+
+.kits-destacados {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  box-sizing: border-box;
+}
+
+/* ===== ENCABEZADO ===== */
+
+.kits-destacados__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.kits-destacados__introduccion h2 {
+  margin: 0 0 8px;
+  font-size: 32px;
+}
+
+.kits-destacados__introduccion p {
+  margin: 0;
+  color: #666;
+  font-size: 16px;
+}
+
+.kits-destacados__catalogo {
+  color: #d45d2c;
+  text-decoration: none;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ===== VENTANA DEL CARRUSEL ===== */
+
+.kits-destacados__carrusel {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* ===== PISTA DE TARJETAS ===== */
+
+.kits-destacados__pista {
+  display: flex;
+  gap: 24px;
+  transition: transform 0.4s ease;
+}
+
+/* ===== TARJETAS ===== */
+/* La expresión calc((100% - 48px) / 3) reserva el espacio para tres tarjetas y los dos espacios de 24 píxeles que hay entre ellas. */
+.kit-card {
+  flex: 0 0 calc((100% - 48px) / 3);
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  background-color: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+}
+
+/* ===== IMAGEN ===== */
+
+.kit-card__imagen {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: #f5f5f5;
+}
+
+.kit-card__imagen img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== ETIQUETAS ===== */
+
+.kit-card__etiqueta {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+
+  padding: 6px 10px;
+  border-radius: 20px;
+
+  background-color: #d45d2c;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ===== CONTENIDO ===== */
+
+.kit-card__contenido {
+  padding: 20px;
+}
+
+.kit-card__titulo {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+.kit-card__descripcion {
+  margin: 0 0 20px;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ===== PRECIO Y ENLACE ===== */
+
+.kit-card__pie {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.kit-card__precio {
+  margin: 0;
+  color: #d45d2c;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.kit-card__enlace {
+  color: #d45d2c;
+  text-decoration: none;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+
+
+/* ===== TABLET ===== */
+
+@media (max-width: 768px) {
+    .kits-destacados {
+        padding: 36px 20px;
+    }
+
+    .kit-card {
+        flex-basis: calc((100% - 24px) / 2);
+    }
+
+    .kits-destacados__introduccion h2 {
+        font-size: 28px;
+    }
+}
+
+/* ===== MÓVIL ===== */
+
+@media (max-width: 480px) {
+    .kits-destacados {
+        padding: 28px 16px;
+    }
+
+    .kits-destacados__header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .kit-card {
+        flex-basis: 85%;
+    }
+
+    .kit-card__contenido {
+        padding: 16px;
+    }
+}
+
+
+/* ===== CONTROLES DEL CARRUSEL ===== */
+
+.kits-destacados__controles {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.kits-destacados__flecha {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid #d45d2c;
+    border-radius: 50%;
+
+    background-color: #fff;
+    color: #d45d2c;
+
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.kits-destacados__flecha:hover:not(:disabled) {
+    background-color: #d45d2c;
+    color: #fff;
+}
+
+.kits-destacados__flecha:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
