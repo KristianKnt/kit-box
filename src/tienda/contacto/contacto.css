@@ -99,13 +99,16 @@ body {
 }
 
 @media (min-width: 901px) and (max-width: 1280px) {
-    .seccion_formulario_localizacion,
     .banner-contacto-fondo {
-        background-size: auto 85%;   /* la imagen ocupa todo el ancho, sin recortar los lados */
-        background-position: 20% center;
+        background-image:
+            url("../../assets/imagenes/contacto/hoja-contacto.png"),      /*capa 1: la ramita (arriba)*/
+            linear-gradient(90deg, rgba(244, 242, 236, 0.95) 0%, rgba(244, 242, 236, 0.8) 45%, rgba(244, 242, 236, 0) 75%), /*capa 2: degradado*/
+            url("../../assets/imagenes/contacto/banner-contacto.png");    /*capa 3: la imagen grande (abajo)*/
+        background-size: auto 100%, auto, cover;           /*un tamaño para cada capa, en el mismo orden*/
+        background-position: left center, left, right center;
         background-repeat: no-repeat;
-        padding-left: 100px;
-        /* el título se corre a la derecha para no quedar sobre la hoja */
+        padding-left: 200px; /*corre el texto a la derecha para que no quede encima de la ramita*/
+
     }
 }
 
@@ -264,10 +267,8 @@ body {
 }
  
 .imagenes-contacto {
-    height: 50%;
-    width: 50%;
-    padding-top: 15px;
-    padding-left: 15px;
+   width: 40px;
+    height: auto;
 }
  
 #div-informacion-contacto {
