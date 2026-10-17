@@ -41,4 +41,20 @@ async function inicializarComponentes() {
     }
 }
 
+cargarComponente(
+    "footer",
+    "/src/components/footer/footer.html"
+);
+
+cargarComponente(
+    "main",
+    "/src/components/home-pages/Banner_home/bannerHome.html"
+
+);
+
+cargarComponente(
+    "funcionamiento",
+    "/src/components/home-pages/funcionamiento/funcionamiento.html"
+
+);
 inicializarComponentes();
