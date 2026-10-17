@@ -508,10 +508,13 @@ body {
 
 @media (min-width: 901px) and (max-width: 1280px) {
     .banner-sobre-nosotros-fondo {
-        background-size: auto 85%;   /* la imagen ocupa todo el ancho, sin recortar los lados */
-        background-position: 20% center;
-        background-repeat: no-repeat;
-        padding-left: 100px;          /* el título se corre a la derecha para no quedar sobre la hoja */
+        background-image:
+            linear-gradient(90deg, rgba(244, 242, 236, 0.95) 0%, rgba(244, 242, 236, 0.8) 45%, rgba(244, 242, 236, 0) 75%),
+            url("../../assets/imagenes/nosotros/banner-sobre-nosotros6.png");
+                        
+            background-size: cover;
+            background-position: right center;
+            background-color: #F4F2EC;
     }
 }
 
@@ -557,7 +560,7 @@ body {
 /* Celular */
 @media (max-width: 576px) {
     .banner-nosotros-titulo {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
     }
 
     .tarjeta {
@@ -575,4 +578,11 @@ body {
     .nuestro-equipo-integrante-descripcion {
         min-height: auto;
     }
-}
+
+    .nosotros-botones a { /*botones de banner*/
+    border-radius: 5px; 
+    padding: 3px 8px;
+    font-size:0.8rem;
+    margin-top: 0;
+    }
+}   
