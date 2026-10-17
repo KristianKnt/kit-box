@@ -30,31 +30,21 @@ async function inicializarComponentes() {
         "footer",
         "/src/components/footer/footer.html"
     );
+
+    await cargarComponente(
+        "funcionamiento",
+        "/src/components/home-pages/funcionamiento/funcionamiento.html"
+    );
+
     /*se agrega un if*/
     const carruselCargado = await cargarComponente(
-        "kits-destacados",
-        "/src/components/home-pages/carrusel/carrusel.html"
-    );
+            "kits-destacados",
+            "/src/components/home-pages/carrusel/carrusel.html"
+        );
 
     if (carruselCargado) {
         inicializarCarrusel();
     }
 }
 
-cargarComponente(
-    "footer",
-    "/src/components/footer/footer.html"
-);
-
-cargarComponente(
-    "main",
-    "/src/components/home-pages/Banner_home/bannerHome.html"
-
-);
-
-cargarComponente(
-    "funcionamiento",
-    "/src/components/home-pages/funcionamiento/funcionamiento.html"
-
-);
 inicializarComponentes();
