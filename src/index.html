@@ -1,25 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HomePage</title>
-    <link rel="stylesheet" href="../src/components/header/header.css">
-    <link rel="stylesheet" href="../src/components/footer/footer.css">
-    <link rel="icon" type="image/svg+xml" href="../src/assets/imagenes/nosotros/Logo.svg">
-    <link rel="stylesheet" href="./components/home-pages/funcionamiento/funcionamiento.css"> 
-    <link rel="stylesheet" href="./components/home-pages/Banner_home/bannerHome.css"> 
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./components/header/header.css">
+    <link rel="stylesheet" href="./components/footer/footer.css">
+    <link rel="icon" type="image/svg+xml" href="./assets/imagenes/nosotros/Logo.svg">
+    <link rel="stylesheet" href="./components/home-pages/funcionamiento/funcionamiento.css">
+    <link rel="stylesheet" href="./components/home-pages/Banner_home/bannerHome.css">
 </head>
+
 <body>
 
     <!-- COMPONENTE HEADER -->
 
     <div id="header"></div>
+    <img src="/src/assets/imagenes/nosotros/Logo.svg" alt="Logo">
+    <img src="/src/assets/imagenes/.../Carrito.svg" alt="Carrito">
+
 
     <!-- COMPONENTE MAIN -->
 
-    <div id="main"></div>
+    <div id="main">
+        <img class="imagenes-funcionamiento" src="/src/assets/imagenes/funcionamiento/icono-seleccionar.png"
+            alt="Seleccionar kit">
+        <img class="imagenes-funcionamiento" src="/src/assets/imagenes/funcionamiento/icono-envio.png" alt="Envío">
+        <img class="imagenes-funcionamiento" src="/src/assets/imagenes/funcionamiento/icono-feliz.png" alt="Disfrutar">
+    </div>
+
 
     <!-- COMPONENTE FUNCIONAMIENTO -->
 
@@ -28,7 +39,9 @@
     <!-- COMPONENTE FOOTER -->
 
     <div id="footer"></div>
-    
-    <script src="../src/js/components.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/components.js"></script>
 </body>
+
 </html>

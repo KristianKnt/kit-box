@@ -29,12 +29,12 @@ cargarComponente(
 
 cargarComponente(
     "main",
-    "/src/components//home-pages/Banner_home/bannerHome.html"
+    "/src/components/home-pages/Banner_home/bannerHome.html"
 
 );
 
 cargarComponente(
     "funcionamiento",
-    "/src/components//home-pages/funcionamiento/funcionamiento.html"
+    "/src/components/home-pages/funcionamiento/funcionamiento.html"
 
 );
