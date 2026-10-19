@@ -1,50 +1,38 @@
-import { inicializarCarrusel } from "../components/home-pages/carrusel/carrusel.js";
+// Dirección de este archivo (components.js). Va arriba, antes de todo
+const direccionDeEsteArchivo = document.currentScript.src;
 
-async function cargarComponente(id, ruta) {
-    const elemento = document.getElementById(id);
+async function cargar(id, archivo) {
+    // 1. Buscar el div donde va el componente
+    const contenedor = document.getElementById(id);
+    if (!contenedor) return; // si la página no tiene ese div, no hace nada
 
-    if (!elemento) return false;
+    // 2. Calcular la dirección del archivo (header.html o footer.html)
+    const direccion = new URL(archivo, direccionDeEsteArchivo);
 
-    try {
-        const response = await fetch(ruta);
+    // 3. Pedir el archivo y sacar su texto
+    const respuesta = await fetch(direccion);
+    const html = await respuesta.text();
 
-        if (!response.ok) {
-            throw new Error(`No se pudo cargar ${ruta}`);
+    // 4. Meter el texto dentro del div
+    contenedor.innerHTML = html;
+
+    // 5. Arreglar las rutas de imágenes y enlaces
+    const elementos = contenedor.querySelectorAll("[src], [href]");
+
+    elementos.forEach((elemento) => {
+        let atributo = "href";
+        if (elemento.hasAttribute("src")) {
+            atributo = "src";
         }
 
-        elemento.innerHTML = await response.text();
+        const ruta = elemento.getAttribute(atributo);
 
-        return true;
-    } catch (error) {
-        console.error(error);
-    }
+        // Solo se arreglan las rutas que empiezan con punto (../../assets/...)
+        if (ruta.startsWith(".")) {
+            elemento.setAttribute(atributo, new URL(ruta, direccion).href);
+        }
+    });
 }
 
-async function inicializarComponentes() {
-    await cargarComponente(
-        "header",
-        "/src/components/header/header.html"
-    );
-
-    await cargarComponente(
-        "footer",
-        "/src/components/footer/footer.html"
-    );
-
-    await cargarComponente(
-        "funcionamiento",
-        "/src/components/home-pages/funcionamiento/funcionamiento.html"
-    );
-
-    /*se agrega un if*/
-    const carruselCargado = await cargarComponente(
-            "kits-destacados",
-            "/src/components/home-pages/carrusel/carrusel.html"
-        );
-
-    if (carruselCargado) {
-        inicializarCarrusel();
-    }
-}
-
-inicializarComponentes();
+cargar("header", "../components/header/header.html");
+cargar("footer", "../components/footer/footer.html");
