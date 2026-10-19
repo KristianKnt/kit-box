@@ -1,19 +1,35 @@
-const base = document.currentScript.src;
+// Dirección de este archivo (components.js). Va arriba, antes de todo
+const direccionDeEsteArchivo = document.currentScript.src;
 
 async function cargar(id, archivo) {
+    // 1. Buscar el div donde va el componente
     const contenedor = document.getElementById(id);
-    if (!contenedor) return;
+    if (!contenedor) return; // si la página no tiene ese div, no hace nada
 
-    const url = new URL(archivo, base);
-    const respuesta = await fetch(url);
-    contenedor.innerHTML = await respuesta.text();
+    // 2. Calcular la dirección del archivo (header.html o footer.html)
+    const direccion = new URL(archivo, direccionDeEsteArchivo);
 
-    contenedor.querySelectorAll("[src], [href]").forEach((el) => {
-        const atributo = el.hasAttribute("src") ? "src" : "href";
-        const valor = el.getAttribute(atributo);
+    // 3. Pedir el archivo y sacar su texto
+    const respuesta = await fetch(direccion);
+    const html = await respuesta.text();
 
-        if (valor.startsWith(".")) {
-            el.setAttribute(atributo, new URL(valor, url).href);
+    // 4. Meter el texto dentro del div
+    contenedor.innerHTML = html;
+
+    // 5. Arreglar las rutas de imágenes y enlaces
+    const elementos = contenedor.querySelectorAll("[src], [href]");
+
+    elementos.forEach((elemento) => {
+        let atributo = "href";
+        if (elemento.hasAttribute("src")) {
+            atributo = "src";
+        }
+
+        const ruta = elemento.getAttribute(atributo);
+
+        // Solo se arreglan las rutas que empiezan con punto (../../assets/...)
+        if (ruta.startsWith(".")) {
+            elemento.setAttribute(atributo, new URL(ruta, direccion).href);
         }
     });
 }
