@@ -36,3 +36,5 @@ async function cargar(id, archivo) {
 
 cargar("header", "../components/header/header.html");
 cargar("footer", "../components/footer/footer.html");
+cargar("kits-destacados", "../components/home-pages/carrusel/carrusel.html");
+cargar("funcionamiento", "../components/home-pages/funcionamiento/funcionamiento.html");
