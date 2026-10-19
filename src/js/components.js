@@ -1,50 +1,22 @@
-import { inicializarCarrusel } from "../components/home-pages/carrusel/carrusel.js";
+const base = document.currentScript.src;
 
-async function cargarComponente(id, ruta) {
-    const elemento = document.getElementById(id);
+async function cargar(id, archivo) {
+    const contenedor = document.getElementById(id);
+    if (!contenedor) return;
 
-    if (!elemento) return false;
+    const url = new URL(archivo, base);
+    const respuesta = await fetch(url);
+    contenedor.innerHTML = await respuesta.text();
 
-    try {
-        const response = await fetch(ruta);
+    contenedor.querySelectorAll("[src], [href]").forEach((el) => {
+        const atributo = el.hasAttribute("src") ? "src" : "href";
+        const valor = el.getAttribute(atributo);
 
-        if (!response.ok) {
-            throw new Error(`No se pudo cargar ${ruta}`);
+        if (valor.startsWith(".")) {
+            el.setAttribute(atributo, new URL(valor, url).href);
         }
-
-        elemento.innerHTML = await response.text();
-
-        return true;
-    } catch (error) {
-        console.error(error);
-    }
+    });
 }
 
-async function inicializarComponentes() {
-    await cargarComponente(
-        "header",
-        "/src/components/header/header.html"
-    );
-
-    await cargarComponente(
-        "footer",
-        "/src/components/footer/footer.html"
-    );
-
-    await cargarComponente(
-        "funcionamiento",
-        "/src/components/home-pages/funcionamiento/funcionamiento.html"
-    );
-
-    /*se agrega un if*/
-    const carruselCargado = await cargarComponente(
-            "kits-destacados",
-            "/src/components/home-pages/carrusel/carrusel.html"
-        );
-
-    if (carruselCargado) {
-        inicializarCarrusel();
-    }
-}
-
-inicializarComponentes();
+cargar("header", "../components/header/header.html");
+cargar("footer", "../components/footer/footer.html");
