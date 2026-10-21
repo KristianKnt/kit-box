@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página De Catalogo | kit-box</title>
+    <link rel="stylesheet" href="catalogo.css">
+    <link rel="stylesheet" href="../../components/header/header.css">
+    <link rel="stylesheet" href="../../components/footer/footer.css">
+    <link rel="icon" type="image/svg+xml" href="../../assets/imagenes/nosotros/Logo.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="header"></div> <!--se carga con js-->
+
+    <!--BANNER-->
+    <section class="banner-contacto"> <!--inicio seccion banner-->
+        <div class="banner-contacto-fondo"> <!--banner cargado en css como fondo de container-->
+            <div class="banner-contacto-informacion"> <!--contenedor de texto banner-->
+                <span class="banner-contacto-etiqueta">
+                    <img class="banner-contacto-icono" src="../../assets/imagenes/contacto/sobre.svg"
+                        alt="">Catalogo</span>
+                <h1 class="banner-contacto-titulo">Tu primer paso empieza aquí
+                </h1>
+                <p class="banner-contacto-texto">Explora nuestro catálogo y encuentra todo lo que necesitas para darle
+                    vida a tu próximo proyecto
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-10">
+        <div class="container-fluid">
+            <div class="row align-items-start">
+
+                <!-- Categorías -->
+                <div class="col-12 col-md-3 mb-4 py-4">
+                    <h2>Categorías</h2>
+                    <div id="lista-categorias"></div>
+                </div>
+
+                <!-- Tarjetas de productos -->
+                <div class="col-12 col-md-9 mb-4 py-4">
+                    
+                    <div id="lista-productos" class="row g-4"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <div id="footer"></div>
+    <!-- COMPONENTES -->
+    <script src="../../js/components.js"></script>
+    <script src="../catalogo/catalogo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
