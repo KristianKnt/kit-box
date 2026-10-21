@@ -1,4 +1,5 @@
-import { cargarProductosIniciales, agregarProducto } from "./lista.js"
+import { productos, cargarProductosIniciales, agregarProducto } from "./lista.js"  //se agrega productos
+import { pintarProductos } from "./tabla.js"    
 
 // Esperamos a que el HTML esté disponible.
 document.addEventListener("DOMContentLoaded", async () => {
@@ -11,6 +12,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Cargamos los productos iniciales.
     await cargarProductosIniciales();
+
+
+    const productosJson = productos.filter((producto) => !producto.id.startsWith("prod_")); // filtramos solo los del JSON
+    pintarProductos(productosJson);
 
     // Capturamos el envío del formulario.
     formulario.addEventListener("submit", (event) => {
