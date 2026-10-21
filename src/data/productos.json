@@ -1,0 +1,25 @@
+{
+    {
+    "id": "herr_01",  
+    "nombre": "Kit Básico para el Hogar",  
+    "descripcion": "Lo esencial para reparaciones rápidas y mantenimiento diario.",  
+    "precio": 45000,  
+    "imagen": "herr_01.jpg",  
+    "stock": 10,  
+    "categoria": "Kit de Herramientas", 
+    "destacado":false},
+
+    {"id": "herr_02",  
+    "nombre": "Kit de Carpintería Amateur",  
+    "descripcion": "Herramientas manuales para tus primeros proyectos en madera.",  
+    "precio": 85000,  
+    "imagen": "herr_02.jpg",  
+    "stock": 8,  
+    "categoria": "Kit de Herramientas", 
+    "destacado":false},
+
+
+
+
+
+}
