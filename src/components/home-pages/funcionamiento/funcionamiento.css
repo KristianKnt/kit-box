@@ -1,3 +1,10 @@
+body {
+    margin: 0;
+    font-family: var(--fuente-principal);
+    background-color: color-mix(in srgb, var(--paleta-fondo) 30%, transparent);
+}
+
+
 #espacio-botones {
     gap: 0.75rem;
     /* móvil */
