@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 [
     {
     "id": "herr_01",  
@@ -111,17 +110,3 @@
 
     
 ]
-=======
-import { cargarProductosIniciales, agregarProducto } from "./lista.js"
-
-
-
-// traet datos del dom
-
-// subitm del Form
-
-// const producto = {
-//   { "id": "herr_01", "nombre": "Kit Básico para el Hogar", "descripcion": "Lo esencial para reparaciones rápidas y mantenimiento diario.", "precio": 45000, "imagen": "herr_01.jpg", "stock": 10, "categoria": "Kit de Herramientas", "destacado": False }
-
-// }
->>>>>>> a27fa24 (iniciando con la validacion)
