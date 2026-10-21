@@ -1,11 +1,17 @@
-//La lista productos
-//La función agregarProducto(producto): le pone un id, lo mete a la lista y muestra el JSON en consola
-//La lista productos
-//La función agregarProducto(producto): le pone un id, lo mete a la lista y muestra el JSON en consola
+
+import { guardarProductos, obtenerProductosGuardados } from "./storage.js";
 
 export const productos=[];
 
 export async function cargarProductosIniciales() {
+    const productosGuardados= obtenerProductosGuardados(); //obtenemos del local los productoe que se han guardado antes
+
+    if(productosGuardados!==null){
+        productos.push(...productosGuardados);
+               console.log(JSON.stringify(productos, null, 2));
+        return
+    }
+
     try {
         const respuesta = await fetch("../../data/productos.json"); //peticion a json
         const datos= await respuesta.json(); // traemos la resupuesta y la pasamos  a objeto JS
@@ -21,5 +27,6 @@ export async function cargarProductosIniciales() {
 export function agregarProducto(producto) {
         producto.id="prod_" + Date.now();
         productos.push(producto)
+        guardarProductos(productos);
         console.log(JSON.stringify(productos, null, 2));
 }
