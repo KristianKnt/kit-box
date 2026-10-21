@@ -25,12 +25,88 @@
     "imagen": "herr_02.jpg",  
     "stock": 5,  
     "categoria": "Kit de Herramientas", 
+    "destacado":false},
+
+    {"id": "herr_04",  
+    "nombre": "Kit de Reparación de Relojes",  
+    "descripcion": "Precisión milimétrica para ajustes y cambios de batería.",  
+    "precio": 35000,  
+    "imagen": "herr_02.jpg",  
+    "stock": 3,  
+    "categoria": "Kit de Herramientas", 
+    "destacado":false},
+
+    {"id": "arte_01",  
+    "nombre": "Kit Acuarela Principiantes",  
+    "descripcion": "Paleta, pinceles y papel especial para empezar a pintar.",  
+    "precio": 58000,  
+    "imagen": "",  
+    "stock": 10,  
+    "categoria": "Kit de Arte", 
+    "destacado":false},
+
+    {"id": "arte_02",  
+    "nombre": "Kit Dibujo a Carboncillo",  
+    "descripcion": "Sombras y contrastes perfectos para tus retratos.",  
+    "precio": 35000,  
+    "imagen": "",  
+    "stock": 7,  
+    "categoria": "Kit de Arte", 
+    "destacado":false},
+
+    {"id": "arte_03",  
+    "nombre": "Kit de Pintura Acrílica",  
+    "descripcion": "Colores vibrantes y lienzos para expresar tu creatividad.",  
+    "precio": 75000,  
+    "imagen": "",  
+    "stock": 5,  
+    "categoria": "Kit de Arte", 
+    "destacado":false},
+
+    {"id": "arte_04",  
+    "nombre": "Kit de Lettering Profesional",  
+    "descripcion": "Rotuladores y guías para crear letras hermosas.",  
+    "precio": 90000,  
+    "imagen": "",  
+    "stock": 15,  
+    "categoria": "Kit de Arte", 
+    "destacado":false},
+
+    {"id": "masc_01",  
+    "nombre": "Kit Bienvenida Cachorro",  
+    "descripcion": "Cama, juguetes suaves y platitos para su llegada.",  
+    "precio": 120000,  
+    "imagen": "",  
+    "stock": 15,  
+    "categoria": "Kit de Mascotas", 
+    "destacado":false},
+
+    {"id": "masc_02",  
+    "nombre": "Kit de Paseo Seguro",  
+    "descripcion": "Correa reflectante, arnés y dispensador de bolsas.",  
+    "precio": 45000,  
+    "imagen": "",  
+    "stock": 7,  
+    "categoria": "Kit de Mascotas", 
+    "destacado":false},
+
+    {"id": "masc_03",  
+    "nombre": "Kit Spa para Perros",  
+    "descripcion": "Champú especial, cepillo desenredante y toalla.",  
+    "precio": 60000,  
+    "imagen": "",  
+    "stock": 20,  
+    "categoria": "Kit de Mascotas", 
+    "destacado":false},
+
+    {"id": "masc_04",  
+    "nombre": "Kit Diversión Felina",  
+    "descripcion": "Caña de pescar, ratones de juguete y catnip.",  
+    "precio": 35000,  
+    "imagen": "",  
+    "stock": 10,  
+    "categoria": "Kit de Mascotas", 
     "destacado":false}
 
-
-
-
-
-
-
-    ]
+    
+]
