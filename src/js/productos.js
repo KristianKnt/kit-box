@@ -1,7 +1,7 @@
 
 export const productos=[];
 
-export async function cargarProductosIniciales(params) {
+export async function cargarProductosIniciales() {
     try {
         const respuesta = await fetch("../../data/productos.json"); //peticion a json
         const datos= await respuesta.json(); // traemos la resupuesta y la pasamos  a objeto JS
@@ -14,7 +14,8 @@ export async function cargarProductosIniciales(params) {
     }
 }
 
-export async function agregarProducto(producto) {
+export function agregarProducto(producto) {
         producto.id="prod_" + Date.now();
         productos.push(producto)
+        console.log(JSON.stringify(productos, null, 2));
 }
