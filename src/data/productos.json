@@ -1,4 +1,4 @@
-{
+[
     {
     "id": "herr_01",  
     "nombre": "Kit Básico para el Hogar",  
@@ -18,8 +18,19 @@
     "categoria": "Kit de Herramientas", 
     "destacado":false},
 
+    {"id": "herr_03",  
+    "nombre": "Kit de Electricista Básico",  
+    "descripcion": "Seguridad y precisión para pequeños arreglos eléctricos.",  
+    "precio": 65000,  
+    "imagen": "herr_02.jpg",  
+    "stock": 5,  
+    "categoria": "Kit de Herramientas", 
+    "destacado":false}
 
 
 
 
-}
+
+
+
+    ]
