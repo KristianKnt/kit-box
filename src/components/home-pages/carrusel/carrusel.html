@@ -1,172 +1,39 @@
+
 <section class="kits-destacados">
-  <div class="kits-destacados__contenedor">
+  <header class="kits-destacados__header">
+    <div class="kits-destacados__introduccion">
+      <h2>Kits Destacados</h2>
+      <p>Nuestras soluciones más populares para este mes.</p>
+    </div>
 
-    <section class="kits-destacados">
+    <a href="#" class="kits-destacados__catalogo">
+      Ver todo el catálogo
+    </a>
+  </header>
 
-      <header class="kits-destacados__header">
-        <div class="kits-destacados__introduccion">
-          <h2>Kits Destacados</h2>
-          <p>Nuestras soluciones más populares para este mes.</p>
-        </div>
+  <div class="kits-destacados__controles">
+    <button
+      type="button"
+      class="kits-destacados__flecha kits-destacados__flecha--anterior"
+      aria-label="Ver kits anteriores"
+      disabled
+    >
+      &#8592;
+    </button>
 
-        <a href="#" class="kits-destacados__catalogo">
-          Ver todo el catálogo
-        </a>
-      </header>
-
-      <div class="kits-destacados__controles">
-        <button type="button" class="kits-destacados__flecha kits-destacados__flecha--anterior"
-          aria-label="Ver kits anteriores" disabled>
-          &#8592;
-        </button>
-
-        <button type="button" class="kits-destacados__flecha kits-destacados__flecha--siguiente"
-          aria-label="Ver siguientes kits">
-          &#8594;
-        </button>
-      </div>
-
-
-      <div class="kits-destacados__carrusel">
-
-        <div class="kits-destacados__pista">
-          <!-- primer tarjeta -->
-          <article class="kit-card">
-
-            <div class="kit-card__imagen">
-              <img src="" alt="Kit de productos para mascotas">
-
-              <span class="kit-card__etiqueta">
-                Nuevo
-              </span>
-            </div>
-
-            <div class="kit-card__contenido">
-              <h3 class="kit-card__titulo">
-                Kit Mascota
-              </h3>
-
-              <p class="kit-card__descripcion">
-                Todo para tu nuevo mejor amigo.
-                Incluye snacks, juguetes y guía de cuidados.
-              </p>
-
-              <div class="kit-card__pie">
-                <p class="kit-card__precio">45,00 €</p>
-
-                <a href="#" class="kit-card__enlace">
-                  Ver más
-                </a>
-              </div>
-            </div>
-
-          </article>
-
-          <!-- segunda tarjerta -->
-          <article class="kit-card">
-
-            <div class="kit-card__imagen">
-              <img src="" alt="Kit de materiales para mudanzas">
-
-              <span class="kit-card__etiqueta">
-                Popular
-              </span>
-            </div>
-
-            <div class="kit-card__contenido">
-              <h3 class="kit-card__titulo">
-                Kit Trasteo
-              </h3>
-
-              <p class="kit-card__descripcion">
-                Múdate sin estrés. Cajas reforzadas,
-                material de embalaje y etiquetas
-                organizadoras.
-              </p>
-
-              <div class="kit-card__pie">
-                <p class="kit-card__precio">89,00 €</p>
-
-                <a href="#" class="kit-card__enlace">
-                  Ver más
-                </a>
-              </div>
-            </div>
-
-          </article>
-
-          <!-- tercera tarjeta -->
-
-          <article class="kit-card">
-
-            <div class="kit-card__imagen">
-              <img src=""
-                alt="Kit de herramientas para reparaciones del hogar">
-            </div>
-
-            <div class="kit-card__contenido">
-              <h3 class="kit-card__titulo">
-                Kit Herramientas
-              </h3>
-
-              <p class="kit-card__descripcion">
-                Lo esencial para tu hogar.
-                Herramientas de calidad para cualquier
-                reparación básica.
-              </p>
-
-              <div class="kit-card__pie">
-                <p class="kit-card__precio">65,00 €</p>
-
-                <a href="#" class="kit-card__enlace">
-                  Ver más
-                </a>
-              </div>
-            </div>
-
-          </article>
-
-          <!-- tarjeta 4 -->
-
-          <article class="kit-card">
-
-            <div class="kit-card__imagen">
-              <img src="" alt="Kit de accesorios y materiales para oficina">
-
-              <span class="kit-card__etiqueta">
-                Nuevo
-              </span>
-            </div>
-
-            <div class="kit-card__contenido">
-              <h3 class="kit-card__titulo">
-                Kit Oficina
-              </h3>
-
-              <p class="kit-card__descripcion">
-                Organiza tu espacio de trabajo con
-                accesorios y materiales esenciales
-                para el día a día.
-              </p>
-
-              <div class="kit-card__pie">
-                <p class="kit-card__precio">39,00 €</p>
-
-                <a href="#" class="kit-card__enlace">
-                  Ver más
-                </a>
-              </div>
-            </div>
-
-          </article>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
+    <button
+      type="button"
+      class="kits-destacados__flecha kits-destacados__flecha--siguiente"
+      aria-label="Ver siguientes kits"
+      disabled
+    >
+      &#8594;
+    </button>
   </div>
 
+  <div class="kits-destacados__carrusel">
+    <div class="kits-destacados__pista">
+      <!-- Las tarjetas se generan desde productos.json -->
+    </div>
+  </div>
 </section>
