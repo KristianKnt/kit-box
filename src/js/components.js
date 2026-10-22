@@ -2,36 +2,53 @@
 const direccionDeEsteArchivo = document.currentScript.src;
 
 async function cargar(id, archivo) {
-    // 1. Buscar el div donde va el componente
-    const contenedor = document.getElementById(id);
-    if (!contenedor) return; // si la página no tiene ese div, no hace nada
+  const contenedor = document.getElementById(id);
 
-    // 2. Calcular la dirección del archivo (header.html o footer.html)
-    const direccion = new URL(archivo, direccionDeEsteArchivo);
+  if (!contenedor) return;
 
-    // 3. Pedir el archivo y sacar su texto
+  const direccion = new URL(archivo, direccionDeEsteArchivo);
+
+  try {
     const respuesta = await fetch(direccion);
+
+    if (!respuesta.ok) {
+      throw new Error(`Error HTTP: ${respuesta.status}`);
+    }
+
     const html = await respuesta.text();
 
-    // 4. Meter el texto dentro del div
     contenedor.innerHTML = html;
 
-    // 5. Arreglar las rutas de imágenes y enlaces
+    // Resolver las rutas relativas de imágenes y enlaces.
     const elementos = contenedor.querySelectorAll("[src], [href]");
 
-    elementos.forEach((elemento) => {
-        let atributo = "href";
-        if (elemento.hasAttribute("src")) {
-            atributo = "src";
-        }
+    elementos.forEach(elemento => {
+      const atributo = elemento.hasAttribute("src")
+        ? "src"
+        : "href";
 
-        const ruta = elemento.getAttribute(atributo);
+      const ruta = elemento.getAttribute(atributo);
 
-        // Solo se arreglan las rutas que empiezan con punto (../../assets/...)
-        if (ruta.startsWith(".")) {
-            elemento.setAttribute(atributo, new URL(ruta, direccion).href);
-        }
+      if (ruta && ruta.startsWith(".")) {
+        elemento.setAttribute(
+          atributo,
+          new URL(ruta, direccion).href
+        );
+      }
     });
+
+    // Inicializar el carrusel después de insertar su HTML.
+    if (id === "kits-destacados") {
+      const modulo = await import(
+        "../components/home-pages/carrusel/carrusel.js"
+      );
+
+      await modulo.inicializarCarrusel(contenedor);
+    }
+
+  } catch (error) {
+    console.error(`No se pudo cargar el componente "${id}":`, error);
+  }
 }
 
 cargar("header", "../components/header/header.html");

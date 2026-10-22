@@ -215,3 +215,9 @@
     opacity: 0.35;
     cursor: not-allowed;
 }
+
+.kits-destacados__pista:not(:has(.kit-card)) {
+  display: block;
+  padding: 12px 0;
+  color: #666;
+}
