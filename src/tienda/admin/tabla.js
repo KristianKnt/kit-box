@@ -2,9 +2,19 @@ export function pintarProductos(productos){
     const contenedorProductos = document.getElementById("lista-productos"); //traemos la lista del DOM
     let filas="";
     for (const producto of productos){
+        
+        // Convertimos la ruta del JSON en una ruta relativa desde admin.html
+        const rutaImagen = producto.imagen.replace(/^src\//, "../../");
+
         filas+= `
             <tr>
-                <td><img src="${producto.imagen}" alt="${producto.nombre}" width="60"></td>
+                <td><img
+                        src="${rutaImagen}"
+                        alt="${producto.nombre}"
+                        width="60"
+                        onerror="console.error('No se pudo cargar la imagen:', this.src)"
+                    >
+                </td>
                 <td>${producto.nombre}</td>
                 <td>${producto.categoria}</td>
                 <td>$${producto.precio}</td>
