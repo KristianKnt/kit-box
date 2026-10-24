@@ -1,3 +1,12 @@
+
+/* Función para obtener la ruta correcta de las imágenes */
+function obtenerRutaImagen(ruta) {
+    // Las rutas del JSON empiezan por src/assets/...
+    // Reemplazamos "src/" por "../../" para llegar desde catalogo.html
+    return ruta.replace(/^src\//, "../../");
+}
+
+
 async function pintarTarjetas() {
     try {
         // 1. Obtener los productos del archivo JSON
@@ -35,8 +44,6 @@ async function pintarTarjetas() {
             // Crear la imagen
             const imagen = document.createElement("img");
 
-            // Las rutas del JSON empiezan por src/assets/...
-            imagen.src = `/kit-box/${producto.imagen.replace(/^\/+/, "")}`;
             imagen.alt = producto.nombre;
             imagen.className = "card-img-top py-2";
             imagen.style.height = "220px";
@@ -52,6 +59,9 @@ async function pintarTarjetas() {
                 imagen.alt = "Imagen no disponible";
                 imagen.style.display = "none";
             }, { once: true });
+
+            // Asignar la ruta de la imagen usando la función anterior
+            imagen.src = obtenerRutaImagen(producto.imagen);
 
             // Crear el cuerpo de la tarjeta
             const cuerpo = document.createElement("div");
@@ -85,16 +95,13 @@ async function pintarTarjetas() {
             const categoria = document.createElement("p");
             categoria.textContent = `Categoría: ${producto.categoria}`;
 
-            
-
             // Agregar la información al cuerpo
             cuerpo.append(
                 nombre,
                 descripcion,
                 precio,
                 stock,
-                categoria,
-                
+                categoria
             );
 
             // Agregar imagen y cuerpo a la tarjeta
@@ -115,4 +122,5 @@ async function pintarTarjetas() {
 }
 
 
+// Ejecutar la función cuando el HTML esté completamente cargado
 document.addEventListener("DOMContentLoaded", pintarTarjetas);
