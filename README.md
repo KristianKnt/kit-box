@@ -85,11 +85,11 @@ kit-box/
 
 | Página | Qué tiene | Estado |
 |---|---|---|
-| **Inicio** | Banner, carrusel de kits destacados y sección "cómo funciona" | ✅ Lista |
+| **Inicio** | Banner, carrusel con los kits destacados (los lee del JSON) y sección "cómo funciona" | ✅ Lista |
 | **Nosotros** | Problema, misión, visión, valores y equipo, con animación al hacer scroll | ✅ Lista |
 | **Contacto** | Formulario con validación en JavaScript (regex), envío con Formspree, mapa e información de contacto | ✅ Lista |
 | **Administrador** | Formulario para agregar productos y tabla con los productos | 🚧 En progreso |
-| **Catálogo** | Listado de kits para comprar | ⏳ Pendiente |
+| **Catálogo** | Banner y tarjetas de los kits cargadas desde el JSON, con precio en pesos colombianos. Falta llenar la lista de categorías | 🚧 En progreso |
 
 ---
 
@@ -112,7 +112,7 @@ Cada producto tiene esta forma:
   "nombre": "Kit Básico para el Hogar",
   "descripcion": "Lo esencial para reparaciones rápidas y mantenimiento diario.",
   "precio": 45000,
-  "imagen": "kit-box/src/assets/imagenes/img_json/01_Kit_de_Herramientas/herr_01.jpg",
+  "imagen": "src/assets/imagenes/img_json/01_Kit_de_Herramientas/herr_01.jpg",
   "stock": 10,
   "categoria": "Kit de Herramientas",
   "destacado": false
@@ -120,6 +120,13 @@ Cada producto tiene esta forma:
 ```
 
 Por ahora hay 12 productos en 3 categorías: Herramientas, Arte y Mascotas.
+
+Las rutas de las imágenes en el JSON empiezan por `src/`. Cada página las convierte para que funcionen desde su carpeta: por ejemplo, el catálogo y el admin cambian `src/` por `../../`.
+
+El JSON se usa en tres lugares:
+- **Carrusel del inicio:** muestra solo los productos con `"destacado": true`
+- **Catálogo:** muestra todos los productos en tarjetas
+- **Administrador:** muestra los productos en la tabla
 
 ### Panel de administrador (`src/tienda/admin/`)
 
