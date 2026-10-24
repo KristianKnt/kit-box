@@ -1,0 +1,60 @@
+/* ===== Estilos de la tabla de productos (admin) ===== */
+/* Paleta kit-box: bosque #1E4437 · oliva #586F57 · salvia #8FAE9A · beige #EFEBE2 · gris #E7E8E3 */
+
+/* 1. Caja que contiene la tabla */
+#lista-productos {
+  background-color: #EFEBE2;
+  border-radius: 12px;
+  padding: 16px;
+  overflow-x: auto; /* en celular la tabla se desliza hacia los lados */
+}
+
+/* 2. Título "Productos" */
+#lista-productos h2 {
+  color: #1E4437;
+  font-weight: bold;
+}
+
+/* 3. La tabla */
+#lista-productos table {
+  border-collapse: separate; /* necesario para poder redondear las esquinas */
+  border-spacing: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+
+/* 4. Fila de títulos */
+#lista-productos thead th {
+  background-color: #586F57;
+  color: #FFFFFF;
+  font-weight: bold;
+  border-bottom: none;
+  padding: 12px;
+}
+
+/* 5. Filas de productos */
+#lista-productos tbody td {
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #E7E8E3;
+  vertical-align: middle; /* texto alineado con la foto */
+  padding: 10px 12px;
+}
+
+/* filas tipo cebra: una blanca y otra beige */
+#lista-productos tbody tr:nth-child(even) td {
+  background-color: #EFEBE2;
+}
+
+/* 6. Al pasar el mouse por una fila */
+#lista-productos tbody tr:hover td {
+  background-color: rgba(143, 174, 154, 0.35); /* salvia transparente */
+}
+
+/* 7. Imágenes: todas del mismo tamaño y con puntas redondeadas */
+#lista-productos tbody img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover; /* recorta la foto sin deformarla */
+  border-radius: 8px;
+}
