@@ -1,4 +1,4 @@
-    import { productos, cargarProductosIniciales, agregarProducto } from "./lista.js"  //se agrega productos
+    import { productos, cargarProductosIniciales, agregarProducto, eliminarProducto } from "./lista.js"  //se agrega productos
     import { pintarProductos } from "./tabla.js"    
 
     // Esperamos a que el HTML esté disponible.
@@ -12,10 +12,8 @@
 
         // Cargamos los productos iniciales.
         await cargarProductosIniciales();
-
-
-        const productosJson = productos.filter((producto) => !producto.id.startsWith("prod_")); // filtramos solo los del JSON
-        pintarProductos(productosJson);
+        pintarProductos(productos);
+        activarBotonEliminar();
 
         // Capturamos el envío del formulario.
         formulario.addEventListener("submit", (event) => {
@@ -52,6 +50,10 @@
 
             // Agregamos el producto a la lista.
             agregarProducto(producto);
+            pintarProductos(productos);
+            activarBotonEliminar();
+
+
 
             // Limpiamos el formulario.
             formulario.reset();
@@ -59,4 +61,20 @@
             console.log("Producto agregado correctamente.");
         });
     });
+
+
+
+function activarBotonEliminar(){
+const botonesEliminar = document.querySelectorAll(".boton-eliminar");
+
+botonesEliminar.forEach((boton)=>{
+    boton.addEventListener("click",()=> {
+        eliminarProducto(boton.dataset.id);
+        pintarProductos(productos);
+        activarBotonEliminar();
+
+    } )
+})
+}
+
 
