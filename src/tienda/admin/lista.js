@@ -30,3 +30,12 @@ export function agregarProducto(producto) {
         guardarProductos(productos);
         console.log(JSON.stringify(productos, null, 2));
 }
+
+export function eliminarProducto(id){
+    const indexBuscar=productos.findIndex((producto)=> producto.id===id);
+    if(indexBuscar !== -1){
+        productos.splice(indexBuscar,1);
+        guardarProductos(productos);
+    }
+
+}
