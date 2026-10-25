@@ -33,74 +33,17 @@ body {
     background-color: color-mix(in srgb, var(--paleta-fondo) 30%, transparent);
 }
 
-#formulario-producto{
-    background-color: var(--paleta-formulario, #ffffff);
-    padding: 50px;
-    border-radius: 8px;
-    border: 1px var(--paleta-botones);
-    max-width: 500px; 
-    margin: 0 auto;  
-}
-
-#contenedor-formulario{
+#contenedor-formulario {
     background-color: var(--paleta-fondo);
-    border: var(--paleta-botones);
+}
+
+#formulario-producto {
+    background-color: var(--paleta-formulario, #ffffff);
+    padding: clamp(16px, 5vw, 50px);
+    border-radius: 8px;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 
 
-/***************************************RESPONSIVE***************************************/
-
-@media (max-width: 1280px) {
-    #seccion_formulario_localizacion,
-    .banner-contacto-fondo {
-        padding-left: var(--espacio-lateral); /* 55px: alineado con el logo del header y las tarjetas */
-    }
-}
-
-/* Tablet */
-
-@media (max-width: 900px) {
-
-    #seccion_formulario_localizacion,
-    .seccion-valores {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-
-    .banner-contacto-fondo {
-        height: 280px;
-        padding: 25px 20px;
-        background-image:
-            linear-gradient(90deg, rgba(244, 242, 236, 0.95) 0%, rgba(244, 242, 236, 0.8) 45%, rgba(244, 242, 236, 0) 75%),
-            url("../../assets/imagenes/contacto/banner-contacto.png");
-        background-size: cover;
-        background-position: right center;
-    }
-
-    .banner-contacto-informacion {
-        max-width: 60%; /* el texto no se mete sobre la caja de la imagen */
-    }
-
-    .valores-lista {
-        grid-template-columns: repeat(2, 1fr);
-        /*dos columnas en valores*/
-    }
-
-}
-
-/* Celular */
-@media (max-width: 576px) {
-
-    .banner-contacto-titulo {
-        font-size: 1.6rem;
-    }
-
-    #seccion_formulario_localizacion {
-        grid-template-columns: 1fr;
-        /*una columna en valores*/
-    }
-
-}
-
-/***************************************FIN RESPONSIVE***************************************/
