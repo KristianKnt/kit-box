@@ -25,7 +25,7 @@ export async function cargarProductosIniciales() {
 }
 
 export function agregarProducto(producto) {
-        producto.id="prod_" + Date.now();
+        producto.id=generarID(producto);
         productos.push(producto)
         guardarProductos(productos);
         console.log(JSON.stringify(productos, null, 2));
@@ -37,5 +37,34 @@ export function eliminarProducto(id){
         productos.splice(indexBuscar,1);
         guardarProductos(productos);
     }
+
+}
+
+//manejo id
+const prefijosID={
+    "Kit de Herramientas": "herr",
+    "Kit de Arte": "arte",
+    "Kit de Mascotas": "masc",
+    "Kit de Bienestar": "bien",
+    "Kit de Cocina": "coci",
+    "Kit Deportivo": "depo",
+    "Kit de Papelería": "pape",
+    "Kit de Tecnología": "tecn",
+    "Kit de Jardinería": "jard"};
+
+function generarID (producto){
+const categoria =producto.categoria;
+
+const prefijo=prefijosID[categoria];
+if(prefijo===undefined){
+   return "prod_" + Date.now()
+}
+const prefijoArmado=prefijo+"_";
+let numPrefijo=1;
+
+while(productos.some((producto)=>producto.id===prefijoArmado + String(numPrefijo).padStart(2, "0"))){
+    numPrefijo++;
+}
+return prefijoArmado + String(numPrefijo).padStart(2, "0");
 
 }
