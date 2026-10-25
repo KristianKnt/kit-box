@@ -18,6 +18,7 @@ export function pintarProductos(productos){
                 <td>$${producto.precio}</td>
                 <td>${producto.stock}</td>
                 <td>${producto.destacado ? "Sí" : "No"}</td>
+                <td>${producto.id}</td>
                 <td><button data-id="${producto.id}" class="boton-eliminar">Eliminar</button></td>
             </tr>
         `;}
@@ -33,6 +34,7 @@ export function pintarProductos(productos){
                     <th>Precio</th>
                     <th>Stock</th>
                     <th>Destacado</th>
+                    <th>ID</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
