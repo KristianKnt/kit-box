@@ -7,121 +7,127 @@ function obtenerRutaImagen(ruta) {
 }
 
 
-async function pintarTarjetas() {
+/* Trae los productos: primero mira el localStorage (lo que guarda el admin)
+   y si no hay nada, los pide al JSON. Devuelve la lista de productos. */
+async function cargarProductos() {
     try {
-                const guardados = localStorage.getItem("kitbox_productos");
-                    let productos;
+        const guardados = localStorage.getItem("kitbox_productos");
 
-            if (guardados !== null) {
-                productos = JSON.parse(guardados);
-                } else {
-                const respuesta = await fetch("../../data/productos.json");
-                if (!respuesta.ok) {
-                    throw new Error(`Error al cargar el JSON: ${respuesta.status}`);
-                }
-                productos = await respuesta.json();
-            }
+        if (guardados !== null) {
+            return JSON.parse(guardados);
+        }
 
-            // 3. Obtener el contenedor del HTML
-        const contenedor = document.getElementById("lista-productos");
-
-        if (!contenedor) {
-            throw new Error("No se encontró el contenedor lista-productos");
-}
-        // 4. Limpiar el contenedor
-        contenedor.replaceChildren();
-
-        // 5. Recorrer todos los productos
-        productos.forEach((producto) => {
-
-            // Crear la columna de Bootstrap
-            const columna = document.createElement("div");
-            columna.className = "col-12 col-sm-6 col-lg-3";
-
-            // Crear la tarjeta
-            const tarjeta = document.createElement("div");
-            tarjeta.className = "card h-100 shadow-sm";
-
-            // Crear la imagen
-            const imagen = document.createElement("img");
-
-            imagen.alt = producto.nombre;
-            imagen.className = "card-img-top py-2";
-            imagen.style.height = "220px";
-            imagen.style.objectFit = "contain";
-
-            // Mostrar un aviso si no se encuentra la imagen
-            imagen.addEventListener("error", () => {
-                console.error(
-                    "No se pudo cargar la imagen:",
-                    imagen.src
-                );
-
-                imagen.alt = "Imagen no disponible";
-                imagen.style.display = "none";
-            }, { once: true });
-
-            // Asignar la ruta de la imagen usando la función anterior
-            imagen.src = obtenerRutaImagen(producto.imagen);
-
-            // Crear el cuerpo de la tarjeta
-            const cuerpo = document.createElement("div");
-            cuerpo.className = "card-body";
-
-            // Nombre
-            const nombre = document.createElement("h3");
-            nombre.className = "card-title h5";
-            nombre.textContent = producto.nombre;
-
-            // Descripción
-            const descripcion = document.createElement("p");
-            descripcion.className = "card-text";
-            descripcion.textContent = producto.descripcion;
-
-            // Precio
-            const precio = document.createElement("p");
-            precio.className = "fw-bold text-success";
-            precio.textContent =
-                `Precio: ${Number(producto.precio).toLocaleString("es-CO", {
-                    style: "currency",
-                    currency: "COP",
-                    maximumFractionDigits: 0
-                })}`;
-
-            // Stock
-            const stock = document.createElement("p");
-            stock.textContent = `Stock: ${producto.stock} unidades`;
-
-            // Categoría
-            const categoria = document.createElement("p");
-            categoria.textContent = `Categoría: ${producto.categoria}`;
-
-            // Agregar la información al cuerpo
-            cuerpo.append(
-                nombre,
-                descripcion,
-                precio,
-                stock,
-                categoria
-            );
-
-            // Agregar imagen y cuerpo a la tarjeta
-            tarjeta.append(imagen, cuerpo);
-
-            // Agregar tarjeta a la columna
-            columna.appendChild(tarjeta);
-
-            // Mostrar la columna en el catálogo
-            contenedor.appendChild(columna);
-        });
-
-        console.log("Productos cargados correctamente:", productos);
+        const respuesta = await fetch("../../data/productos.json");
+        if (!respuesta.ok) {
+            throw new Error(`Error al cargar el JSON: ${respuesta.status}`);
+        }
+        return await respuesta.json();
 
     } catch (error) {
-        console.error("Error al mostrar los productos:", error);
+        console.error("Error al cargar los productos:", error);
+        return []; // si falla, devolvemos una lista vacía para que la página no se rompa
     }
 }
 
 
-// Ejecutar la función cuando el HTML esté completamente cargado
-document.addEventListener("DOMContentLoaded", pintarTarjetas);
+/* Pinta las tarjetas de la lista que le pasemos.
+   La usa filtros-catalogos.js cada vez que cambia la búsqueda o la categoría. */
+function pintarTarjetas(productos) {
+    // 1. Obtener el contenedor del HTML
+    const contenedor = document.getElementById("lista-productos");
+
+    if (!contenedor) {
+        console.error("No se encontró el contenedor lista-productos");
+        return;
+    }
+
+    // 2. Limpiar el contenedor
+    contenedor.replaceChildren();
+
+    // 3. Recorrer todos los productos
+    productos.forEach((producto) => {
+
+        // Crear la columna de Bootstrap
+        const columna = document.createElement("div");
+        columna.className = "col-12 col-sm-6 col-lg-3";
+
+        // Crear la tarjeta
+        const tarjeta = document.createElement("div");
+        tarjeta.className = "card h-100 shadow-sm";
+
+        // Crear la imagen
+        const imagen = document.createElement("img");
+
+        imagen.alt = producto.nombre;
+        imagen.className = "card-img-top py-2";
+        imagen.style.height = "220px";
+        imagen.style.objectFit = "contain";
+
+        // Mostrar un aviso si no se encuentra la imagen
+        imagen.addEventListener("error", () => {
+            console.error(
+                "No se pudo cargar la imagen:",
+                imagen.src
+            );
+
+            imagen.alt = "Imagen no disponible";
+            imagen.style.display = "none";
+        }, { once: true });
+
+        // Asignar la ruta de la imagen usando la función anterior
+        imagen.src = obtenerRutaImagen(producto.imagen);
+
+        // Crear el cuerpo de la tarjeta
+        const cuerpo = document.createElement("div");
+        cuerpo.className = "card-body";
+
+        // Nombre
+        const nombre = document.createElement("h3");
+        nombre.className = "card-title h5";
+        nombre.textContent = producto.nombre;
+
+        // Descripción
+        const descripcion = document.createElement("p");
+        descripcion.className = "card-text";
+        descripcion.textContent = producto.descripcion;
+
+        // Precio
+        const precio = document.createElement("p");
+        precio.className = "fw-bold text-success";
+        precio.textContent =
+            `Precio: ${Number(producto.precio).toLocaleString("es-CO", {
+                style: "currency",
+                currency: "COP",
+                maximumFractionDigits: 0
+            })}`;
+
+        // Stock
+        const stock = document.createElement("p");
+        stock.textContent = `Stock: ${producto.stock} unidades`;
+
+        // Categoría
+        const categoria = document.createElement("p");
+        categoria.textContent = `Categoría: ${producto.categoria}`;
+
+        // Agregar la información al cuerpo
+        cuerpo.append(
+            nombre,
+            descripcion,
+            precio,
+            stock,
+            categoria
+        );
+
+        // Agregar imagen y cuerpo a la tarjeta
+        tarjeta.append(imagen, cuerpo);
+
+        // Agregar tarjeta a la columna
+        columna.appendChild(tarjeta);
+
+        // Mostrar la columna en el catálogo
+        contenedor.appendChild(columna);
+    });
+}
+
+// Nota: la página arranca desde filtros-catalogos.js (ahí está el DOMContentLoaded),
+// porque primero carga los productos, arma las categorías y después pinta.
