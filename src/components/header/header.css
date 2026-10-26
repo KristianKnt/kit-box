@@ -113,3 +113,9 @@
   text-decoration: none;
   color: inherit;
 }
+
+.contenedor-menu nav a[aria-current="page"] {
+  text-decoration: underline !important;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+}
