@@ -9,24 +9,25 @@ function obtenerRutaImagen(ruta) {
 
 async function pintarTarjetas() {
     try {
-        // 1. Obtener los productos del archivo JSON
-        const respuesta = await fetch("../../data/productos.json");
+                const guardados = localStorage.getItem("kitbox_productos");
+                    let productos;
 
-        // Comprobar si el archivo se cargó correctamente
-        if (!respuesta.ok) {
-            throw new Error(`Error al cargar el JSON: ${respuesta.status}`);
-        }
+            if (guardados !== null) {
+                productos = JSON.parse(guardados);
+                } else {
+                const respuesta = await fetch("../../data/productos.json");
+                if (!respuesta.ok) {
+                    throw new Error(`Error al cargar el JSON: ${respuesta.status}`);
+                }
+                productos = await respuesta.json();
+            }
 
-        // 2. Convertir la respuesta a datos JavaScript
-        const productos = await respuesta.json();
-
-        // 3. Obtener el contenedor del HTML
+            // 3. Obtener el contenedor del HTML
         const contenedor = document.getElementById("lista-productos");
 
         if (!contenedor) {
             throw new Error("No se encontró el contenedor lista-productos");
-        }
-
+}
         // 4. Limpiar el contenedor
         contenedor.replaceChildren();
 

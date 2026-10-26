@@ -22,8 +22,8 @@
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 0;
+  min-width: 640px; /* la tabla ya no se aplasta en celular, se desliza dentro de su caja */
 }
-
 /* 4. Fila de títulos */
 #lista-productos thead th {
   background-color: #586F57;
