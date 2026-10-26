@@ -44,7 +44,7 @@ body {
 /*estilos banner*/
 .banner-contacto-fondo { /*fondo de banner contenedor*/
     width: 100%; /*le damos el 100% de ancho*/
-    height: 280px;
+    min-height: 280px;
     background-image: url("../../assets/imagenes/contacto/banner-contacto.png"); /*ingresamos la imagen como fondo para contacto*/
     background-size: cover; /*el fondo se adapta a su contenedor*/
     background-position: center; /*centramos*/
@@ -87,4 +87,37 @@ body {
     font-size: 1rem;
     line-height: 1.5; /*espacio entre líneas*/
     margin: 0; /*quitamos el margen que el navegador pone por defecto*/
+}
+
+
+/*responsive*/
+
+@media (max-width:1280px) {
+    .banner-contacto-fondo{
+        padding-left: var(--espacio-lateral);
+        background-image:
+            linear-gradient(90deg, rgba(244, 242, 236, 0.95) 0%, rgba(244, 242, 236, 0.8) 60%, rgba(244, 242, 236, 0) 75%),
+            url("../../assets/imagenes/contacto/banner-contacto.png");
+        background-size: cover;    
+        background-position: right center;} 
+
+    
+}
+
+
+
+@media (max-width:900px) {
+.banner-contacto-fondo{
+    padding: 10px 24px;
+    min-height: 280px;
+    background-image:
+            linear-gradient(90deg, rgba(244, 242, 236, 0.95) 0%, rgba(244, 242, 236, 0.8) 60%, rgba(244, 242, 236, 0) 75%),
+            url("../../assets/imagenes/contacto/banner-contacto.png");
+    background-size: cover;    
+    background-position: right center;}             
+
+.banner-contacto-informacion {
+        max-width: 70%;
+    } 
+
 }
