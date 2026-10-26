@@ -37,6 +37,13 @@ async function cargar(id, archivo) {
       }
     });
 
+    // Marcar el enlace en la pagina actual del header
+
+    if(id === "header") {
+      const modulo = await import("../components/header/header.js");
+      modulo.marcarEnlaceActivo(contenedor);
+    }
+
     // Inicializar el carrusel después de insertar su HTML.
     if (id === "kits-destacados") {
       const modulo = await import(
