@@ -96,8 +96,8 @@ body {
     .banner-contacto-fondo{
         padding-left: var(--espacio-lateral);
         background-image:
-            linear-gradient(90deg, rgba(244, 242, 236, 0.95) 0%, rgba(244, 242, 236, 0.8) 60%, rgba(244, 242, 236, 0) 75%),
-            url("../../assets/imagenes/contacto/banner-contacto.png");
+        linear-gradient(90deg,color-mix(in srgb, var(--paleta-formulario) 95%, transparent) 0%,color-mix(in srgb, var(--paleta-formulario) 80%, transparent) 60%,transparent 75%),
+        url("../../assets/imagenes/contacto/banner-contacto.png");
         background-size: cover;    
         background-position: right center;} 
 
@@ -111,8 +111,8 @@ body {
     padding: 10px 24px;
     min-height: 280px;
     background-image:
-            linear-gradient(90deg, rgba(244, 242, 236, 0.95) 0%, rgba(244, 242, 236, 0.8) 60%, rgba(244, 242, 236, 0) 75%),
-            url("../../assets/imagenes/contacto/banner-contacto.png");
+        linear-gradient(90deg,color-mix(in srgb, var(--paleta-formulario) 95%, transparent) 0%,color-mix(in srgb, var(--paleta-formulario) 80%, transparent) 60%,transparent 75%),
+        url("../../assets/imagenes/contacto/banner-contacto.png");
     background-size: cover;    
     background-position: right center;}             
 
