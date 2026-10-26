@@ -121,3 +121,312 @@ body {
     } 
 
 }
+
+/* ===================== BUSCADOR Y FILTROS ===================== */
+
+/*fila que contiene la barra de búsqueda y el botón Filtros*/
+.catalogo-herramientas {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+/*barra de búsqueda (forma de pastilla, igual que la etiqueta del banner)*/
+.catalogo-buscador {
+    position: relative; /*para poner la lupa y la x encima del input*/
+    flex: 1; /*ocupa todo el espacio que sobra*/
+}
+
+.catalogo-buscador-input {
+    width: 100%;
+    height: 48px;
+    padding: 0 44px 0 46px; /*espacio a los lados para la lupa y la x*/
+    border: 1px solid color-mix(in srgb, var(--paleta-primary) 18%, transparent);
+    border-radius: 999px;
+    background-color: #fff;
+    color: var(--paleta-primary);
+    font-family: inherit;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 8px color-mix(in srgb, var(--paleta-primary) 6%, transparent);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.catalogo-buscador-input::placeholder {
+    color: color-mix(in srgb, var(--paleta-primary) 45%, transparent);
+}
+
+.catalogo-buscador-input:focus {
+    outline: none;
+    border-color: var(--paleta-color3);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--paleta-color3) 30%, transparent);
+}
+
+/*quitamos la x que el navegador pone sola en los input search (ya tenemos la nuestra)*/
+.catalogo-buscador-input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/*lupa*/
+.catalogo-buscador-lupa {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: var(--paleta-header-footer);
+    stroke-width: 2;
+    stroke-linecap: round;
+    pointer-events: none; /*que el clic pase al input*/
+}
+
+/*botón x para borrar*/
+.catalogo-buscador-borrar {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: 50%;
+    background-color: color-mix(in srgb, var(--paleta-color3) 30%, transparent);
+    color: var(--paleta-primary);
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.catalogo-buscador-borrar:hover {
+    background-color: color-mix(in srgb, var(--paleta-color3) 55%, transparent);
+}
+
+/*botón Filtros*/
+.catalogo-boton-filtros {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 48px;
+    padding: 0 20px;
+    border: 1px solid color-mix(in srgb, var(--paleta-primary) 18%, transparent);
+    border-radius: 999px;
+    background-color: var(--paleta-formulario);
+    color: var(--paleta-primary);
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.catalogo-boton-filtros svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
+.catalogo-boton-filtros:hover,
+.catalogo-boton-filtros[aria-expanded="true"] {
+    background-color: var(--paleta-primary);
+    color: #fff;
+}
+
+.catalogo-boton-filtros:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--paleta-color3) 40%, transparent);
+}
+
+/*numerito de filtros activos*/
+.catalogo-contador {
+    display: inline-grid;
+    place-items: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background-color: var(--paleta-botones);
+    color: #fff;
+    font-size: 0.75rem;
+}
+
+/*panel que se despliega al dar clic en Filtros*/
+.dropdown-menu.catalogo-panel-filtros {
+    min-width: 250px;
+    padding: 16px 18px;
+    border: 1px solid color-mix(in srgb, var(--paleta-primary) 12%, transparent);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px color-mix(in srgb, var(--paleta-primary) 15%, transparent);
+    color: var(--paleta-primary);
+}
+
+.catalogo-panel-titulo {
+    margin: 0 0 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--paleta-header-footer);
+}
+
+.catalogo-panel-filtros .form-check {
+    margin-bottom: 6px;
+}
+
+.catalogo-panel-filtros .form-check-label {
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+/*cambiamos el azul de Bootstrap por el verde de la paleta*/
+.catalogo-panel-filtros .form-check-input:checked {
+    background-color: var(--paleta-primary);
+    border-color: var(--paleta-primary);
+}
+
+.catalogo-panel-filtros .form-check-input:focus {
+    border-color: var(--paleta-color3);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--paleta-color3) 30%, transparent);
+}
+
+.catalogo-panel-linea {
+    margin: 12px 0;
+    border-color: color-mix(in srgb, var(--paleta-primary) 30%, transparent);
+}
+
+/*texto "Mostrando X de Y kits"*/
+.catalogo-resumen {
+    margin: 0 0 16px 8px;
+    font-size: 0.9rem;
+    color: var(--paleta-header-footer);
+}
+
+
+/* ===================== CATEGORÍAS ===================== */
+
+.catalogo-categorias {
+    display: flex;
+    flex-direction: column; /*en computador: lista hacia abajo*/
+    gap: 4px;
+    margin-top: 12px;
+}
+
+.catalogo-categoria {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 7px 12px; /*botón más compacto*/
+    border: 1px solid transparent;
+    border-radius: 999px;
+    background-color: transparent;
+    color: var(--paleta-primary);
+    font-family: inherit;
+    font-size: 0.88rem;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.catalogo-categoria:hover {
+    background-color: color-mix(in srgb, var(--paleta-color3) 25%, transparent);
+}
+
+.catalogo-categoria:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--paleta-color3) 40%, transparent);
+}
+
+/*cantidad de kits de cada categoría*/
+.catalogo-categoria-cantidad {
+    min-width: 24px;
+    padding: 1px 7px;
+    border-radius: 999px;
+    background-color: color-mix(in srgb, var(--paleta-color3) 30%, transparent);
+    font-size: 0.75rem;
+    text-align: center;
+}
+
+/*categoría elegida*/
+.catalogo-categoria.activa {
+    background-color: var(--paleta-primary);
+    color: #fff;
+    font-weight: 600;
+}
+
+.catalogo-categoria.activa .catalogo-categoria-cantidad {
+    background-color: color-mix(in srgb, #fff 20%, transparent);
+}
+
+
+/* ===================== SIN RESULTADOS ===================== */
+
+/*si no hay tarjetas, escondemos la fila vacía (su margen negativo montaba el mensaje encima del texto)*/
+#lista-productos:empty {
+    display: none;
+}
+
+.catalogo-vacio {
+    padding: 48px 24px;
+    border: 1px dashed color-mix(in srgb, var(--paleta-primary) 25%, transparent);
+    border-radius: 16px;
+    background-color: color-mix(in srgb, var(--paleta-formulario) 60%, transparent);
+    color: var(--paleta-primary);
+    text-align: center;
+}
+
+.catalogo-vacio-titulo {
+    margin-bottom: 4px;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.catalogo-vacio-texto {
+    margin-bottom: 18px;
+    color: var(--paleta-header-footer);
+}
+
+.catalogo-vacio-boton {
+    padding: 10px 22px;
+    border: none;
+    border-radius: 999px;
+    background-color: var(--paleta-botones);
+    color: #fff;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.catalogo-vacio-boton:hover {
+    background-color: color-mix(in srgb, var(--paleta-botones) 85%, #000);
+}
+
+
+/* ===================== RESPONSIVE BUSCADOR Y CATEGORÍAS ===================== */
+
+/*tablet y celular (cuando Bootstrap pone las categorías arriba de las tarjetas)*/
+@media (max-width: 767px) {
+    .catalogo-categorias {
+        flex-direction: row; /*las categorías quedan en fila, como chips*/
+        overflow-x: auto; /*y se deslizan de lado con el dedo*/
+        padding-bottom: 6px;
+    }
+
+    .catalogo-categoria {
+        width: auto;
+        flex-shrink: 0;
+        white-space: nowrap;
+        border-color: color-mix(in srgb, var(--paleta-primary) 15%, transparent);
+    }
+}
+
+@media (max-width: 576px) {
+    .catalogo-boton-filtros {
+        padding: 0 14px;
+    }
+}
