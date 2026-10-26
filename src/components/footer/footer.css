@@ -128,3 +128,8 @@ footer h4 {
         min-width: 140px;
     }
 }
+
+#logo {
+  text-decoration: none;
+  color: inherit;
+}
