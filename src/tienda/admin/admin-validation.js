@@ -82,22 +82,28 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         break;
 
-      case "imagen":
-        if (!valor) {
-          return mostrarError(campo, "El nombre de la imagen es obligatorio.");
-        }
 
-        // La ruta debe comenzar con la carpeta de imágenes del proyecto
-        // y terminar con una extensión de imagen permitida.
-        const rutaValida =
-          /^src\/assets\/imagenes\/[\w./-]+\.(jpg|jpeg|png|webp|svg)$/i;
-        if (rutaValida.test(valor)) {
+      case "imagen": {
+        if (!valor) {
           return mostrarError(
             campo,
-            "Ingresa un nombre válido, por ejemplo: src/assets/imagenes/img_json/01_Kit_de_Herramientas/herr_03.jpg"
+            "La ruta de la imagen es obligatoria."
           );
         }
+
+        const rutaValida =
+          /^src\/assets\/imagenes\/img_json\/(?:01_Kit_de_Herramientas|02_Kit_de_Arte|03_Kit_de_Mascotas)\/[\w-]+\.(jpg|jpeg|png|webp|svg)$/i;
+
+        if (!rutaValida.test(valor)) {
+          return mostrarError(
+            campo,
+            "Ingresa una ruta válida de imagen."
+          );
+        }
+
         break;
+      }
+
 
       case "stock":
         if (valor === "") {
