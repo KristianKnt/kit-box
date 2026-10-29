@@ -2,28 +2,26 @@
 
 :root {
     --paleta-primary: #1E4437;
-    /*paleta*/
     --paleta-formulario: #EFEBE2;
-    /*paleta*/
     --paleta-color3: #8FAE9A;
-    /*paleta*/
     --paleta-botones: #886F56;
-    /*paleta*/
     --paleta-fondo: #E7E8E3;
-    /*paleta*/
     --paleta-header-footer: #586F57;
-    /*paleta*/
+
+    /* Variables de botones */
+    --boton-primario-bg: var(--paleta-primary);
+    --boton-primario-hover: #143027;
+    --boton-secundario-bg: var(--paleta-botones);
+    --boton-secundario-hover: color-mix(in srgb, var(--paleta-botones) 85%, var(--boton-primario-hover));
+
     --tamaño-titulo-banner: clamp(1.6rem, 4.5vw, 40px);
     --espacio-lateral: 55px;
-
-
 }
 
 *,
 *::before,
 *::after {
     box-sizing: border-box;
-    /*reset de pagina*/
 }
 
 img {
@@ -34,97 +32,56 @@ img {
 body {
     margin: 0;
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: color-mix(in srgb, var(--paleta-fondo) 30%, transparent)
+    background-color: color-mix(in srgb, var(--paleta-fondo) 30%, transparent);
 }
 
 #footer {
     width: 100%;
 }
 
-/*estilos banner*/
-.banner-contacto-fondo { /*fondo de banner contenedor*/
-    width: 100%; /*le damos el 100% de ancho*/
+/* ===================== BANNER CONTACTO ===================== */
+.banner-contacto-fondo {
+    width: 100%;
     min-height: 280px;
-    background-image: url("../../assets/imagenes/contacto/banner-contacto.png"); /*ingresamos la imagen como fondo para contacto*/
-    background-size: cover; /*el fondo se adapta a su contenedor*/
-    background-position: center; /*centramos*/
+    background-image: url("../../assets/imagenes/contacto/banner-contacto.png");
+    background-size: cover;
+    background-position: center;
     padding: 20px clamp(100px, 10vw, 240px);
-    background-color: color-mix(in srgb, var(--paleta-formulario) 30% , transparent) ;
-
-
+    background-color: color-mix(in srgb, var(--paleta-formulario) 30%, transparent);
 }
-
 
 .banner-contacto-informacion {
     color: var(--paleta-primary);
-
 }
 
 .banner-contacto-titulo {
-    max-width: 26ch; /*espaciado de caracteres*/
+    max-width: 26ch;
     margin-top: 8px;
     font-size: var(--tamaño-titulo-banner);
     font-weight: 600;
     line-height: 1.3;
 }
 
-/*etiqueta pequeña "Estamos aquí para ayudarte"*/
 .banner-contacto-etiqueta {
-    display: inline-flex; /*pone el ícono y el texto uno al lado del otro*/
-    align-items: center; /*los centra verticalmente*/
-    gap: 6px; /*espacio entre el ícono y el texto*/
-    margin-top: 20px; /*espacio arriba*/
-    padding: 4px 14px; /*espacio por dentro: arriba-abajo 4px, lados 14px*/
-    background-color: color-mix(in srgb, var(--paleta-color3) 40%, transparent); /*verde claro de la paleta*/
-    color: var(--paleta-primary); /*texto verde oscuro*/
-    font-size: 0.85rem; /*texto pequeño*/
-    border-radius: 999px; /*bordes totalmente redondos, forma de pastilla*/
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 20px;
+    padding: 4px 14px;
+    background-color: color-mix(in srgb, var(--paleta-color3) 40%, transparent);
+    color: var(--paleta-primary);
+    font-size: 0.85rem;
+    border-radius: 999px;
 }
 
-/*párrafo del banner*/
 .banner-contacto-texto {
-    max-width: 45ch; /*máximo 45 letras por línea*/
+    max-width: 45ch;
     font-size: 1rem;
-    line-height: 1.5; /*espacio entre líneas*/
-    margin: 0; /*quitamos el margen que el navegador pone por defecto*/
-}
-
-
-/*responsive*/
-
-@media (max-width:1280px) {
-    .banner-contacto-fondo{
-        padding-left: var(--espacio-lateral);
-        background-image:
-        linear-gradient(90deg,color-mix(in srgb, var(--paleta-formulario) 95%, transparent) 0%,color-mix(in srgb, var(--paleta-formulario) 80%, transparent) 60%,transparent 75%),
-        url("../../assets/imagenes/contacto/banner-contacto.png");
-        background-size: cover;    
-        background-position: right center;} 
-
-    
-}
-
-
-
-@media (max-width:900px) {
-.banner-contacto-fondo{
-    padding: 10px 24px;
-    min-height: 280px;
-    background-image:
-        linear-gradient(90deg,color-mix(in srgb, var(--paleta-formulario) 95%, transparent) 0%,color-mix(in srgb, var(--paleta-formulario) 80%, transparent) 60%,transparent 75%),
-        url("../../assets/imagenes/contacto/banner-contacto.png");
-    background-size: cover;    
-    background-position: right center;}             
-
-.banner-contacto-informacion {
-        max-width: 70%;
-    } 
-
+    line-height: 1.5;
+    margin: 0;
 }
 
 /* ===================== BUSCADOR Y FILTROS ===================== */
-
-/*fila que contiene la barra de búsqueda y el botón Filtros*/
 .catalogo-herramientas {
     display: flex;
     align-items: center;
@@ -132,16 +89,15 @@ body {
     margin-bottom: 8px;
 }
 
-/*barra de búsqueda (forma de pastilla, igual que la etiqueta del banner)*/
 .catalogo-buscador {
-    position: relative; /*para poner la lupa y la x encima del input*/
-    flex: 1; /*ocupa todo el espacio que sobra*/
+    position: relative;
+    flex: 1;
 }
 
 .catalogo-buscador-input {
     width: 100%;
     height: 48px;
-    padding: 0 44px 0 46px; /*espacio a los lados para la lupa y la x*/
+    padding: 0 44px 0 46px;
     border: 1px solid color-mix(in srgb, var(--paleta-primary) 18%, transparent);
     border-radius: 999px;
     background-color: #fff;
@@ -162,13 +118,6 @@ body {
     box-shadow: 0 0 0 4px color-mix(in srgb, var(--paleta-color3) 30%, transparent);
 }
 
-/*quitamos la x que el navegador pone sola en los input search (ya tenemos la nuestra)*/
-.catalogo-buscador-input::-webkit-search-cancel-button {
-    -webkit-appearance: none;
-    appearance: none;
-}
-
-/*lupa*/
 .catalogo-buscador-lupa {
     position: absolute;
     left: 16px;
@@ -180,10 +129,9 @@ body {
     stroke: var(--paleta-header-footer);
     stroke-width: 2;
     stroke-linecap: round;
-    pointer-events: none; /*que el clic pase al input*/
+    pointer-events: none;
 }
 
-/*botón x para borrar*/
 .catalogo-buscador-borrar {
     position: absolute;
     right: 10px;
@@ -200,11 +148,6 @@ body {
     cursor: pointer;
 }
 
-.catalogo-buscador-borrar:hover {
-    background-color: color-mix(in srgb, var(--paleta-color3) 55%, transparent);
-}
-
-/*botón Filtros*/
 .catalogo-boton-filtros {
     display: inline-flex;
     align-items: center;
@@ -222,95 +165,16 @@ body {
     transition: background-color 0.2s, color 0.2s;
 }
 
-.catalogo-boton-filtros svg {
-    width: 18px;
-    height: 18px;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-}
-
 .catalogo-boton-filtros:hover,
 .catalogo-boton-filtros[aria-expanded="true"] {
     background-color: var(--paleta-primary);
     color: #fff;
 }
 
-.catalogo-boton-filtros:focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 4px color-mix(in srgb, var(--paleta-color3) 40%, transparent);
-}
-
-/*numerito de filtros activos*/
-.catalogo-contador {
-    display: inline-grid;
-    place-items: center;
-    min-width: 20px;
-    height: 20px;
-    padding: 0 6px;
-    border-radius: 999px;
-    background-color: var(--paleta-botones);
-    color: #fff;
-    font-size: 0.75rem;
-}
-
-/*panel que se despliega al dar clic en Filtros*/
-.dropdown-menu.catalogo-panel-filtros {
-    min-width: 250px;
-    padding: 16px 18px;
-    border: 1px solid color-mix(in srgb, var(--paleta-primary) 12%, transparent);
-    border-radius: 16px;
-    box-shadow: 0 10px 30px color-mix(in srgb, var(--paleta-primary) 15%, transparent);
-    color: var(--paleta-primary);
-}
-
-.catalogo-panel-titulo {
-    margin: 0 0 8px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--paleta-header-footer);
-}
-
-.catalogo-panel-filtros .form-check {
-    margin-bottom: 6px;
-}
-
-.catalogo-panel-filtros .form-check-label {
-    cursor: pointer;
-    font-size: 0.95rem;
-}
-
-/*cambiamos el azul de Bootstrap por el verde de la paleta*/
-.catalogo-panel-filtros .form-check-input:checked {
-    background-color: var(--paleta-primary);
-    border-color: var(--paleta-primary);
-}
-
-.catalogo-panel-filtros .form-check-input:focus {
-    border-color: var(--paleta-color3);
-    box-shadow: 0 0 0 4px color-mix(in srgb, var(--paleta-color3) 30%, transparent);
-}
-
-.catalogo-panel-linea {
-    margin: 12px 0;
-    border-color: color-mix(in srgb, var(--paleta-primary) 30%, transparent);
-}
-
-/*texto "Mostrando X de Y kits"*/
-.catalogo-resumen {
-    margin: 0 0 16px 8px;
-    font-size: 0.9rem;
-    color: var(--paleta-header-footer);
-}
-
-
 /* ===================== CATEGORÍAS ===================== */
-
 .catalogo-categorias {
     display: flex;
-    flex-direction: column; /*en computador: lista hacia abajo*/
+    flex-direction: column;
     gap: 4px;
     margin-top: 12px;
 }
@@ -321,7 +185,7 @@ body {
     align-items: center;
     gap: 8px;
     width: 100%;
-    padding: 7px 12px; /*botón más compacto*/
+    padding: 7px 12px;
     border: 1px solid transparent;
     border-radius: 999px;
     background-color: transparent;
@@ -333,87 +197,60 @@ body {
     transition: background-color 0.2s, color 0.2s;
 }
 
-.catalogo-categoria:hover {
-    background-color: color-mix(in srgb, var(--paleta-color3) 25%, transparent);
-}
-
-.catalogo-categoria:focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 4px color-mix(in srgb, var(--paleta-color3) 40%, transparent);
-}
-
-/*cantidad de kits de cada categoría*/
-.catalogo-categoria-cantidad {
-    min-width: 24px;
-    padding: 1px 7px;
-    border-radius: 999px;
-    background-color: color-mix(in srgb, var(--paleta-color3) 30%, transparent);
-    font-size: 0.75rem;
-    text-align: center;
-}
-
-/*categoría elegida*/
 .catalogo-categoria.activa {
     background-color: var(--paleta-primary);
     color: #fff;
     font-weight: 600;
 }
 
-.catalogo-categoria.activa .catalogo-categoria-cantidad {
-    background-color: color-mix(in srgb, #fff 20%, transparent);
-}
+/* ===================== BOTONES DEL CARRITO ===================== */
 
-
-/* ===================== SIN RESULTADOS ===================== */
-
-/*si no hay tarjetas, escondemos la fila vacía (su margen negativo montaba el mensaje encima del texto)*/
-#lista-productos:empty {
-    display: none;
-}
-
-.catalogo-vacio {
-    padding: 48px 24px;
-    border: 1px dashed color-mix(in srgb, var(--paleta-primary) 25%, transparent);
-    border-radius: 16px;
-    background-color: color-mix(in srgb, var(--paleta-formulario) 60%, transparent);
-    color: var(--paleta-primary);
-    text-align: center;
-}
-
-.catalogo-vacio-titulo {
-    margin-bottom: 4px;
-    font-size: 1.15rem;
+/* Botón Añadir (Verde primario) */
+.btn-agregar-carrito {
+    background-color: var(--paleta-primary) !important; 
+    border-color: var(--paleta-primary) !important;
+    color: #ffffff !important; /* Letra blanca */
     font-weight: 600;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-.catalogo-vacio-texto {
-    margin-bottom: 18px;
-    color: var(--paleta-header-footer);
+.btn-agregar-carrito:hover {
+    background-color: var(--boton-primario-hover) !important; 
+    border-color: var(--boton-primario-hover)!important;
+    color: #ffffff !important;
 }
 
-.catalogo-vacio-boton {
-    padding: 10px 22px;
-    border: none;
-    border-radius: 999px;
-    background-color: var(--paleta-botones);
-    color: #fff;
-    font-family: inherit;
+/* Botón Eliminar: Café / Marrón suave con letra blanca */
+.btn-eliminar-carrito {
+    background-color: var(--paleta-botones) !important; 
+    border-color: var(--paleta-botones) !important;
+    color: #ffffff !important; /* Letra blanca */
     font-weight: 600;
-    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-.catalogo-vacio-boton:hover {
-    background-color: color-mix(in srgb, var(--paleta-botones) 85%, #000);
+.btn-eliminar-carrito:hover {
+    background-color: color-mix(in srgb, var(--paleta-botones) 80%, var(--paleta-color3)) !important; 
+    border-color: color-mix(in srgb, var(--paleta-botones) 80%, var(--paleta-header-footer)) !important;
+    color: #ffffff !important;
 }
 
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 1280px) {
+    .banner-contacto-fondo {
+        padding-left: var(--espacio-lateral);
+        background-image:
+            linear-gradient(90deg, color-mix(in srgb, var(--paleta-formulario) 95%, transparent) 0%, color-mix(in srgb, var(--paleta-formulario) 80%, transparent) 60%, transparent 75%),
+            url("../../assets/imagenes/contacto/banner-contacto.png");
+        background-size: cover;
+        background-position: right center;
+    }
+}
 
-/* ===================== RESPONSIVE BUSCADOR Y CATEGORÍAS ===================== */
-
-/*tablet y celular (cuando Bootstrap pone las categorías arriba de las tarjetas)*/
 @media (max-width: 767px) {
     .catalogo-categorias {
-        flex-direction: row; /*las categorías quedan en fila, como chips*/
-        overflow-x: auto; /*y se deslizan de lado con el dedo*/
+        flex-direction: row;
+        overflow-x: auto;
         padding-bottom: 6px;
     }
 
@@ -421,12 +258,5 @@ body {
         width: auto;
         flex-shrink: 0;
         white-space: nowrap;
-        border-color: color-mix(in srgb, var(--paleta-primary) 15%, transparent);
-    }
-}
-
-@media (max-width: 576px) {
-    .catalogo-boton-filtros {
-        padding: 0 14px;
     }
 }
