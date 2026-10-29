@@ -119,3 +119,26 @@
   text-underline-offset: 6px;
   text-decoration-thickness: 2px;
 }
+
+/* ===== Carrito del header con contador ===== */
+.enlace-carrito {
+  position: relative; /*el contador se ubica tomando como referencia el ícono*/
+  display: inline-flex;
+  text-decoration: none;
+}
+
+.contador-carrito {
+  position: absolute; /*lo saca del flujo para ponerlo encima del ícono*/
+  top: -6px; /*un poquito por encima del ícono*/
+  right: -10px; /*un poquito a la derecha del ícono*/
+  min-width: 20px; /*para que sea un círculo aunque tenga un solo número*/
+  height: 20px;
+  padding: 0 5px; /*espacio por si el número tiene 2 cifras*/
+  border-radius: 999px; /*forma de pastilla o círculo*/
+  background-color: var(--paleta-botones, #886F56); /*café de la paleta*/
+  color: var(--color-texto);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 20px; /*centra el número verticalmente*/
+  text-align: center;
+}
