@@ -108,14 +108,44 @@ function pintarTarjetas(productos) {
         // Categoría
         const categoria = document.createElement("p");
         categoria.textContent = `Categoría: ${producto.categoria}`;
+        //----------------------------------------------------------------------------------------------//
+        //agregar botones agregar eliminar carrito
+        // 1. Crear contenedor de acciones (para ordenar los botones en fila o columna)
+        const contenedorAcciones = document.createElement("div");
+            contenedorAcciones.className = "mt-auto d-flex gap-2 pt-2";
 
+            const btnAgregar = document.createElement("button");
+            btnAgregar.className = "btn btn-sm w-100 btn-agregar-carrito";
+            btnAgregar.textContent = "Añadir";
+
+            btnAgregar.dataset.id = producto.id;
+            btnAgregar.dataset.nombre = producto.nombre;
+            btnAgregar.dataset.precio = producto.precio;
+            btnAgregar.dataset.imagen = producto.imagen;
+
+            btnAgregar.addEventListener("click", () => {
+                console.log("Añadiendo producto:", producto);
+            });
+
+            const btnEliminar = document.createElement("button");
+            btnEliminar.className = "btn btn-sm w-100 btn-eliminar-carrito";
+            btnEliminar.textContent = "Eliminar";
+
+            btnEliminar.addEventListener("click", () => {
+                console.log("Eliminando producto con ID:", producto.id);
+            });
+
+            contenedorAcciones.append(btnAgregar, btnEliminar);
+        //fin de añadir botones catalogo
+        //-------------------------------------------------------------------------------------------//
         // Agregar la información al cuerpo
         cuerpo.append(
             nombre,
             descripcion,
             precio,
             stock,
-            categoria
+            categoria,
+            contenedorAcciones
         );
 
         // Agregar imagen y cuerpo a la tarjeta
