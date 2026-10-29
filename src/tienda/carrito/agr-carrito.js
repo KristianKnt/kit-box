@@ -1,24 +1,25 @@
-// tienda/carrito/agr-carrito.js
-
-const CARRITO_KEY = 'carrito';
+// Usa obtenerCarrito() y guardarCarrito() del archivo localStorage.js
 
 function agregarProductoAlCarrito(producto) {
-    let carrito = JSON.parse(localStorage.getItem(CARRITO_KEY)) || [];
-    const indice = carrito.findIndex(item => item.id === producto.id);
+    const carrito = obtenerCarrito();
+    const productoExistente = carrito.find(item => item.id === producto.id);
 
-    if (indice !== -1) {
-        carrito[indice].cantidad = (carrito[indice].cantidad || 1) + 1;
+    if (productoExistente) {
+        productoExistente.cantidad += 1;
     } else {
-        producto.cantidad = 1;
-        carrito.push(producto);
+        carrito.push({
+            ...producto,
+            cantidad: 1
+        });
     }
 
-    localStorage.setItem(CARRITO_KEY, JSON.stringify(carrito));
-    mostrarMensajeProductoAgregado(producto.nombre);
+    guardarCarrito(carrito);
+    mostrarMensajeExito(producto.nombre);
 }
 
-function mostrarMensajeProductoAgregado(nombreProducto) {
+function mostrarMensajeExito(nombreProducto) {
     const contenedorAlerta = document.getElementById('alerta-contenedor');
+    
     if (contenedorAlerta) {
         contenedorAlerta.innerHTML = `
             <div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
@@ -27,6 +28,6 @@ function mostrarMensajeProductoAgregado(nombreProducto) {
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
             </div>
         `;
-        setTimeout(() => { contenedorAlerta.innerHTML = ''; }, 3500);
+        setTimeout(() => { contenedorAlerta.innerHTML = ''; }, 3000);
     }
 }
