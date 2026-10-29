@@ -10,25 +10,31 @@
     <link rel="icon" type="image/svg+xml" href="../../assets/imagenes/nosotros/Logo.svg">
 </head>
 <body>
+    <div id="header"></div> <!--se carga con js-->
     <main>
         <h1 class="titulo-carrito">Carrito</h1>
         <div class="carrito-div">
             <!---columna izq productos-->
             <section class="carrito-productos-items">
-                <p id="carrito-vacio" class="carrito-vacio">Tu carrito está vacío... por ahora</p><span class="carrito-vacio-texto">Explora nuestro cátalogo para ver los kits disponibles</span>
-                <div class="lista-carrito"></div>
+             <div id="carrito-vacio" class="carrito-vacio">
+                <p class="carrito-vacio-titulo">Tu carrito está vacío... por ahora</p>
+                <span class="carrito-vacio-texto">Explora nuestro catálogo para ver los kits disponibles</span>
+             </div>
+                <div id="lista-carrito"></div>
             </section>
 
             <!---columna der resumen-->
-            
-
-
-
-
+            <section class="carrito-productos-resumen">
+                <p class="carrito-resumen-titulo">Resumen de Compra</p>
+                <p class="carrito-resumen-total">Total: <span id="total-carrito"></span></p>
+                <a href="../catalogo/catalogo.html" class="boton-seguir-comprando">Seguir comprando</a>
+            </section>
         </div>
-
-
-
     </main>
+    <div id="footer"></div>
+    <script src="../../js/components.js"></script>
+    <script src="./localStorage.js"></script>
+    <script src="./render.js"></script>
+    <script src="./cant-carrito.js"></script>
 </body>
 </html>
