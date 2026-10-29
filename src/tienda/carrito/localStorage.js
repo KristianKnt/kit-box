@@ -60,16 +60,44 @@ function agregarProducto(producto) {
 
 
 // 4. Actualizar la cantidad de un producto
-function actualizarCantidad(id, cantidad) {
 
+function actualizarCantidad(id, cantidad) {
+    const carrito = obtenerCarrito();
+
+    const producto = carrito.find(item => item.id === id);
+
+    if (!producto) {
+        return;
+    }
+
+    producto.cantidad = cantidad;
+
+    guardarCarrito(carrito);
 }
+
 
 // 5. Eliminar un producto del carrito
-function eliminarProducto(id) {
 
+function eliminarProducto(id) {
+    const carrito = obtenerCarrito();
+
+    const carritoActualizado = carrito.filter(
+        producto => producto.id !== id
+    );
+
+    guardarCarrito(carritoActualizado);
 }
+
 
 // 6. Calcular el total de la compra
-function calcularTotal() {
 
+function calcularTotal() {
+    const carrito = obtenerCarrito();
+
+    return carrito.reduce(
+        (total, producto) =>
+            total + producto.precio * producto.cantidad,
+        0
+    );
 }
+
