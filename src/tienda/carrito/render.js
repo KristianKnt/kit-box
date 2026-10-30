@@ -1,5 +1,3 @@
-import { obtenerCarrito, calcularTotal } from "./localStorage.js";
-
 function formatearPrecio(valor) {  // Formateo de int a precio en moneda local
   return "$" + Number(valor || 0).toLocaleString("es-CO");
 }
