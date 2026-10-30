@@ -4,9 +4,19 @@ function formatearPrecio(valor) {  // Formateo de int a precio en moneda local
 
 // renderiza una tarjeta individual
 
+// funcion temporal
+function obtenerRutaImagen(ruta) {
+    // Las rutas del JSON empiezan por src/assets/...
+    // Reemplazamos "src/" por "../../" para llegar desde catalogo.html
+    return ruta.replace(/^src\//, "../../");
+}
+
+// fin funcion temporal
+
+
 function crearTarjetaCarrito(producto) {
   const nombre = producto.nombre;
-  const imagen = producto.imagen;
+  const imagen = obtenerRutaImagen(producto.imagen);
   const precio = Number(producto.precio);
   const cantidad = Number(producto.cantidad);
   const subtotal = precio * cantidad;
@@ -64,6 +74,8 @@ function crearTarjetaCarrito(producto) {
     </div>
   `;
 }
+
+
 
 // Renderizacion principal- Pinta todo el carrito
 
