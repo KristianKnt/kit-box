@@ -56,6 +56,9 @@ function manejarClickCantidad(evento) {
     // 5. Guardar y volver a pintar (actualiza cantidad, subtotal y total)
     actualizarCantidad(id, nuevaCantidad);
     renderizarCarrito();
+
+    //Actualiza el contador del carrito
+    actualizarContadorCarrito();
 }
 
 // Un solo listener en el contenedor (delegación de eventos):
