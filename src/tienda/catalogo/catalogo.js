@@ -126,12 +126,10 @@ function pintarTarjetas(productos) {
 
         btnAgregar.addEventListener("click", () => {
             agregarProducto(producto);
-<<<<<<< HEAD
+
             mostrarMensajeExito(producto.nombre);
             actualizarContadorCarrito();
-=======
 
->>>>>>> parent of f1bd4e1 (Merge pull request #70 from KristianKnt/domOBSERVER)
             console.log("Producto agregado al carrito:", producto.nombre);
             console.log("Carrito actualizado:", obtenerCarrito());
         });
@@ -143,11 +141,10 @@ function pintarTarjetas(productos) {
 
         btnEliminar.addEventListener("click", () => {
             console.log("Eliminando producto con ID:", producto.id);
-<<<<<<< HEAD
+
             actualizarContadorCarrito();
             mostrarMensajeEliminado(producto.nombre);
-=======
->>>>>>> parent of f1bd4e1 (Merge pull request #70 from KristianKnt/domOBSERVER)
+
         });
 
         contenedorAcciones.append(btnAgregar, btnEliminar);
