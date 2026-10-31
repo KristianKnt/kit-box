@@ -21,17 +21,6 @@ function agregarProductoAlCarrito(producto) {
     mostrarMensajeExito(producto.nombre);
 }
 
-
-function actualizarContadorCarrito() {
-    const carrito = obtenerCarrito(); 
-    const cantidadTotal = carrito.reduce((total, producto) => total + (producto.cantidad || 1), 0);
-    const contadorElemento = document.getElementById("contador-carrito");
-
-    if (contadorElemento) {
-        contadorElemento.textContent = cantidadTotal;
-    }
-}
-
 function mostrarMensajeExito(nombreProducto) {
     const contenedorAlerta = document.getElementById('alerta-contenedor');
     
@@ -43,30 +32,17 @@ function mostrarMensajeExito(nombreProducto) {
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
             </div>
         `;
-        
-        // Se borra sola a los 3 segundos
-        setTimeout(() => { 
-            contenedorAlerta.innerHTML = ''; 
-        }, 3000);
-    } else {
-        console.warn("No se encontró el contenedor de alertas en el DOM");
+        setTimeout(() => { contenedorAlerta.innerHTML = ''; }, 3000);
     }
 }
 
-function mostrarMensajeEliminado(nombreProducto) {
-    const contenedorAlerta = document.getElementById('alerta-contenedor');
-    
-    if (contenedorAlerta) {
-        contenedorAlerta.innerHTML = `
-            <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
-                🗑️ <strong>${nombreProducto}</strong> se ha eliminado del carrito.
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
-            </div>
-        `;
-        
-        setTimeout(() => { 
-            contenedorAlerta.innerHTML = ''; 
-        }, 3000);
+function actualizarContadorCarrito() {
+    const carrito = obtenerCarrito(); 
+    const cantidadTotal = carrito.reduce((total, producto) => total + (producto.cantidad || 1), 0);
+    const contadorElemento = document.getElementById("contador-carrito");
+
+    if (contadorElemento) {
+        contadorElemento.textContent = cantidadTotal;
     }
 }
 
