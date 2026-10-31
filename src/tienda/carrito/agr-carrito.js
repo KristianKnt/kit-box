@@ -20,7 +20,19 @@ function agregarProductoAlCarrito(producto) {
     actualizarContadorCarrito(); // <-- Actualiza al hacer clic
     mostrarMensajeExito(producto.nombre);
 }
+function eliminarProducto(idOObjeto) {
+    const id = (typeof idOObjeto === 'object' && idOObjeto !== null) ? idOObjeto.id : idOObjeto;
+    const carrito = obtenerCarrito();
+    
+    // Filtramos dejando todo lo que NO sea ese id
+    const carritoActualizado = carrito.filter(item => item.id !== id);
+    guardarCarrito(carritoActualizado);
 
+    // ¡La parte que hace funcionar el globo!
+    if (typeof actualizarContadorCarrito === "function") {
+        actualizarContadorCarrito();
+    }
+}
 
 function actualizarContadorCarrito() {
     const carrito = obtenerCarrito(); 
@@ -71,6 +83,23 @@ function mostrarMensajeEliminado(nombreProducto) {
 }
 
 
-document.addEventListener("DOMContentLoaded", () => {
-    actualizarContadorCarrito();
+// ==========================================
+// INICIALIZACIÓN Y VIGILANCIA DEL CONTADOR
+// ==========================================
+
+// 1. Ejecutar inmediatamente por si el Header ya está en el HTML
+document.addEventListener("DOMContentLoaded", actualizarContadorCarrito);
+
+// 2. Crear el vigilante con instrucción de apagado automático
+const vigilanteDOM = new MutationObserver((mutationsList, observer) => {
+    const contadorElemento = document.getElementById("contador-carrito");
+    
+    // Si detecta que el contador ya fue inyectado en la pantalla
+    if (contadorElemento) {
+        actualizarContadorCarrito(); 
+        observer.disconnect(); // <-- SOLUCIÓN: Apaga el vigilante para romper el bucle infinito
+    }
 });
+
+// 3. Comenzar a vigilar el cuerpo de la página
+vigilanteDOM.observe(document.body, { childList: true, subtree: true });
