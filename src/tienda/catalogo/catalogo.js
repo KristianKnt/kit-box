@@ -141,7 +141,7 @@ function pintarTarjetas(productos) {
 
         btnEliminar.addEventListener("click", () => {
             console.log("Eliminando producto con ID:", producto.id);
-
+            eliminarProducto(producto.id)
             actualizarContadorCarrito();
             mostrarMensajeEliminado(producto.nombre);
 
