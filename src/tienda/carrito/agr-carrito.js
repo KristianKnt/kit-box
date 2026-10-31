@@ -47,6 +47,25 @@ function actualizarContadorCarrito() {
 }
 
 
-document.addEventListener("DOMContentLoaded", () => {
-    actualizarContadorCarrito();
+// ==========================================
+// INICIALIZACIÓN Y VIGILANCIA DEL CONTADOR
+// ==========================================
+
+// 1. Ejecutar inmediatamente por si el Header ya está en la página
+document.addEventListener("DOMContentLoaded", actualizarContadorCarrito);
+
+// 2. Crear un vigilante (Observer) para el Header dinámico en TODAS las vistas
+const vigilanteDOM = new MutationObserver((mutationsList) => {
+    for (const mutation of mutationsList) {
+        if (mutation.type === 'childList') {
+            // Si detecta que el span del contador fue inyectado, actualiza
+            const contadorElemento = document.getElementById("contador-carrito");
+            if (contadorElemento && contadorElemento.textContent === "0") {
+                actualizarContadorCarrito();
+            }
+        }
+    }
 });
+
+// 3. Comenzar a vigilar todo el cuerpo de la página
+vigilanteDOM.observe(document.body, { childList: true, subtree: true });
