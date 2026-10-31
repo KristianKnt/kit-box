@@ -17,6 +17,7 @@ function calcularNuevaCantidad(producto, accion) {
             return cantidadActual; // ya no hay más unidades disponibles
         }
         return cantidadActual + 1;
+        
     }
 
     if (accion === "disminuir") {
@@ -24,6 +25,7 @@ function calcularNuevaCantidad(producto, accion) {
             return cantidadActual; // para quitarlo del todo está el botón de eliminar
         }
         return cantidadActual - 1;
+        
     }
 
     return cantidadActual;
