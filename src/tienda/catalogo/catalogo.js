@@ -126,7 +126,6 @@ function pintarTarjetas(productos) {
 
         btnAgregar.addEventListener("click", () => {
             agregarProducto(producto);
-            mostrarMensajeExito(producto.nombre);
             actualizarContadorCarrito();
             console.log("Producto agregado al carrito:", producto.nombre);
             console.log("Carrito actualizado:", obtenerCarrito());
@@ -140,7 +139,6 @@ function pintarTarjetas(productos) {
         btnEliminar.addEventListener("click", () => {
             console.log("Eliminando producto con ID:", producto.id);
             actualizarContadorCarrito();
-            mostrarMensajeEliminado(producto.nombre);
         });
 
         contenedorAcciones.append(btnAgregar, btnEliminar);
