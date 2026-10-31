@@ -6,9 +6,9 @@ function formatearPrecio(valor) {  // Formateo de int a precio en moneda local
 
 // funcion temporal
 function obtenerRutaImagen(ruta) {
-    // Las rutas del JSON empiezan por src/assets/...
-    // Reemplazamos "src/" por "../../" para llegar desde catalogo.html
-    return ruta.replace(/^src\//, "../../");
+  // Las rutas del JSON empiezan por src/assets/...
+  // Reemplazamos "src/" por "../../" para llegar desde catalogo.html
+  return ruta.replace(/^src\//, "../../");
 }
 
 // fin funcion temporal
@@ -46,8 +46,8 @@ function crearTarjetaCarrito(producto) {
               <div class="d-flex justify-content-between align-items-start gap-2">
                 <h3 class="card-title h5 mb-1">${nombre}</h3>
 
-                <button type="button" class="btn-close" data-accion="eliminar" data-id="${id}"
-                  aria-label="Eliminar ${nombre} del carrito"></button>
+                <!-- Debe verse exactamente así en tu template -->
+              <button type="button" class="btn btn-danger btn-sm text-white" data-accion="eliminar" data-id="${producto.id}">Eliminar</button>
               </div>
 
               <p class="card-text mb-2">${formatearPrecio(precio)} c/u</p>  

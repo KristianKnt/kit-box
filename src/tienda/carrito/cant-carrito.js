@@ -65,6 +65,10 @@ function manejarClickCantidad(evento) {
 
 // Un solo listener en el contenedor (delegación de eventos):
 // funciona aunque las tarjetas se borren y se vuelvan a pintar.
+// ==========================================
+// GESTIÓN DE CLICS EN EL CARRITO (+, − y ELIMINAR)
+// ==========================================
+
 document.addEventListener("DOMContentLoaded", () => {
     const lista = document.getElementById("lista-carrito");
 
@@ -73,5 +77,49 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    lista.addEventListener("click", manejarClickCantidad);
+    // Un solo listener en el contenedor (Delegación de eventos)
+    lista.addEventListener("click", (e) => {
+        
+        // 1. ¿Se tocó un botón de Aumentar o Disminuir?
+        const botonCantidad = e.target.closest('[data-accion="aumentar"], [data-accion="disminuir"]');
+        if (botonCantidad) {
+            const id = botonCantidad.dataset.id;
+            const accion = botonCantidad.dataset.accion;
+            
+            const producto = obtenerCarrito().find(item => item.id === id);
+            if (!producto) return;
+
+            const nuevaCantidad = calcularNuevaCantidad(producto, accion);
+            if (nuevaCantidad === Number(producto.cantidad)) return;
+
+            actualizarCantidad(id, nuevaCantidad);
+            renderizarCarrito();
+            actualizarContadorCarrito();
+            return; 
+        }
+
+        // 2. ¿Se tocó el botón de Eliminar?
+        const botonEliminar = e.target.closest('[data-accion="eliminar"]');
+        if (botonEliminar) {
+            const idProducto = botonEliminar.dataset.id;
+            
+            // Verificamos si el ID existe en el botón
+            if (!idProducto) {
+                console.error("El ID del producto es nulo. Revisa el atributo data-id en tu HTML.");
+                return;
+            }
+
+            // Validamos y llamamos a la función de eliminación real que tengas disponible
+            if (typeof eliminarProductoDelCarrito === "function") {
+                eliminarProductoDelCarrito(idProducto);
+            } else if (typeof eliminarProducto === "function") {
+                // Si tu función se llama 'eliminarProducto', la usamos aquí:
+                eliminarProducto(idProducto);
+                renderizarCarrito();
+            } else {
+                console.error("No se encontró ninguna función de eliminación (ni eliminarProductoDelCarrito ni eliminarProducto).");
+            }
+            return;
+        }
+    });
 });
