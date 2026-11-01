@@ -67,22 +67,43 @@ function mostrarMensajeExito(nombreProducto) {
 
 function mostrarMensajeEliminado(nombreProducto) {
     const contenedorAlerta = document.getElementById('alerta-contenedor');
-    
+
     if (contenedorAlerta) {
         contenedorAlerta.innerHTML = `
-            <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
-                🗑️ <strong>${nombreProducto}</strong> se ha eliminado del carrito.
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+            <div class="alerta-carrito" role="alert">
+                <span class="alerta-carrito-icono">✓</span>
+                <div>
+                    <strong>Producto eliminado</strong>
+                    <p>${nombreProducto} se quitó del carrito.</p>
+                </div>
             </div>
         `;
-        
-        setTimeout(() => { 
-            contenedorAlerta.innerHTML = ''; 
+
+        setTimeout(() => {
+            contenedorAlerta.innerHTML = '';
         }, 3000);
     }
 }
 
+function mostrarMensajeAdvertencia(titulo, texto) {
+    const contenedorAlerta = document.getElementById('alerta-contenedor');
 
+    if (contenedorAlerta) {
+        contenedorAlerta.innerHTML = `
+            <div class="alerta-carrito" role="alert">
+                <span class="alerta-carrito-icono">!</span>
+                <div>
+                    <strong>${titulo}</strong>
+                    <p>${texto}</p>
+                </div>
+            </div>
+        `;
+
+        setTimeout(() => {
+            contenedorAlerta.innerHTML = '';
+        }, 3000);
+    }
+}
 // ==========================================
 // INICIALIZACIÓN Y VIGILANCIA DEL CONTADOR
 // ==========================================

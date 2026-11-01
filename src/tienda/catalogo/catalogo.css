@@ -235,6 +235,131 @@ body {
     color: #ffffff !important;
 }
 
+
+/*estilos prueba JUliana Bernal*/
+.tarjeta {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    background-color: #fff;
+    border: 1px solid var(--paleta-fondo);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+}
+
+.tarjeta:hover {
+    border-color: var(--paleta-botones);
+}
+
+.tarjeta-imagen {
+    width: 100%;
+    height: 80%;
+    background-color: var(--paleta-fondo);
+}
+
+.tarjeta-categoria {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 80%;
+    margin: 0;
+    padding: 4px 12px;
+    background-color: var(--paleta-botones);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border-radius: 0 0 8px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tarjeta-cuerpo {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 0.4rem;
+    padding: 0.9rem 1rem 1rem;
+}
+
+.tarjeta-nombre {
+    margin: 0;
+    color: var(--paleta-primary);
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.tarjeta-descripcion {
+    margin: 0;
+    color: var(--paleta-header-footer);
+    font-size: 0.9rem;
+    line-height: 1.45;
+}
+
+.tarjeta-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: 0.4rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--paleta-fondo);
+}
+
+.tarjeta-precio {
+    margin: 0;
+    color: var(--paleta-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.tarjeta-stock {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0;
+    padding: 3px 10px;
+    background-color: color-mix(in srgb, var(--paleta-color3) 25%, #fff);
+    color: var(--paleta-primary);
+    font-size: 0.78rem;
+    border-radius: 999px;
+}
+
+.tarjeta-stock::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--paleta-header-footer);
+    flex-shrink: 0;
+}
+
+.tarjeta-acciones {
+    margin-top: auto;
+    padding-top: 0.5rem;
+}
+
+.btn-agregar-carrito {
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--paleta-primary);
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-agregar-carrito:hover {
+    background-color: var(--boton-primario-hover);
+}
 /* ===================== RESPONSIVE ===================== */
 @media (max-width: 1280px) {
     .banner-contacto-fondo {
