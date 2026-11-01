@@ -53,15 +53,13 @@ function pintarTarjetas(productos) {
 
         // Crear la tarjeta
         const tarjeta = document.createElement("div");
-        tarjeta.className = "card h-100 shadow-sm";
+        tarjeta.className = "tarjeta";
 
         // Crear la imagen
         const imagen = document.createElement("img");
 
         imagen.alt = producto.nombre;
-        imagen.className = "card-img-top py-2";
-        imagen.style.height = "220px";
-        imagen.style.objectFit = "contain";
+        imagen.className = "tarjeta-imagen";
 
         // Mostrar un aviso si no se encuentra la imagen
         imagen.addEventListener("error", () => {
@@ -79,23 +77,23 @@ function pintarTarjetas(productos) {
 
         // Crear el cuerpo de la tarjeta
         const cuerpo = document.createElement("div");
-        cuerpo.className = "card-body";
+        cuerpo.className = "tarjeta-cuerpo";
 
         // Nombre
         const nombre = document.createElement("h3");
-        nombre.className = "card-title h5";
+        nombre.className = "tarjeta-nombre";
         nombre.textContent = producto.nombre;
 
         // Descripción
         const descripcion = document.createElement("p");
-        descripcion.className = "card-text";
+        descripcion.className = "tarjeta-descripcion";
         descripcion.textContent = producto.descripcion;
 
         // Precio
         const precio = document.createElement("p");
-        precio.className = "fw-bold text-success";
+        precio.className = "tarjeta-precio";
         precio.textContent =
-            `Precio: ${Number(producto.precio).toLocaleString("es-CO", {
+            `${Number(producto.precio).toLocaleString("es-CO", {
                 style: "currency",
                 currency: "COP",
                 maximumFractionDigits: 0
@@ -103,19 +101,21 @@ function pintarTarjetas(productos) {
 
         // Stock
         const stock = document.createElement("p");
-        stock.textContent = `Stock: ${producto.stock} unidades`;
+        stock.className = "tarjeta-stock";
+        stock.textContent = `${producto.stock} disponibles`;
 
         // Categoría
         const categoria = document.createElement("p");
-        categoria.textContent = `Categoría: ${producto.categoria}`;
+        categoria.className = "tarjeta-categoria";
+        categoria.textContent = producto.categoria;
         //----------------------------------------------------------------------------------------------//
         //agregar botones agregar eliminar carrito
         // 1. Crear contenedor de acciones (para ordenar los botones en fila o columna)
         const contenedorAcciones = document.createElement("div");
-        contenedorAcciones.className = "mt-auto d-flex gap-2 pt-2";
+        contenedorAcciones.className = "tarjeta-acciones";
 
         const btnAgregar = document.createElement("button");
-        btnAgregar.className = "btn btn-sm w-100 btn-agregar-carrito";
+        btnAgregar.className = "btn-agregar-carrito";
         btnAgregar.textContent = "Añadir";
 
         btnAgregar.dataset.id = producto.id;
@@ -135,7 +135,7 @@ function pintarTarjetas(productos) {
         });
 
 
-        const btnEliminar = document.createElement("button");
+        /*const btnEliminar = document.createElement("button");
         btnEliminar.className = "btn btn-sm w-100 btn-eliminar-carrito";
         btnEliminar.textContent = "Eliminar";
 
@@ -147,15 +147,21 @@ function pintarTarjetas(productos) {
 
         });
 
-        contenedorAcciones.append(btnAgregar, btnEliminar);
+        
+        */
+        const info = document.createElement("div");
+        info.className = "tarjeta-info";
+        info.append(precio, stock);
+        contenedorAcciones.append(btnAgregar);
         //fin de añadir botones catalogo
+
         //-------------------------------------------------------------------------------------------//
         // Agregar la información al cuerpo
+
         cuerpo.append(
             nombre,
             descripcion,
-            precio,
-            stock,
+            info,
             categoria,
             contenedorAcciones
         );
