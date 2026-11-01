@@ -50,10 +50,15 @@ function manejarClickCantidad(evento) {
     }
 
     // 4. Calcular la cantidad nueva y, si no cambió, no hacer nada
-    const nuevaCantidad = calcularNuevaCantidad(producto, accion);
-    if (nuevaCantidad === Number(producto.cantidad)) {
-        return;
+const nuevaCantidad = calcularNuevaCantidad(producto, accion);
+if (nuevaCantidad === Number(producto.cantidad)) {
+    if (accion === "disminuir") {
+        mostrarMensajeAdvertencia("La cantidad mínima es 1. Si no lo quieres, usa Eliminar.");
+    } else {
+        mostrarMensajeAdvertencia(`Solo hay ${producto.stock} unidades disponibles de este kit.`);
     }
+    return;
+}
 
     // 5. Guardar y volver a pintar (actualiza cantidad, subtotal y total)
     actualizarCantidad(id, nuevaCantidad);
@@ -90,7 +95,14 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!producto) return;
 
             const nuevaCantidad = calcularNuevaCantidad(producto, accion);
-            if (nuevaCantidad === Number(producto.cantidad)) return;
+            if (nuevaCantidad === Number(producto.cantidad)) {
+                if (accion === "disminuir") {
+                    mostrarMensajeAdvertencia("Cantidad mínima", "Si no lo quieres, usa Eliminar.");                
+                } else {
+                    mostrarMensajeAdvertencia("Stock máximo", `Solo hay ${producto.stock} unidades disponibles de este kit.`);
+                }
+                return;
+            }
 
             actualizarCantidad(id, nuevaCantidad);
             renderizarCarrito();
@@ -113,9 +125,14 @@ document.addEventListener("DOMContentLoaded", () => {
             if (typeof eliminarProductoDelCarrito === "function") {
                 eliminarProductoDelCarrito(idProducto);
             } else if (typeof eliminarProducto === "function") {
-                // Si tu función se llama 'eliminarProducto', la usamos aquí:
+                const producto = obtenerCarrito().find(item => item.id === idProducto);
                 eliminarProducto(idProducto);
                 renderizarCarrito();
+                if (producto) {
+                    mostrarMensajeEliminado(producto.nombre);
+                }
+            
+            
             } else {
                 console.error("No se encontró ninguna función de eliminación (ni eliminarProductoDelCarrito ni eliminarProducto).");
             }
