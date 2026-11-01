@@ -37,12 +37,12 @@ function crearTarjetaCarrito(producto) {
       <article class="card item-carrito shadow-sm" data-id="${id}">
         <div class="row g-0 align-items-center">
 
-          <div class="col-4 col-md-3">
+         <div class="col-12 col-sm-4 col-md-3">
             <img src="${imagen}" alt="${nombre}" class="img-fluid rounded-start imagen-item-carrito">
           </div>
 
-          <div class="col-8 col-md-9">
-            <div class="card-body info-item-carrito">
+            <div class="col-12 col-sm-8 col-md-9">           
+             <div class="card-body info-item-carrito">
               <div class="d-flex justify-content-between align-items-start gap-2">
                 <h3 class="card-title h5 mb-1">${nombre}</h3>
 
