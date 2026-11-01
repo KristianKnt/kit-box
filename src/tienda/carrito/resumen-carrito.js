@@ -13,8 +13,9 @@ for (const producto of carritoProductos) {
         <span class="resumen-subtotal fw-semibold">${formatearPrecio(subTotal)}</span>
     </li>
     `;
-    divResumen.innerHTML = acumuladorResumen;
 }
+    divResumen.innerHTML = acumuladorResumen;
+
 }
 
 document.addEventListener("DOMContentLoaded", () => {
