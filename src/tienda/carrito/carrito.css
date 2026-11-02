@@ -194,6 +194,32 @@ main {
     max-width: calc(100% - 2rem);
     z-index: 1080;
 }
+
+@media (max-width: 575px) {
+    .item-carrito .row {
+        display: grid;
+        grid-template-columns: 90px 1fr;
+    }
+
+    .info-item-carrito {
+        padding: 0 0 0 0.75rem;
+    }
+
+    .info-item-carrito .d-flex {
+        flex-wrap: wrap;
+    }
+        .item-carrito .card-title {
+        font-size: 1rem;
+    }
+
+    .item-carrito .card-text {
+        font-size: 0.85rem;
+    }
+
+    .item-carrito .btn-danger {
+        font-size: 0.75rem;
+    }
+}
   
 @media (max-width: 1024px) {
     main{
@@ -222,4 +248,5 @@ main {
     .carrito-productos-resumen{
         padding: 1rem;
     }
+
 }
