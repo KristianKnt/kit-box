@@ -1,0 +1,46 @@
+<form id="formulario-crear-cuenta" method="post">
+    <div class="registro-campos">
+        <div class="registro-campo">
+            <label for="registro-nombre">Nombre</label>
+            <input id="registro-nombre" name="nombre" type="text" autocomplete="given-name" required maxlength="60"
+                placeholder="Tu nombre">
+        </div>
+
+        <div class="registro-campo">
+            <label for="registro-apellido">Apellido</label>
+            <input id="registro-apellido" name="apellido" type="text" autocomplete="family-name" required maxlength="60"
+                placeholder="Tu apellido">
+        </div>
+
+        <div class="registro-campo registro-campo-completo">
+            <label for="registro-correo">Correo electrónico</label>
+            <input id="registro-correo" name="correo" type="email" autocomplete="email" required maxlength="254"
+                placeholder="tu@correo.com">
+        </div>
+
+        <div class="registro-campo registro-campo-completo">
+            <label for="registro-telefono">Teléfono <span>(opcional)</span></label>
+            <input id="registro-telefono" name="telefono" type="tel" autocomplete="tel" inputmode="tel"
+                pattern="[+]?[0-9 ()-]{7,20}" title="Ingresa un teléfono válido." placeholder="+57 300 123 4567">
+        </div>
+
+        <div class="registro-campo registro-campo-completo">
+            <label for="registro-contrasena">Contraseña</label>
+            <input id="registro-contrasena" name="contrasena" type="password" autocomplete="new-password" required
+                minlength="8" maxlength="128" aria-describedby="ayuda-contrasena"
+                placeholder="Mínimo 8 caracteres">
+            <small id="ayuda-contrasena">Usa al menos 8 caracteres.</small>
+        </div>
+
+        <div class="registro-campo registro-campo-completo">
+            <label for="registro-confirmar-contrasena">Confirmar contraseña</label>
+            <input id="registro-confirmar-contrasena" name="confirmar-contrasena" type="password"
+                autocomplete="new-password" required minlength="8" maxlength="128"
+                aria-describedby="error-contrasenas" placeholder="Escribe de nuevo tu contraseña">
+            <small id="error-contrasenas" class="registro-error" aria-live="polite"></small>
+        </div>
+    </div>
+
+    <button class="registro-boton" type="submit">Crear cuenta</button>
+    <p id="mensaje-registro" class="registro-mensaje" role="status" aria-live="polite"></p>
+</form>
