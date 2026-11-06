@@ -173,6 +173,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
             event.preventDefault();
 
+            const usuario = crearUsuario(
+                `${campos.nombre.value} ${campos.apellido.value}`,
+                campos.telefono.value,
+                campos.correo.value,
+                campos.contrasena.value
+            );
+
+            if (!registrarUsuario(usuario)) {
+                mostrarError(campos.correo, "Este correo ya está registrado.");
+                return;
+            }
+
             //Mostrar la ventana emergente de alerta
             mostrarAlertaBonita("¡Cuenta creada exitosamente!");
 
