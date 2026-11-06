@@ -1,40 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>  <!-- Se carga con CSS e imagenes -->
+    <title>Registro</title> <!-- Se carga con CSS e imagenes -->
     <link rel="stylesheet" href="./paginaRegistro.css">
+    <link rel="stylesheet" href="./formularioRegistro.css">
     <link rel="stylesheet" href="../components/header/header.css">
     <link rel="stylesheet" href="../components/footer/footer.css">
     <link rel="icon" type="image/svg+xml" href="../assets/imagenes/nosotros/Logo.svg">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" 
-    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
 </head>
+
 <body>
 
     <!-- HEADER -->
 
-    <div id="header"></div>  <!-- Se carga con JS-->
+    <div id="header"></div> <!-- Se carga con JS-->
 
-    <section>
+    <!-- CONTENEDOR FORMULARIO-->
 
-        
+    <div class="container-fluid">
 
-    </section>
+        <!--seccion formulario y localizacion-->
+        <section class="seccion_formulario_localizacion">
+            <!-- IMPORTANTE: El contenedor padre debe tener class="row" -->
+            <div class="row p-5 justify-content-center">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="p-2 p-md-5 border rounded shadow-sm fondo-formulario-contenedor">
+                        <h3 class="text-center mb-4">Registro de Usuarios</h3>
 
-    <!-- FOOTER-->  <!-- Se carga con JS -->
+                        <!-- FORMULARIOREGISTRO EN HTML-->
+
+                        <form id="formulario-crear-cuenta" method="post">
+                            <div class="registro-campos">
+                                <div class="registro-campo">
+                                    <label for="registro-nombre">Nombre</label>
+                                    <input id="registro-nombre" name="nombre" type="text" autocomplete="given-name"
+                                        required maxlength="60" placeholder="Tu nombre">
+                                </div>
+
+                                <div class="registro-campo">
+                                    <label for="registro-apellido">Apellido</label>
+                                    <input id="registro-apellido" name="apellido" type="text" autocomplete="family-name"
+                                        required maxlength="60" placeholder="Tu apellido">
+                                </div>
+
+                                <div class="registro-campo registro-campo-completo">
+                                    <label for="registro-correo">Correo electrónico</label>
+                                    <input id="registro-correo" name="correo" type="email" autocomplete="email" required
+                                        maxlength="254" placeholder="tu@correo.com">
+                                </div>
+
+                                <div class="registro-campo registro-campo-completo">
+                                    <label for="registro-telefono">Teléfono <span>(opcional)</span></label>
+                                    <input id="registro-telefono" name="telefono" type="tel" autocomplete="tel"
+                                        inputmode="tel" pattern="[+]?[0-9 ()-]{7,20}"
+                                        title="Ingresa un teléfono válido." placeholder="+57 300 123 4567">
+                                </div>
+
+                                <div class="registro-campo registro-campo-completo">
+                                    <label for="registro-contrasena">Contraseña</label>
+                                    <input id="registro-contrasena" name="contrasena" type="password"
+                                        autocomplete="new-password" required minlength="8" maxlength="128"
+                                        aria-describedby="ayuda-contrasena" placeholder="Mínimo 8 caracteres">
+                                    <small id="ayuda-contrasena">Usa al menos 8 caracteres.</small>
+                                </div>
+
+                                <div class="registro-campo registro-campo-completo">
+                                    <label for="registro-confirmar-contrasena">Confirmar contraseña</label>
+                                    <input id="registro-confirmar-contrasena" name="confirmar-contrasena"
+                                        type="password" autocomplete="new-password" required minlength="8"
+                                        maxlength="128" aria-describedby="error-contrasenas"
+                                        placeholder="Escribe de nuevo tu contraseña">
+                                    <small id="error-contrasenas" class="registro-error" aria-live="polite"></small>
+                                </div>
+                            </div>
+
+                            <button class="registro-boton" type="submit">Crear cuenta</button>
+                            <p id="mensaje-registro" class="registro-mensaje" role="status" aria-live="polite"></p>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER--> <!-- Se carga con JS -->
 
     <div id="footer"></div>
 
-    <!-- COMPONENTES -->  <!-- Se carga con JS -->
+    <!-- COMPONENTES --> <!-- Se carga con JS -->
 
     <script src="../js/components.js"></script>
     <script src="../tienda/carrito/agr-carrito.js"></script>
     <script src="../tienda/carrito/agr-carrito.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" 
-    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

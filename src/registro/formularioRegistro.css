@@ -78,3 +78,8 @@ small{
     font-size: 0.8rem;
     color: color-mix(in srgb, var(--paleta-primary) 70%, transparent);
 }
+
+.fondo-formulario-contenedor{
+    background-color: var(--paleta-fondo);
+    border: var(--paleta-botones);
+}
