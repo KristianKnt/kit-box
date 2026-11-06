@@ -20,13 +20,22 @@
     border: 1px solid var(--paleta-primary);
     display: flex;
     flex-direction: column;
-    padding: 2rem;
-    width: 400px;
+    padding: 1.25rem;
+    width: 100%;
+    max-width: 400px;
+    margin-inline: auto;
     font-family: var(--fuente-principal);
     border-radius: 12px;
     background-color: color-mix(in srgb, var(--paleta-formulario) 70%, transparent);
     box-shadow: 0 4px 16px color-mix(in srgb, var(--paleta-primary) 12%, transparent);
 }
+
+@media (min-width: 576px) {
+    #formulario-crear-cuenta {
+        padding: 2rem;
+    }
+}
+
 label{
     display: block;
     color: var(--paleta-botones);
@@ -81,5 +90,6 @@ small{
 
 .fondo-formulario-contenedor{
     background-color: var(--paleta-fondo);
-    border: var(--paleta-botones);
+    border: 0;
+    box-shadow: none;
 }
