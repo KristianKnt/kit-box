@@ -5,13 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title> <!-- Se carga con CSS e imagenes -->
-    <link rel="stylesheet" href="./paginaRegistro.css">
-    <link rel="stylesheet" href="./formularioRegistro.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="../components/header/header.css">
     <link rel="stylesheet" href="../components/footer/footer.css">
+    <link rel="stylesheet" href="./paginaRegistro.css">
+    <link rel="stylesheet" href="./formularioRegistro.css">
     <link rel="icon" type="image/svg+xml" href="../assets/imagenes/nosotros/Logo.svg">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
 
 </head>
 
@@ -23,14 +25,14 @@
 
     <!-- CONTENEDOR FORMULARIO-->
 
-    <div class="container-fluid">
+    <div class="container-fluid container-md py-4 py-md-5 px-2 px-sm-3">
 
         <!--seccion formulario y localizacion-->
         <section class="seccion_formulario_localizacion">
             <!-- IMPORTANTE: El contenedor padre debe tener class="row" -->
-            <div class="row p-5 justify-content-center">
-                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                    <div class="p-2 p-md-5 border rounded shadow-sm fondo-formulario-contenedor">
+            <div class="row justify-content-center g-0">
+                <div class="col-12 col-md-10 col-lg-7 col-xl-6">
+                    <div class="p-3 p-md-5 border rounded shadow-sm fondo-formulario-contenedor">
                         <h3 class="text-center mb-4">Registro de Usuarios</h3>
 
                         <!-- FORMULARIOREGISTRO EN HTML-->
@@ -80,7 +82,12 @@
                                 </div>
                             </div>
 
-                            <button class="registro-boton" type="submit">Crear cuenta</button>
+                            <!-- BOTON REGISTRO -->
+
+                            <div class="text-center mt-4">
+                            <button class="registro-boton w-100 w-md-auto" type="submit">Crear cuenta</button>
+                            </div>
+
                             <p id="mensaje-registro" class="registro-mensaje" role="status" aria-live="polite"></p>
                         </form>
 
