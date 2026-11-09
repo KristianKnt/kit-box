@@ -89,39 +89,64 @@ body {
     margin: 0; /*quitamos el margen que el navegador pone por defecto*/
 }
 
-/*----------------------------------------------------Diana O-----------------------------------------------*/
-/* Estilos principal hoja*/
+
 .container-fluid {
     background-color: color-mix(in srgb, var(--paleta-fondo) 70%, white);
-    
+    display: flow-root;
 }
+
 #contenedor-principal {
     padding: 0;
-    
+}
+
+.seccion_formulario_localizacion {
+    max-width: 1100px;
+    margin: 40px auto;
+    background-color: var(--paleta-formulario);
+    border: 1px solid var(--paleta-color3);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.seccion_formulario_localizacion .col-lg-4::after {
+    content: "";
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+    width: 560px;
+    height: 560px;
+    background: url("../../assets/imagenes/nosotros/espiga-tarjetas.png") no-repeat right bottom / contain;
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+.col-lg-4 > div {
+    position: relative;
+    z-index: 1;
 }
 
 .seccion_formulario_localizacion > .row {
     display: grid;
-    gap: 24px;
-
+    gap: 0;
+    margin: 0;
+    padding: 0 !important;
 }
 
 .seccion_formulario_localizacion > .row > * {
     width: auto;
+    margin-top: 0;
+    padding: 0;
 }
 
-.seccion_formulario_localizacion .fondo-formulario-contenedor,
-.seccion_formulario_localizacion .col-lg-4 {
+.seccion_formulario_localizacion .fondo-formulario-contenedor {
     background-color: var(--paleta-formulario);
     color: var(--paleta-primary);
-    border: 1px solid var(--paleta-color3) !important;
-    border-radius: 12px !important;
+    border: 0 !important;
+    border-radius: 0 !important;
     box-shadow: none !important;
-    
+    height: 100%;
 }
 
-/* Fin estilos principal hoja*/
-/*Formuario inicio estilos*/
 .fondo-formulario-contenedor h3 {
     font-size: 1.5rem;
     font-weight: 600;
@@ -136,14 +161,20 @@ body {
     margin: 0px 0 0;
 }
 
-/* 2. Estilo unificado para todos los inputs y textareas */
-.formulario-centrado input,
-.formulario-centrado textarea {
-    padding: 5px 10px;     /* Relleno interno cómodo */
-    border: 1px solid var(--paleta-color3);
+.formulario-centrado .text-danger,
+.formulario-centrado .text-success {
+    font-size: 0.75rem;
+    margin-top: 4px;
 }
 
-/* Efecto al hacer clic en un campo */
+.formulario-centrado input,
+.formulario-centrado textarea {
+    padding: 8px 12px;
+    background-color: #fff;
+    border: 1px solid var(--paleta-color3);
+    border-radius: 8px;
+}
+
 .formulario-centrado input:focus,
 .formulario-centrado textarea:focus {
     border-color: var(--paleta-primary);
@@ -151,68 +182,58 @@ body {
     box-shadow: 0 0 0 3px color-mix(in srgb, var(--paleta-primary) 20%, transparent);
 }
 
-/* 4. Botón de envío */
+/* Botón envio*/
 #boton-enviar-formulario-contacto {
-    padding: 12px 20px;     /* Relleno vertical u horizontal proporcional */
+    padding: 12px 20px;
     background-color: var(--paleta-primary);
     border: none;
+    border-radius: 8px;
     font-weight: 600;
 }
 
-/* Efecto al pasar el cursor sobre el botón */
 #boton-enviar-formulario-contacto:hover {
-    background-color: color-mix(in srgb, var(--paleta-primary) 70%, black);
+    background-color: color-mix(in srgb, var(--paleta-botones) 75%, black);
 }
-/*Formuario Estilos fin */
 
-/*---------------------------------------------------- Fin Diana O-----------------------------------------------*/
-
-
-/* ------------------------------------------- estilos de Cristian inico---------------------------------------- */
 .seccion_formulario_localizacion .col-lg-4 {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-}
-
-.col-lg-4 > div:first-child,
-#div-mapa,
-#div-informacion-contacto {
-    background-color: transparent !important;
+    background-color: var(--paleta-primary);
+    color: #fff;
     border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 20px !important;
+    position: relative;
+    overflow: hidden;
 }
 
 .col-lg-4 > div:first-child {
+    background-color: transparent !important;
+    border: 0 !important;
     padding: 0 !important;
-    margin-bottom: 12px;
+    margin-bottom: 20px;
 }
 
 #div-mapa {
+    background-color: transparent !important;
+    border: 0 !important;
     border-radius: 12px;
     overflow: hidden;
 }
- 
+
 #mapa {
     width: 100%;
-    height: 260px;
+    height: 220px;
     display: block;
 }
- 
-.imagenes-contacto {
-    width: 40px;
-    height: 40px;
-    padding: 8px;
-    background-color: var(--paleta-color3);
-    border-radius: 50%;
-    object-fit: contain;
-}
- 
+
 #div-informacion-contacto {
-    padding: 20px !important;
+    background-color: transparent !important;
+    border: 0 !important;
+    padding: 0 !important;
 }
 
 #div-informacion-contacto h3 {
+    color: #fff;
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 16px;
@@ -228,24 +249,35 @@ body {
 }
 
 #div-informacion-contacto h5 {
+    color: #fff;
     font-size: 1rem;
     font-weight: 600;
     margin: 0;
 }
 
 #div-informacion-contacto h6 {
+    color: #fff;
     font-size: 0.9rem;
     font-weight: 400;
     margin: 2px 0;
 }
 
 #div-informacion-contacto p {
-    color: color-mix(in srgb, var(--paleta-primary) 80%, transparent);
+    color: #D9E5DC;
     font-size: 0.85rem;
     margin: 0;
 }
 
-/* ------------------------------------------- estilos de Cristian fin---------------------------------------- */
+.imagenes-contacto {
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    background-color: var(--paleta-color3);
+    border-radius: 50%;
+    object-fit: contain;
+}
+
+
 /*RESPONSIVE*/
 @media (max-width: 1280px) {
     .banner-contacto-fondo {
@@ -291,6 +323,10 @@ body {
     .banner-contacto-titulo {
         font-size: 1.6rem;
     }
+
+    .seccion_formulario_localizacion {
+        margin: 24px 12px;
+    }
 }
 
 @media (max-width: 420px) {
@@ -301,8 +337,6 @@ body {
 
 @media (min-width: 992px) {
     .seccion_formulario_localizacion > .row {
-        grid-template-columns: minmax(0, 800px) minmax(0, 400px);
-        justify-content: center;
-        gap: 60px;
+        grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
     }
 }
