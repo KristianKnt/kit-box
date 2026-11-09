@@ -1,179 +1,134 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
-
-:root {
-    --paleta-primary: #1E4437;
-    /*paleta*/
-    --paleta-formulario: #EFEBE2;
-    /*paleta*/
-    --paleta-color3: #8FAE9A;
-    /*paleta*/
-    --paleta-botones: #886F56;
-    /*paleta*/
-    --paleta-fondo: #E7E8E3;
-    /*paleta*/
-    --paleta-header-footer: #586F57;
-    /*paleta*/
-    --tamaño-titulo-banner: clamp(1.6rem, 4.5vw, 40px);
-    --espacio-lateral: 55px;
-
-
-}
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-    /*reset de pagina*/
-}
+/* ===== PÁGINA DE REGISTRO =====
+   La paleta, la fuente y el reset vienen de ../css/global.css */
 
 html, body {
     max-width: 100%;
     overflow-x: hidden;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-body {
-    margin: 0;
-    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: color-mix(in srgb, var(--paleta-fondo) 30%, transparent)
-}
-
 #footer {
     width: 100%;
 }
 
-/*---------------------------------------- FORMULARIO DE REGISTRO ------------------------------------------------------*/
+/*------------------------------------------- CONTENEDOR DE LA PÁGINA -------------------------------------------------*/
 
-.registro-campos {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
+.registro-pagina {
+    padding: 48px var(--espacio-lateral);
 }
 
-.registro-campo {
+/* Tarjeta con los dos paneles (la fila de Bootstrap la parte en columnas) */
+.registro-tarjeta {
+    max-width: 1070px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden; /* las esquinas redondeadas también recortan los paneles */
+    background-color: var(--paleta-formulario);
+    box-shadow: 0 12px 32px color-mix(in srgb, var(--paleta-primary) 14%, transparent);
+}
+
+/*------------------------------------------- PANEL IZQUIERDO: BIENVENIDA ---------------------------------------------*/
+
+.registro-bienvenida {
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    min-width: 0;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 64px;
+    color: #FFFFFF;
+    background-color: var(--paleta-primary);
 }
 
-.registro-campo-input {
-    width: 100%;
-    max-width: 100%;
+.registro-etiqueta {
+    padding: 6px 14px;
+    border: 1px solid color-mix(in srgb, #FFFFFF 45%, transparent);
+    border-radius: 999px;
+    background-color: color-mix(in srgb, #FFFFFF 8%, transparent);
+    color: #FFFFFF;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-.registro-campo-completo {
-    grid-column: 1 / -1;
+.registro-etiqueta:hover,
+.registro-etiqueta:focus-visible {
+    color: #FFFFFF;
+    background-color: color-mix(in srgb, #FFFFFF 18%, transparent);
+    border-color: #FFFFFF;
 }
 
-.fondo-formulario-contenedor {
-    width: 100%;
-    max-width: 100%;
+.registro-titulo {
+    margin: 0;
+    font-size: clamp(2rem, 3.6vw, 3.1rem);
+    font-weight: 700;
+    line-height: 1.15;
 }
 
-.registro-campo input,
-.registro-boton {
-    width: 100%;
-    max-width: 100%;
-    font-size: 16px;
+.registro-texto {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: color-mix(in srgb, #FFFFFF 88%, var(--paleta-color3));
+}
+
+/*------------------------------------------- PANEL DERECHO: FORMULARIO ----------------------------------------------*/
+
+.registro-contenido {
+    padding: 40px 64px 56px;
+    background-color: var(--paleta-formulario);
+}
+
+.registro-encabezado {
+    margin: 0 0 8px;
+    font-size: clamp(1.8rem, 3vw, 2.3rem);
+    font-weight: 600;
+    color: var(--paleta-primary);
+}
+
+.registro-subtitulo {
+    margin: 0 0 28px;
+    font-size: 1rem;
+    color: color-mix(in srgb, var(--paleta-primary) 75%, transparent);
 }
 
 /*--------------------------------------------- RESPONSIVE -----------------------------------------------------------*/
 
-@media (max-width: 1280px) {
-    .banner-contacto-fondo {
-        padding-left: var(--espacio-lateral); /* 55px: alineado con el logo del header y las tarjetas */
-        padding-right: var(--espacio-lateral);
-    }
-}
-
-@media (min-width: 901px) and (max-width: 1280px) {
-    .banner-contacto-fondo {
-        background-image:
-            url("../../assets/imagenes/contacto/hoja-contacto.png"),      /*capa 1: la ramita (arriba)*/
-            linear-gradient(90deg, rgba(244, 242, 236, 0.95) 0%, rgba(244, 242, 236, 0.8) 45%, rgba(244, 242, 236, 0) 75%), /*capa 2: degradado*/
-            url("../../assets/imagenes/contacto/banner-contacto.png");    /*capa 3: la imagen grande (abajo)*/
-        background-size: auto 100%, auto, cover;           /*un tamaño para cada capa, en el mismo orden*/
-        background-position: left center, left, right center;
-        background-repeat: no-repeat;
-        padding-left: 200px; /*corre el texto a la derecha para que no quede encima de la ramita*/
-
-    }
-}
-
-/* Tablet */
-@media (max-width: 900px) {
-
-    .seccion-valores,
-    .nuestro-equipo {
-        padding-left: 20px;
-        padding-right: 20px;
+/* Tablet: los paneles se apilan y el de bienvenida queda como una franja arriba */
+@media (max-width: 991.98px) {
+    .registro-pagina {
+        padding: 32px 20px;
     }
 
-    .banner-contacto-fondo {
-        height: 280px;
-        padding: 25px 20px;
-        background-image:
-            linear-gradient(90deg, rgba(244, 242, 236, 0.95) 0%, rgba(244, 242, 236, 0.8) 45%, rgba(244, 242, 236, 0) 75%),
-            url("../../assets/imagenes/contacto/banner-contacto.png");
-        background-size: cover;
-        background-position: right center;
+    .registro-bienvenida {
+        padding: 36px 40px;
+        gap: 14px;
     }
 
-    .banner-contacto-informacion {
-        max-width: 60%; /* el texto no se mete sobre la caja de la imagen */
+    .registro-titulo {
+        font-size: clamp(1.7rem, 5vw, 2.4rem);
     }
 
-    .seccion-tarjetas,
-    .seccion-mision-vision {
-        grid-template-columns: 1fr;
-        /*una columna: problema, público, misión y visión*/
-    }
-
-    .valores-lista {
-        grid-template-columns: repeat(2, 1fr);
-        /*dos columnas en valores*/
-    }
-
-    .tarjeta {
-        padding: 28px 44px;
+    .registro-contenido {
+        padding: 36px 40px 44px;
     }
 }
 
 /* Celular */
 @media (max-width: 576px) {
-
-    .registro-campos {
-        grid-template-columns: minmax(0, 1fr);
+    .registro-pagina {
+        padding: 20px 12px;
     }
 
-    .banner-contacto-titulo {
-        font-size: 1.6rem;
+    .registro-bienvenida {
+        padding: 28px 22px;
     }
 
-    .tarjeta {
-        padding: 28px;
+    .registro-texto {
+        font-size: 0.95rem;
     }
 
-    .tarjeta-titulo {
-        font-size: 26px;
+    .registro-contenido {
+        padding: 28px 22px 32px;
     }
-
-    .nuestro-equipo-integrante-descripcion {
-        min-height: auto;
-    }
-}
-
-@media (max-width: 420px) {
-    .banner-contacto-titulo {
-        font-size: 1.0rem;
-    }
-}
-
-@media (min-width: 768px) {
-    .w-md-auto {width: auto !important;}
 }
