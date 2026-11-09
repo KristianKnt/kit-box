@@ -89,10 +89,165 @@ body {
     margin: 0; /*quitamos el margen que el navegador pone por defecto*/
 }
 
+/*----------------------------------------------------Diana O-----------------------------------------------*/
+/* Estilos principal hoja*/
+.container-fluid {
+    background-color: color-mix(in srgb, var(--paleta-fondo) 70%, white);
+    
+}
+#contenedor-principal {
+    padding: 0;
+    
+}
 
+.seccion_formulario_localizacion > .row {
+    display: grid;
+    gap: 24px;
+
+}
+
+.seccion_formulario_localizacion > .row > * {
+    width: auto;
+}
+
+.seccion_formulario_localizacion .fondo-formulario-contenedor,
+.seccion_formulario_localizacion .col-lg-4 {
+    background-color: var(--paleta-formulario);
+    color: var(--paleta-primary);
+    border: 1px solid var(--paleta-color3) !important;
+    border-radius: 12px !important;
+    box-shadow: none !important;
+    
+}
+
+/* Fin estilos principal hoja*/
+/*Formuario inicio estilos*/
+.fondo-formulario-contenedor h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.formulario-centrado label {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.formulario-centrado p {
+    margin: 0px 0 0;
+}
+
+/* 2. Estilo unificado para todos los inputs y textareas */
+.formulario-centrado input,
+.formulario-centrado textarea {
+    padding: 5px 10px;     /* Relleno interno cómodo */
+    border: 1px solid var(--paleta-color3);
+}
+
+/* Efecto al hacer clic en un campo */
+.formulario-centrado input:focus,
+.formulario-centrado textarea:focus {
+    border-color: var(--paleta-primary);
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--paleta-primary) 20%, transparent);
+}
+
+/* 4. Botón de envío */
+#boton-enviar-formulario-contacto {
+    padding: 12px 20px;     /* Relleno vertical u horizontal proporcional */
+    background-color: var(--paleta-primary);
+    border: none;
+    font-weight: 600;
+}
+
+/* Efecto al pasar el cursor sobre el botón */
+#boton-enviar-formulario-contacto:hover {
+    background-color: color-mix(in srgb, var(--paleta-primary) 70%, black);
+}
+/*Formuario Estilos fin */
+
+/*---------------------------------------------------- Fin Diana O-----------------------------------------------*/
+
+
+/* ------------------------------------------- estilos de Cristian inico---------------------------------------- */
+.seccion_formulario_localizacion .col-lg-4 {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.col-lg-4 > div:first-child,
+#div-mapa,
+#div-informacion-contacto {
+    background-color: transparent !important;
+    border: 0 !important;
+}
+
+.col-lg-4 > div:first-child {
+    padding: 0 !important;
+    margin-bottom: 12px;
+}
+
+#div-mapa {
+    border-radius: 12px;
+    overflow: hidden;
+}
+ 
+#mapa {
+    width: 100%;
+    height: 260px;
+    display: block;
+}
+ 
+.imagenes-contacto {
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    background-color: var(--paleta-color3);
+    border-radius: 50%;
+    object-fit: contain;
+}
+ 
+#div-informacion-contacto {
+    padding: 20px !important;
+}
+
+#div-informacion-contacto h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+#div-informacion-contacto .row {
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+#div-informacion-contacto .row:last-child {
+    margin-bottom: 0;
+}
+
+#div-informacion-contacto h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+#div-informacion-contacto h6 {
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin: 2px 0;
+}
+
+#div-informacion-contacto p {
+    color: color-mix(in srgb, var(--paleta-primary) 80%, transparent);
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+/* ------------------------------------------- estilos de Cristian fin---------------------------------------- */
 /*RESPONSIVE*/
 @media (max-width: 1280px) {
-    .seccion_formulario_localizacion,
     .banner-contacto-fondo {
         padding-left: var(--espacio-lateral); /* 55px: alineado con el logo del header y las tarjetas */
     }
@@ -115,13 +270,6 @@ body {
 /* Tablet */
 @media (max-width: 900px) {
 
-    .seccion_formulario_localizacion,
-    .seccion-valores,
-    .nuestro-equipo {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-
     .banner-contacto-fondo {
         height: 280px;
         padding: 25px 20px;
@@ -135,21 +283,6 @@ body {
     .banner-contacto-informacion {
         max-width: 60%; /* el texto no se mete sobre la caja de la imagen */
     }
-
-    .seccion-tarjetas,
-    .seccion-mision-vision {
-        grid-template-columns: 1fr;
-        /*una columna: problema, público, misión y visión*/
-    }
-
-    .valores-lista {
-        grid-template-columns: repeat(2, 1fr);
-        /*dos columnas en valores*/
-    }
-
-    .tarjeta {
-        padding: 28px 44px;
-    }
 }
 
 /* Celular */
@@ -157,23 +290,6 @@ body {
 
     .banner-contacto-titulo {
         font-size: 1.6rem;
-    }
-
-    .tarjeta {
-        padding: 28px;
-    }
-
-    .tarjeta-titulo {
-        font-size: 26px;
-    }
-
-    .seccion_formulario_localizacion {
-        grid-template-columns: 1fr;
-        /*una columna en valores*/
-    }
-
-    .nuestro-equipo-integrante-descripcion {
-        min-height: auto;
     }
 }
 
@@ -183,96 +299,10 @@ body {
     }
 }
 
-/*----------------------------------------------------Diana O-----------------------------------------------*/
-/* Estilos principal hoja*/
-.body{
-    background-color: var(--paleta-fondo);
+@media (min-width: 992px) {
+    .seccion_formulario_localizacion > .row {
+        grid-template-columns: minmax(0, 800px) minmax(0, 400px);
+        justify-content: center;
+        gap: 60px;
+    }
 }
-
-/* Fin estilos principal hoja*/
-/*Formuario inicio estilos*/
-.fondo-formulario-contenedor{
-    background-color: var(--paleta-fondo);
-    border: var(--paleta-botones);
-}
-/* 1. Contenedor principal del formulario */
-#formulario-contacto {
-    background-color: var(--paleta-formulario, #ffffff);
-    padding: 50px;
-    border-radius: 8px;
-    border: 1px var(--paleta-botones);
-    max-width: 500px; 
-    margin: 0 auto;  
-}
-
-/* 2. Estilo unificado para todos los inputs y textareas */
-.formulario-centrado input,
-.formulario-centrado textarea,
-.campo-input {
-    width: 100%;            /* Ocupa el 100% de borde a borde del formulario */
-    box-sizing: border-box; /* Mantiene el padding dentro del ancho total */
-    padding: 10px 14px;     /* Relleno interno cómodo */
-    border: 1px var(--paleta-formulario);
-    border-radius: 6px;
-    font-size: 1rem;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* Efecto al hacer clic en un campo */
-.formulario-centrado input:focus,
-.formulario-centrado textarea:focus {
-    border-color: #1E4437;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(30, 68, 55, 0.2);
-}
-
-/* 3. Espaciado vertical entre campos */
-.mb-3 {
-    margin-bottom: 18px;
-}
-
-/* 4. Botón de envío */
-#boton-enviar-formulario-contacto {
-    width: 100%;            /* Ocupa todo el ancho alineado con los inputs */
-    padding: 12px 20px;     /* Relleno vertical u horizontal proporcional */
-    background-color: #1E4437;
-    color: #ffffff;
-    border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-/* Efecto al pasar el cursor sobre el botón */
-#boton-enviar-formulario-contacto:hover {
-    background-color: #143026;
-}
-/*Formuario Estilos fin */
-
-/*---------------------------------------------------- Fin Diana O-----------------------------------------------*/
-
-
-/* ------------------------------------------- estilos de Cristian inico---------------------------------------- */
-
-#div-mapa {
-    background-color: none;
-}
- 
-#mapa {
-    width: 100%;
-    height: 100%;
-    border: 0%;
-}
- 
-.imagenes-contacto {
-   width: 40px;
-    height: auto;
-}
- 
-#div-informacion-contacto {
-    padding: 20px;
-}
-
-/* ------------------------------------------- estilos de Cristian fin---------------------------------------- */
