@@ -67,7 +67,7 @@ function iniciarSesion(correo, contrasena) {
 // ------------------------------- FORMULARIO DE INICIO DE SESIÓN -------------------------------
 
 document.addEventListener("DOMContentLoaded", () => {
-    const formulario = document.querySelector("#contenedor-login form");
+    const formulario = document.querySelector("#formulario-login");
 
     if (!formulario) {
         console.error("No se encontró el formulario de inicio de sesión.");
