@@ -1,0 +1,24 @@
+.login-tarjeta {
+    max-width: 1070px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: var(--paleta-formulario);
+    box-shadow: 0 12px 32px color-mix(in srgb, var(--paleta-primary) 14%, transparent);
+}
+
+.login-bienvenida {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 64px;
+    color: #FFFFFF;
+    background-color: var(--paleta-primary);
+}
+
+.login-contenido {
+    padding: 40px 64px 56px;
+    background-color: var(--paleta-formulario);
+}
