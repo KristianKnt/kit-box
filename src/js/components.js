@@ -53,6 +53,15 @@ async function cargar(id, archivo) {
       await modulo.inicializarCarrusel(contenedor);
     }
 
+    // Arrancar el banner del inicio después de insertar su HTML.
+    if (id === "banner_home_page") {
+      const modulo = await import(
+        "../components/home-pages/Banner_home/bannerHome.js"
+      );
+
+      modulo.inicializarBanner(contenedor);
+    }
+
   } catch (error) {
     console.error(`No se pudo cargar el componente "${id}":`, error);
   }
