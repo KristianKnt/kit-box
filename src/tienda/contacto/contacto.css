@@ -34,7 +34,7 @@ img {
 body {
     margin: 0;
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: color-mix(in srgb, var(--paleta-fondo) 30%, transparent)
+    
 }
 
 #footer {
@@ -91,8 +91,8 @@ body {
 
 
 .container-fluid {
-    background-color: color-mix(in srgb, var(--paleta-fondo) 70%, white);
     display: flow-root;
+    background-color: color-mix(in srgb, var(--paleta-fondo) 30%,  transparent);
 }
 
 #contenedor-principal {

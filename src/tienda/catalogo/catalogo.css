@@ -32,7 +32,7 @@ img {
 body {
     margin: 0;
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: var(--paleta-fondo); /* #E7E8E3 */
+    background-color: color-mix(in srgb, var(--paleta-fondo) 30%,  transparent)
 }
 
 #footer {
