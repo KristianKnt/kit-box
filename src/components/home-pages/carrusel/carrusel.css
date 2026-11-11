@@ -216,6 +216,15 @@
     cursor: not-allowed;
 }
 
+/* ===== REDUCIR MOVIMIENTO ===== */
+/* Si la persona activó "reducir movimiento" en su equipo, las tarjetas cambian sin deslizarse. */
+
+@media (prefers-reduced-motion: reduce) {
+    .kits-destacados__pista {
+        transition: none;
+    }
+}
+
 .kits-destacados__pista:not(:has(.kit-card)) {
   display: block;
   padding: 12px 0;
