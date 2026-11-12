@@ -430,3 +430,60 @@ body {
     background-color: var(--paleta-primary);
     color: #fff;
 }
+
+/*  filtros*/
+
+.catalogo-panel-filtros {
+  min-width: 260px; 
+  padding: 1rem;
+  background-color: var(--paleta-fondo);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+}
+
+
+.catalogo-panel-titulo {
+  font-weight: 600;
+  color: var(--paleta-primary);
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+
+.catalogo-panel-filtros .form-check {
+  display: flex;
+  align-items: center; 
+  margin-bottom: 10px;
+}
+
+/* Ajustes del input (radio y switch) */
+.catalogo-panel-filtros .form-check-input {
+  margin-top: 0; 
+  cursor: pointer;
+}
+
+/* Ajustes del texto (label) */
+.catalogo-panel-filtros .form-check-label {
+  margin-left: 8px; 
+  color: var(--paleta-primary);
+  cursor: pointer;
+  flex-grow: 1; 
+}
+
+/* Separador */
+.catalogo-panel-linea {
+  margin: 12px 0;
+  opacity: 0.15;
+}
+
+
+.catalogo-panel-filtros .form-check-input:checked {
+  background-color: var(--boton-primario-bg);
+  border-color: var(--boton-primario-hover);
+}
+
+
+.catalogo-panel-filtros .form-check-input:focus {
+  border-color: var(--boton-primario-hover);
+  box-shadow: 0 0 0 0.25rem rgba(138, 43, 226, 0.25); 
+}
