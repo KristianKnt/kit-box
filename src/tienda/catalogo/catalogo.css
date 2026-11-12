@@ -397,3 +397,34 @@ body {
         white-space: nowrap;
     }
 }
+
+/* --------------------------------- ESTILOS BOTÓN LIMPIAR FILTROS ---------------------------------------------------- */
+
+#limpiar-filtros {
+
+border-radius: 10px;
+
+}
+
+#limpiar-filtros {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 48px;
+    padding: 0 20px;
+    border: 1px solid color-mix(in srgb, var(--paleta-primary) 18%, transparent);
+    border-radius: 999px;
+    background-color: var(--paleta-formulario);
+    color: var(--paleta-primary);
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+#limpiar-filtros:hover,
+#limpiar-filtros[aria-expanded="true"] {
+    background-color: var(--paleta-primary);
+    color: #fff;
+}
