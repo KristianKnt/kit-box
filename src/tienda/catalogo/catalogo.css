@@ -40,6 +40,7 @@ body {
 }
 
 /* ===================== BANNER CONTACTO ===================== */
+
 .banner-contacto-fondo {
     width: 100%;
     min-height: 280px;
@@ -82,6 +83,7 @@ body {
 }
 
 /* ===================== BUSCADOR Y FILTROS ===================== */
+
 .catalogo-herramientas {
     display: flex;
     align-items: center;
@@ -205,6 +207,7 @@ body {
 }
 
 /* El nombre (primer span) va en una sola línea */
+
 .catalogo-categoria > span:first-child {
     white-space: nowrap;
 }
@@ -218,6 +221,7 @@ body {
 /* ===================== BOTONES DEL CARRITO ===================== */
 
 /* Botón Añadir (Verde primario) */
+
 .btn-agregar-carrito {
     background-color: var(--paleta-primary) !important; 
     border-color: var(--paleta-primary) !important;
@@ -233,6 +237,7 @@ body {
 }
 
 /* Botón Eliminar: Café / Marrón suave con letra blanca */
+
 .btn-eliminar-carrito {
     background-color: var(--paleta-botones) !important; 
     border-color: var(--paleta-botones) !important;
@@ -249,6 +254,7 @@ body {
 
 
 /*estilos prueba JUliana Bernal*/
+
 .tarjeta {
     display: flex;
     flex-direction: column;
@@ -372,7 +378,9 @@ body {
 .btn-agregar-carrito:hover {
     background-color: var(--boton-primario-hover);
 }
+
 /* ===================== RESPONSIVE ===================== */
+
 @media (max-width: 1280px) {
     .banner-contacto-fondo {
         padding-left: var(--espacio-lateral);
@@ -399,12 +407,6 @@ body {
 }
 
 /* --------------------------------- ESTILOS BOTÓN LIMPIAR FILTROS ---------------------------------------------------- */
-
-#limpiar-filtros {
-
-border-radius: 10px;
-
-}
 
 #limpiar-filtros {
     display: inline-flex;
