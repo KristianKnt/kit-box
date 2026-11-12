@@ -142,3 +142,146 @@
   line-height: 20px; /*centra el número verticalmente*/
   text-align: center;
 }
+
+/* ===== Usuario con sesión (botón, menú y saludo) ===== */
+/* Lo muestra header.js cuando hay alguien con la sesión abierta */
+
+.usuario-sesion {
+  position: relative; /*el menú se ubica debajo del botón*/
+}
+
+.usuario-boton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 4px 14px 4px 4px;
+  border: none;
+  border-radius: 999px; /*forma de pastilla*/
+  background-color: var(--paleta-primary);
+  color: var(--color-texto);
+  font-family: var(--fuente-principal);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.usuario-boton:hover {
+  transform: translateY(-1px);
+}
+
+.usuario-iniciales {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--paleta-color3, #8FAE9A); /*verde salvia de la paleta*/
+  color: var(--paleta-primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.usuario-flecha {
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
+
+/* El menú desplegable */
+.usuario-menu {
+  position: absolute;
+  top: calc(100% + 10px); /*un poquito debajo del botón*/
+  right: 0;
+  width: 240px;
+  overflow: hidden;
+  border: 1px solid var(--paleta-color3, #8FAE9A);
+  border-radius: 12px;
+  background-color: var(--paleta-formulario, #EFEBE2);
+  box-shadow: 0 8px 24px color-mix(in srgb, black 15%, transparent);
+  font-family: var(--fuente-principal);
+}
+
+.usuario-menu-nombre {
+  margin: 0;
+  padding: 12px 16px 0;
+  color: var(--paleta-primary);
+  font-weight: 700;
+  overflow-wrap: anywhere; /*nombres largos no se salen*/
+}
+
+.usuario-menu-correo {
+  margin: 0;
+  padding: 2px 16px 12px;
+  border-bottom: 1px solid color-mix(in srgb, var(--paleta-color3, #8FAE9A) 50%, transparent);
+  color: var(--fondo-header);
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
+}
+
+.usuario-menu-salir {
+  display: block;
+  width: 100%;
+  padding: 10px 16px;
+  border: none;
+  background: none;
+  color: #8A3B2B; /*rojizo suave: avisa que es salir*/
+  font-family: var(--fuente-principal);
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.usuario-menu-salir:hover {
+  background-color: color-mix(in srgb, var(--paleta-color3, #8FAE9A) 25%, transparent);
+}
+
+/* Borde visible al navegar con teclado (Tab) */
+.usuario-boton:focus-visible,
+.usuario-menu-salir:focus-visible {
+  outline: 3px solid var(--paleta-color3, #8FAE9A);
+  outline-offset: 2px;
+}
+
+/* El saludo que sale después de iniciar sesión */
+.saludo-sesion {
+  position: fixed;
+  top: 86px; /*debajo del header*/
+  right: 20px;
+  z-index: 1100; /*encima del header y del pop-up*/
+  max-width: calc(100% - 40px);
+  padding: 12px 18px;
+  border: 1px solid var(--paleta-color3, #8FAE9A);
+  border-left: 5px solid var(--paleta-primary);
+  border-radius: 10px;
+  background-color: var(--paleta-formulario, #EFEBE2);
+  box-shadow: 0 6px 18px color-mix(in srgb, black 12%, transparent);
+  color: var(--paleta-primary);
+  font-family: var(--fuente-principal);
+  transition: opacity 0.4s;
+}
+
+.saludo-sesion--saliendo {
+  opacity: 0;
+}
+
+/* En celular: solo las iniciales en el botón */
+@media (max-width: 576px) {
+  .usuario-boton {
+    padding: 4px;
+  }
+
+  .usuario-saludo,
+  .usuario-flecha {
+    display: none;
+  }
+
+  .saludo-sesion {
+    top: 130px; /*en celular el header es más alto*/
+    left: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .saludo-sesion {
+    transition: none;
+  }
+}

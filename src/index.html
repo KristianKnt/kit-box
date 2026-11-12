@@ -11,6 +11,8 @@
     <link rel="icon" type="image/svg+xml" href="./assets/imagenes/nosotros/Logo.svg">
     <link rel="stylesheet" href="../src/components/home-pages/funcionamiento/funcionamiento.css">
     <link rel="stylesheet" href="../src/components/home-pages/carrusel/carrusel.css">
+    <link rel="stylesheet" href="../src/components/home-pages/papel-relleno/papelRelleno.css">
+    <link rel="stylesheet" href="../src/components/home-pages/bienvenida/bienvenida.css">
     <link rel="stylesheet" href="./components/home-pages/Banner_home/bannerHome.css">
     <link rel="stylesheet" href="../src/components/home-pages/Banner_home/bannerHome.css">
 </head>
@@ -37,7 +39,12 @@
 
     <div id="footer"></div>
 
+    <!-- POP-UP DE BIENVENIDA (se abre solo al cargar el inicio) -->
+
+    <div id="bienvenida"></div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../src/js/sesion.js"></script> <!-- sesión del usuario: va antes de components.js -->
     <script src="../src/js/components.js"></script>
     <script src="../src/tienda/carrito/localStorage.js"></script>
     <script src="../src/tienda/carrito/agr-carrito.js"></script>

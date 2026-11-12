@@ -2,8 +2,8 @@
 // INICIO DE SESIÓN: localStorage de la sesión 
 // ===================================================================================
 
-// Clave donde se guarda quién tiene la sesión abierta
-const CLAVE_SESION = "kitbox_sesion";
+// Las funciones de la sesión (guardarSesion, obtenerSesion, cerrarSesion...) y la clave
+// CLAVE_SESION están en js/sesion.js, porque también las usa el header en todas las páginas.
 
 // ------------------------------- LOCALSTORAGE DE LA SESIÓN -------------------------------
 
@@ -14,45 +14,7 @@ function buscarUsuarioPorCorreo(correo) {
     return obtenerUsuarios().find(usuario => usuario.correo === correoBuscado) || null;
 }
 
-// 2. Guardar la sesión. OJO: solo nombre y correo, NUNCA la contraseña
-function guardarSesion(usuario) {
-    const sesion = {
-        nombreCompleto: usuario.nombreCompleto,
-        correo: usuario.correo,
-        fechaInicio: new Date().toISOString()
-    };
-
-    localStorage.setItem(CLAVE_SESION, JSON.stringify(sesion));
-    return sesion;
-}
-
-// 3. Leer la sesión guardada (null si nadie ha iniciado sesión)
-function obtenerSesion() {
-    const sesionGuardada = localStorage.getItem(CLAVE_SESION);
-
-    if (sesionGuardada === null) {
-        return null;
-    }
-
-    try {
-        return JSON.parse(sesionGuardada);
-    } catch (error) {
-        console.error("No se pudo leer la sesión guardada.", error);
-        return null;
-    }
-}
-
-// 4. Saber si hay alguien con la sesión abierta
-function haySesionActiva() {
-    return obtenerSesion() !== null;
-}
-
-// 5. Cerrar la sesión
-function cerrarSesion() {
-    localStorage.removeItem(CLAVE_SESION);
-}
-
-// 6. Iniciar sesión: el correo debe existir y la contraseña coincidir.
+// 2. Iniciar sesión: el correo debe existir y la contraseña coincidir.
 //    Devuelve la sesión si todo está bien, o null si no.
 function iniciarSesion(correo, contrasena) {
     const usuario = buscarUsuarioPorCorreo(correo);
@@ -223,6 +185,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         mostrarAlerta("success", `¡Hola, ${sesion.nombreCompleto}!`, "Iniciaste sesión. Te llevamos al inicio...");
         formulario.reset();
+
+        // Notita para que el inicio salude una sola vez (ver js/sesion.js y header.js)
+        marcarSaludoPendiente();
 
         // Después de 2 segundos, ir a la página de inicio
         setTimeout(() => {

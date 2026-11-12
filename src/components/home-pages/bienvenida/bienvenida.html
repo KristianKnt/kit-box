@@ -1,0 +1,37 @@
+<!-- POP-UP DE BIENVENIDA DEL INICIO -->
+<!-- Usa el modal de Bootstrap. Lo abre bienvenida.js cada vez que se carga el inicio. -->
+<div class="modal fade bienvenida" id="modal-bienvenida" tabindex="-1" aria-labelledby="bienvenida-titulo" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bienvenida__contenido">
+
+      <!-- Botón X para cerrar (data-bs-dismiss lo cierra sin JS propio) -->
+      <button type="button" class="btn-close bienvenida__cerrar" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+
+      <!-- Video: arranca solo y en silencio (muted), se repite (loop) y en celular no se abre en pantalla completa (playsinline) -->
+      <div class="bienvenida__video-caja">
+        <video
+          class="bienvenida__video"
+          src="../../../assets/video/bienvenida-kit-box.mp4"
+          poster="../../../assets/video/bienvenida-kit-box-poster.jpg"
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          aria-label="Video de bienvenida: se abre una caja de kit-box con un kit adentro"
+        ></video>
+
+        <button type="button" class="bienvenida__sonido" aria-pressed="false">
+          Activar sonido
+        </button>
+      </div>
+
+      <!-- Texto y botón para empezar -->
+      <div class="bienvenida__texto">
+        <h2 id="bienvenida-titulo" class="bienvenida__titulo">¡Bienvenido a Kit-Box!</h2>
+        <p class="bienvenida__descripcion">Todo lo que necesitas para empezar, en una sola caja.</p>
+        <button type="button" class="bienvenida__empezar" data-bs-dismiss="modal">Empezar</button>
+      </div>
+
+    </div>
+  </div>
+</div>

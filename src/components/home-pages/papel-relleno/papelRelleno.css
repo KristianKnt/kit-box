@@ -1,0 +1,89 @@
+/* ===== PAPEL DE RELLENO KRAFT ===== */
+/* Papelitos que caen despacio detrás del contenido de una sección.
+   Los crea papelRelleno.js; aquí solo se define cómo se ven y cómo caen. */
+
+/* --- 1. EL CONTENEDOR ---
+   papelRelleno.js le pone esta clase a la sección. Así no hay que tocar el CSS de la sección. */
+.con-papel-relleno {
+    position: relative;   /* la capa de papelitos se ubica respecto a la sección */
+    isolation: isolate;   /* los z-index de aquí adentro no se mezclan con el resto de la página */
+    /* Sin overflow: hidden aquí: así los menús desplegables, sombras y hover del contenido
+       no se cortan. Los papelitos los recorta su propia capa (abajo). */
+}
+
+/* Todo el contenido de la sección queda ENCIMA de los papelitos */
+.con-papel-relleno > :not(.papel-relleno) {
+    position: relative;
+    z-index: 1;
+}
+
+/* --- 2. LA CAPA DECORATIVA --- */
+.papel-relleno {
+    position: absolute;
+    inset: 0;               /* ocupa toda la sección */
+    z-index: 0;             /* detrás del contenido */
+    overflow: hidden;       /* los papelitos no se salen de la sección */
+    pointer-events: none;   /* nunca bloquea un clic */
+    container-type: size;   /* permite usar 100cqh = "el alto de esta capa" en la animación */
+}
+
+/* --- 3. CADA PAPELITO --- */
+.papel-relleno__papelito {
+    position: absolute;
+    top: -30px;             /* arranca escondido arriba de la sección */
+    width: 8px;             /* cuadrito */
+    height: 8px;
+    border-radius: 1px;
+    animation-name: caer-papel-relleno;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    will-change: transform; /* le avisa al navegador que se va a mover, para que sea fluido */
+}
+
+.papel-relleno__papelito--tira {
+    width: 4px;             /* tirita larga */
+    height: 16px;
+}
+
+/* Colores: café y salvia de la paleta + dos tonos de papel kraft.
+   La opacidad baja es lo que los hace sutiles. */
+.papel-relleno__papelito--color1 {
+    background-color: var(--paleta-botones, #886F56);
+    opacity: 0.3;
+}
+
+.papel-relleno__papelito--color2 {
+    background-color: var(--paleta-color3, #8FAE9A);
+    opacity: 0.45;
+}
+
+.papel-relleno__papelito--color3 {
+    background-color: #C9A87C;   /* kraft */
+    opacity: 0.45;
+}
+
+.papel-relleno__papelito--color4 {
+    background-color: #D9C3A2;   /* kraft claro */
+    opacity: 0.6;
+}
+
+/* --- 4. LA CAÍDA ---
+   Baja todo el alto de la sección (100cqh) + un poquito más para salir por abajo,
+   mientras se corre de lado (--desvio) y gira (--giro). Esos valores los pone el JS al azar. */
+@keyframes caer-papel-relleno {
+    from {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    to {
+        transform: translate(var(--desvio), calc(100cqh + 60px)) rotate(var(--giro));
+    }
+}
+
+/* --- 5. ACCESIBILIDAD ---
+   Si la persona activó "reducir movimiento", los papelitos no se muestran. */
+@media (prefers-reduced-motion: reduce) {
+    .papel-relleno {
+        display: none;
+    }
+}
