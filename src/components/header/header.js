@@ -19,7 +19,7 @@
 // iniciales y "Hola, Nombre". Al hacerle clic se abre un menú para cerrar sesión.
 // Las funciones obtenerSesion, cerrarSesion y tomarSaludoPendiente vienen de js/sesion.js.
 
-const SEGUNDOS_SALUDO = 5;   // cuánto dura en pantalla el saludo después de iniciar sesión
+const SEGUNDOS_AVISO = 5;   // cuánto dura en pantalla un aviso (saludo al iniciar sesión, despedida al cerrarla)
 
 // "Dayana Marcela Vallejo" -> { primerNombre: "Dayana", iniciales: "DM" }
 function sacarNombreEIniciales(nombreCompleto) {
@@ -38,23 +38,37 @@ function sacarNombreEIniciales(nombreCompleto) {
   };
 }
 
-// Muestra el saludo "¡Qué bueno verte, Dayana!" y lo quita solo después de unos segundos.
-function mostrarSaludo(primerNombre) {
-  const saludo = document.createElement("div");
-  saludo.className = "saludo-sesion";
-  saludo.setAttribute("role", "status");
+// Muestra un aviso debajo del header (en negrita el titulo, luego el texto) y lo quita solo.
+// Se usa para el saludo al iniciar sesión y la despedida al cerrarla.
+function mostrarAviso(titulo, texto) {
+  document.querySelector(".saludo-sesion")?.remove();   // si ya había un aviso, se quita para no amontonarlos
+
+  const aviso = document.createElement("div");
+  aviso.className = "saludo-sesion";
+  aviso.setAttribute("role", "status");
 
   // textContent (no innerHTML) porque el nombre lo escribió el usuario
-  const titulo = document.createElement("strong");
-  titulo.textContent = `¡Qué bueno verte, ${primerNombre}!`;
-  saludo.append(titulo, " Ya iniciaste sesión.");
+  const negrita = document.createElement("strong");
+  negrita.textContent = titulo;
+  aviso.append(negrita, " ", texto);
 
-  document.body.appendChild(saludo);
+  document.body.appendChild(aviso);
 
   setTimeout(() => {
-    saludo.classList.add("saludo-sesion--saliendo");
-    setTimeout(() => saludo.remove(), 400);   // espera a que termine de desvanecerse
-  }, SEGUNDOS_SALUDO * 1000);
+    aviso.classList.add("saludo-sesion--saliendo");
+    setTimeout(() => aviso.remove(), 400);   // espera a que termine de desvanecerse
+  }, SEGUNDOS_AVISO * 1000);
+}
+
+// Saludo después de iniciar sesión: "¡Qué bueno verte, Dayana! Ya iniciaste sesión."
+function mostrarSaludo(primerNombre) {
+  mostrarAviso(`¡Qué bueno verte, ${primerNombre}!`, "Ya iniciaste sesión.");
+}
+
+// Despedida al cerrar sesión: "Cerraste sesión. ¡Vuelve pronto, Dayana!"
+function mostrarDespedida(primerNombre) {
+  const texto = primerNombre ? `¡Vuelve pronto, ${primerNombre}!` : "¡Vuelve pronto!";
+  mostrarAviso("Cerraste sesión.", texto);
 }
 
 export function mostrarUsuarioEnHeader(contenedor) {
@@ -122,13 +136,14 @@ export function mostrarUsuarioEnHeader(contenedor) {
     }
   });
 
-  // 4. Cerrar sesión: se borra la sesión y vuelve el botón "Iniciar Sesión"
+  // 4. Cerrar sesión: se borra la sesión, vuelve el botón "Iniciar Sesión" y sale la despedida
   botonSalir.addEventListener("click", () => {
     cerrarSesion();
     cerrarMenu();
     bloqueUsuario.hidden = true;
     botonIniciarSesion.hidden = false;
     botonIniciarSesion.focus();
+    mostrarDespedida(primerNombre);
   });
 
   // 5. Saludo de bienvenida: solo una vez, justo después de iniciar sesión.
