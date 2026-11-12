@@ -33,7 +33,8 @@
       </div>
     </section>
 
-  <div class="container-fluid">
+  <!-- data-papel-relleno: papelitos cayendo detrás del formulario (los pone components.js) -->
+  <div class="container-fluid" data-papel-relleno="24">
 
     <!--seccion formulario y localizacion-->
     <section class="seccion_formulario_localizacion">
@@ -156,6 +157,7 @@
   <!-- FOOTER -->
   <div id="footer"></div>
   <!-- COMPONENTES -->
+  <script src="../../js/sesion.js"></script> <!-- sesión del usuario: va antes de components.js -->
   <script src="../../js/components.js"></script>
   <script src="contacto.js"></script>
   <script src="../carrito/localStorage.js"></script>

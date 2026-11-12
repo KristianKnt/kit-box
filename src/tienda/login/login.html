@@ -10,13 +10,15 @@
   <link rel="stylesheet" href="../../components/header/header.css">
   <link rel="stylesheet" href="../../components/footer/footer.css">
   <link rel="stylesheet" href="./estilosLogin.css">
+  <link rel="icon" type="image/svg+xml" href="../../assets/imagenes/nosotros/Logo.svg">
 </head>
 
 <body>
   <!-- HEADER -->
 
   <div id="header"></div> <!-- Se carga con JS-->
-    <main class="login-pagina py-5 px-3">
+    <!-- data-papel-relleno: papelitos cayendo detrás de la tarjeta (los pone components.js) -->
+    <main class="login-pagina py-5 px-3" data-papel-relleno="16">
     <section class="login-tarjeta row g-0">
 
       <!----PANEL IZQUIERDO:BIENVENIDA----->
@@ -62,6 +64,7 @@
 
   <!-- COMPONENTES --> <!-- Se carga con JS -->
 
+  <script src="../../js/sesion.js"></script> <!-- sesión del usuario: va antes de components.js -->
   <script src="../../js/components.js"></script>
   <script src="../../tienda/carrito/localStorage.js"></script>
   <script src="../../tienda/carrito/agr-carrito.js"></script>

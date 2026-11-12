@@ -30,6 +30,10 @@
   </div>
   </section>  
 
+  <!-- CONTENIDO CON PAPEL DE RELLENO: envuelve las 4 secciones para que los papelitos caigan
+       por todo el bloque. data-papel-relleno = cuántos papelitos (los pone components.js) -->
+  <div class="nosotros-contenido" data-papel-relleno="36">
+
   <!-- PROBLEMA Y PÚBLICO OBJETIVO -->
 <section class="seccion-tarjetas">
     <article class="tarjeta tarjeta-problema">
@@ -170,7 +174,7 @@
           <img src="../../assets/imagenes/nosotros/Foto_DianaO.jpg" alt="Foto de Diana Ocampo">
         </div>
         <h3 class="nuestro-equipo-nombre-integrante">Diana Ocampo</h3>
-        <h4 class="nuestro-equipo-rol-integrante">Desarrolladora Backend</h4>
+        <h4 class="nuestro-equipo-rol-integrante">Frontend & Backend</h4>
         <p class="nuestro-equipo-integrante-descripcion">Estudiante de Ingeniería de Sistemas con experiencia
           industrial, hoy se forma en Full Stack con Java en Generation.</p>
           <div class="nuestro-equipo-integrante-redes">
@@ -193,7 +197,7 @@
           <img src="../../assets/imagenes/nosotros/Foto_CRojas.png" alt="Foto de Cristian Rojas">
         </div>
         <h3 class="nuestro-equipo-nombre-integrante">Cristian Rojas</h3>
-        <h4 class="nuestro-equipo-rol-integrante">Desarrollador Backend</h4>
+        <h4 class="nuestro-equipo-rol-integrante">Frontend & Backend</h4>
         <p class="nuestro-equipo-integrante-descripcion">Desarrollador backend encargado de la lógica del servidor, la
           base de datos y la seguridad de la aplicación</p>
             <div class="nuestro-equipo-integrante-redes">
@@ -239,8 +243,8 @@
         </div>
         <h3 class="nuestro-equipo-nombre-integrante">Dayana Vallejo</h3>
         <h4 class="nuestro-equipo-rol-integrante">Frontend & Backend</h4>
-        <p class="nuestro-equipo-integrante-descripcion">Ingeniera industrial y desarrolladora Full Stack con Java y
-          Spring Boot, que une la mejora de procesos con interfaces web en JavaScript, HTML y CSS
+        <p class="nuestro-equipo-integrante-descripcion">Desarrolladora Full Stack con Java. Le encanta el frontend y
+          está reforzando su aprendizaje en backend, SQL y APIs.
         </p>
           <div class="nuestro-equipo-integrante-redes">
           <a href="https://github.com/CanelleGreen22" target="_blank" rel="noopener" aria-label="GitHub de Dayana Vallejo">
@@ -258,9 +262,12 @@
     </div>
   </section>
 
+  </div> <!-- cierre de nosotros-contenido (papel de relleno) -->
+
   <!-- FOOTER -->
   <div id="footer"></div>
   <!-- COMPONENTES -->
+  <script src="../../js/sesion.js"></script> <!-- sesión del usuario: va antes de components.js -->
   <script src="../../js/components.js"></script>
   <script src="nosotros.js"></script>
   <script src="../carrito/localStorage.js"></script>

@@ -528,8 +528,8 @@ body {
     }
 
     .banner-sobre-nosotros-fondo {
-        height: 280px;
-        padding: 25px 20px;
+        min-height: 280px;
+        padding: 20px 20px;
         background-image:
             linear-gradient(90deg, rgba(244, 242, 236, 0.95) 0%, rgba(244, 242, 236, 0.8) 45%, rgba(244, 242, 236, 0) 75%),
             url("../../assets/imagenes/nosotros/banner-sobre-nosotros6.png");
