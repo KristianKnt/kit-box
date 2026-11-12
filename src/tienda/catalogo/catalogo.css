@@ -259,7 +259,6 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%;
-    object-fit: cover;
     position: relative;
     background-color: #fff;
     border: 1px solid var(--paleta-fondo);
@@ -276,6 +275,7 @@ body {
     width: 100%;
     height: 250px;
     background-color: var(--paleta-fondo);
+    object-fit: cover;
 }
 
 .tarjeta-categoria {
@@ -322,8 +322,8 @@ body {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 0.5rem;
-    margin-top: 0.4rem;
+    gap: 0.3rem;
+    margin-top:auto;
     padding-top: 0.6rem;
     border-top: 1px solid var(--paleta-fondo);
 }
@@ -357,7 +357,6 @@ body {
 }
 
 .tarjeta-acciones {
-    margin-top: auto;
     padding-top: 0.5rem;
 }
 
@@ -486,4 +485,17 @@ body {
 .catalogo-panel-filtros .form-check-input:focus {
   border-color: var(--boton-primario-hover);
   box-shadow: 0 0 0 0.25rem rgba(138, 43, 226, 0.25); 
+}
+
+
+@media (min-width: 1600px) {
+    #lista-productos > div {
+        width: 20%;
+    }
+}
+
+@media (min-width: 1920px) {
+    #lista-productos > div {
+        width: 16.6667%;
+    }
 }
