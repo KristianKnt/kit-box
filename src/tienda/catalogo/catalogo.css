@@ -398,60 +398,33 @@ body {
     }
 }
 
-/*#-- estilis filtros menu desplegable --*/
+/* --------------------------------- ESTILOS BOTÓN LIMPIAR FILTROS ---------------------------------------------------- */
 
+#limpiar-filtros {
 
-.catalogo-panel-filtros {
-  min-width: 260px; 
-  padding: 1rem;
-  background-color: var(--paleta-fondo);
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+border-radius: 10px;
+
 }
 
-
-.catalogo-panel-titulo {
-  font-weight: 600;
-  color: var(--paleta-primary);
-  margin-bottom: 12px;
-  font-size: 0.95rem;
+#limpiar-filtros {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 48px;
+    padding: 0 20px;
+    border: 1px solid color-mix(in srgb, var(--paleta-primary) 18%, transparent);
+    border-radius: 999px;
+    background-color: var(--paleta-formulario);
+    color: var(--paleta-primary);
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
 }
 
-
-.catalogo-panel-filtros .form-check {
-  display: flex;
-  align-items: center; 
-  margin-bottom: 10px;
-}
-
-/* Ajustes del input (radio y switch) */
-.catalogo-panel-filtros .form-check-input {
-  margin-top: 0; 
-  cursor: pointer;
-}
-
-/* Ajustes del texto (label) */
-.catalogo-panel-filtros .form-check-label {
-  margin-left: 8px; 
-  color: var(--paleta-primary);
-  cursor: pointer;
-  flex-grow: 1; 
-}
-
-/* Separador */
-.catalogo-panel-linea {
-  margin: 12px 0;
-  opacity: 0.15;
-}
-
-
-.catalogo-panel-filtros .form-check-input:checked {
-  background-color: var(--boton-primario-bg);
-  border-color: var(--boton-primario-hover);
-}
-
-
-.catalogo-panel-filtros .form-check-input:focus {
-  border-color: var(--boton-primario-hover);
-  box-shadow: 0 0 0 0.25rem rgba(138, 43, 226, 0.25); 
+#limpiar-filtros:hover,
+#limpiar-filtros[aria-expanded="true"] {
+    background-color: var(--paleta-primary);
+    color: #fff;
 }
