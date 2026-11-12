@@ -34,10 +34,21 @@ body {
 .imagenes-funcionamiento {
     width: 60px;
     height: 60px;
-    object-fit: contain;
-    /* evita que el icono se deforme */
+    object-fit: contain;  /* Esto evita que el icono se deforme */
     gap: 1;
     padding-top: 20px;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    user-select: none;          /* Evita que se cree un cursor a los lados de las imágenes si doy click en ellas */
+    -webkit-user-select: none;  /* Evita que se cree un cursor a los lados de las imágenes si doy click en ellas */
+    caret-color: transparent;   /* Evita que se cree un cursor a los lados de las imágenes si doy click en ellas */
+}
+
+.imagenes-funcionamiento:hover {
+    transform: scale(1.15);
+}
+
+#funcionamiento {
+    caret-color: transparent;  /* Evita que se cree un cursor a los lados de las imágenes si doy click en ellas */
 }
 
 @media (min-width: 768px) {
@@ -59,4 +70,12 @@ body {
 
 #contenedor-botones {
     padding-top: 20px;
+}
+
+#funcionamiento {
+    padding-top: 1rem;
+}
+
+#imagen-feliz {
+    filter: url(#linea-fina-transparente);
 }
