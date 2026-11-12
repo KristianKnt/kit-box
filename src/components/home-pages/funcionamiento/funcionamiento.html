@@ -1,64 +1,77 @@
-    <div id="funcionamiento" class="container">
+<div id="funcionamiento" class="container">
 
-        <h1 class="text-center">¿Cómo funciona?</h1>
+    <h1 class="text-center">¿Cómo funciona?</h1>
 
-        <div id="contenedor-imagenes" class="row justify-content-center align-items-start gx-0 gy-4 text-center">
+    <div id="contenedor-imagenes" class="row justify-content-center align-items-start gx-0 gy-4 text-center">
 
-            <div class="col-12 col-md-4">
-                <img class="imagenes-funcionamiento" src="../../../assets/imagenes/funcionamiento/icono-seleccionar.png" alt="">
-            </div>
-
-            <div id="imagen-envio" class="col-12 col-md-4">
-                <img class="imagenes-funcionamiento" src="../../../assets/imagenes/funcionamiento/icono-envio.png" alt="">
-            </div>
-
-            <div id="imagen-feliz" class="col-12 col-md-4">
-                <img class="imagenes-funcionamiento" src="../../../assets/imagenes/funcionamiento/icono-feliz.png" alt="">
-            </div>
-        
+        <div class="col-12 col-md-4">
+            <img data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false"
+                aria-controls="multiCollapseExample1" class="imagenes-funcionamiento"
+                src="../../../assets/imagenes/funcionamiento/icono-seleccionar.png" alt="">
         </div>
 
-        <div id="contenedor-botones" class="row justify-content-center">
-
-            <p id="espacio-botones" class="d-flex flex-column flex-md-row col-auto">
-                <a class="btn" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button"
-                    aria-expanded="false" aria-controls="multiCollapseExample1">Elige tu kit</a>
-                <button type="button" class="btn" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#multiCollapseExample2" aria-expanded="false"
-                    aria-controls="multiCollapseExample2">Recibelo en casa</button>
-                <button class="btn" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#multiCollapseExample3" aria-expanded="false"
-                    aria-controls="multiCollapseExample3" >Disfruta la experiencia</button>
-            </p>
-
+        <div id="imagen-envio" class="col-12 col-md-4">
+            <img data-bs-toggle="collapse" href="#multiCollapseExample2" role="button" aria-expanded="false"
+                aria-controls="multiCollapseExample2" class="imagenes-funcionamiento"
+                src="../../../assets/imagenes/funcionamiento/icono-envio.png" alt="">
         </div>
-        
-        <div class="row">
-            <div class="col">
-                <div class="collapse multi-collapse" id="multiCollapseExample1">
-                    <div class="card card-body text-center">
-                        Encuentra el paquete perfecto para tu
-                        necesidad específica entre nuestras categorías
-                        curadas.
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="collapse multi-collapse" id="multiCollapseExample2">
-                    <div class="card card-body text-center">
-                        Envío rápido y seguro directamente a tu
-                        puerta. Nos encargamos de toda la logística.
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="collapse multi-collapse" id="multiCollapseExample3">
-                    <div class="card card-body text-center">
-                        Todo lo que necesitas en una sola caja. Sin
-                        estrés, sin compras de último minuto.
-                    </div>
-                </div>
-            </div>
+
+        <!-- ADELGAZAR LÍNEAS DEL PNG -->
+
+        <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+            <filter id="linea-fina-transparente">
+                <feMorphology operator="erode" radius="0.5" />
+            </filter>
+        </svg>
+
+        <div id="imagen-feliz" class="col-12 col-md-4">
+            <img data-bs-toggle="collapse" data-bs-target="#multiCollapseExample3" role="button" aria-expanded="false"
+                aria-controls="multiCollapseExample3" class="imagenes-funcionamiento"
+                src="../../../assets/imagenes/funcionamiento/icono-feliz.png" alt="">
         </div>
 
     </div>
+
+    <div id="contenedor-botones" class="row justify-content-center">
+
+        <p id="espacio-botones" class="d-flex flex-column flex-md-row col-auto">
+            <a class="btn" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false"
+                aria-controls="multiCollapseExample1">Elige tu kit</a>
+            <button type="button" class="btn" type="button" data-bs-toggle="collapse"
+                data-bs-target="#multiCollapseExample2" aria-expanded="false"
+                aria-controls="multiCollapseExample2">Recibelo en casa</button>
+            <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample3"
+                aria-expanded="false" aria-controls="multiCollapseExample3">Disfruta la experiencia</button>
+        </p>
+
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="collapse multi-collapse" id="multiCollapseExample1">
+                <div class="card card-body text-center">
+                    Encuentra el paquete perfecto para tu
+                    necesidad específica entre nuestras categorías
+                    curadas.
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="collapse multi-collapse" id="multiCollapseExample2">
+                <div class="card card-body text-center">
+                    Envío rápido y seguro directamente a tu
+                    puerta. Nos encargamos de toda la logística.
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="collapse multi-collapse" id="multiCollapseExample3">
+                <div class="card card-body text-center">
+                    Todo lo que necesitas en una sola caja. Sin
+                    estrés, sin compras de último minuto.
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
