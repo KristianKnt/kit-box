@@ -49,7 +49,7 @@ function pintarTarjetas(productos) {
 
         // Crear la columna de Bootstrap
         const columna = document.createElement("div");
-        columna.className = "col-12 col-sm-6 col-lg-3";
+        columna.className = "col-12 col-sm-6 col-lg-4 col-xl-3";
 
         // Crear la tarjeta
         const tarjeta = document.createElement("div");
