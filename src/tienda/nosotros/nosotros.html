@@ -30,6 +30,10 @@
   </div>
   </section>  
 
+  <!-- CONTENIDO CON PAPEL DE RELLENO: envuelve las 4 secciones para que los papelitos caigan
+       por todo el bloque. data-papel-relleno = cuántos papelitos (los pone components.js) -->
+  <div class="nosotros-contenido" data-papel-relleno="36">
+
   <!-- PROBLEMA Y PÚBLICO OBJETIVO -->
 <section class="seccion-tarjetas">
     <article class="tarjeta tarjeta-problema">
@@ -258,9 +262,12 @@
     </div>
   </section>
 
+  </div> <!-- cierre de nosotros-contenido (papel de relleno) -->
+
   <!-- FOOTER -->
   <div id="footer"></div>
   <!-- COMPONENTES -->
+  <script src="../../js/sesion.js"></script> <!-- sesión del usuario: va antes de components.js -->
   <script src="../../js/components.js"></script>
   <script src="nosotros.js"></script>
   <script src="../carrito/localStorage.js"></script>

@@ -14,7 +14,8 @@
     <div id="header"></div> <!--se carga con js-->
     <!--Div aletar compra-->
     <div id="alerta-contenedor"></div>   
-     <main>
+     <!-- data-papel-relleno: papelitos cayendo detrás del carrito (los pone components.js) -->
+     <main data-papel-relleno="20">
         <h1 class="titulo-carrito">Carrito</h1>
         <div class="carrito-div">
             <!---columna izq productos-->
@@ -36,6 +37,7 @@
         </div>
     </main>
     <div id="footer"></div>
+    <script src="../../js/sesion.js"></script> <!-- sesión del usuario: va antes de components.js -->
     <script src="../../js/components.js"></script>
     <script src="./localStorage.js"></script>
     <script SRC="./agr-carrito.js"></script>

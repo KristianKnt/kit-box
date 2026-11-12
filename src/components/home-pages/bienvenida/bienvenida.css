@@ -1,0 +1,113 @@
+/* ===== POP-UP DE BIENVENIDA ===== */
+/* Estilos del modal de bienvenida del inicio. El modal lo arma Bootstrap;
+   aquí solo se le da la cara de kit-box. Los colores tienen respaldo por si
+   la página no tiene la paleta cargada. */
+
+/* --- 1. LA CAJA DEL POP-UP --- */
+.bienvenida__contenido {
+    position: relative;
+    overflow: hidden;              /* el video respeta las esquinas redondeadas */
+    border: 1px solid var(--paleta-color3, #8FAE9A);
+    border-radius: 20px;
+    background-color: var(--paleta-formulario, #EFEBE2);
+}
+
+/* --- 2. EL VIDEO --- */
+.bienvenida__video-caja {
+    position: relative;            /* para ubicar el botón de sonido encima del video */
+}
+
+.bienvenida__video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;          /* reserva el espacio antes de que cargue */
+    object-fit: cover;
+    background-color: var(--paleta-fondo, #E7E8E3);
+}
+
+/* --- 3. BOTÓN X (CERRAR) --- */
+.bienvenida__cerrar {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 2;                    /* encima del video */
+    padding: 10px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    opacity: 0.9;
+}
+
+.bienvenida__cerrar:hover {
+    opacity: 1;
+}
+
+/* --- 4. BOTÓN DE SONIDO --- */
+.bienvenida__sonido {
+    position: absolute;
+    left: 14px;
+    bottom: 14px;
+    padding: 6px 14px;
+    border: none;
+    border-radius: 20px;
+    background-color: color-mix(in srgb, var(--paleta-primary, #1E4437) 80%, transparent);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.bienvenida__sonido:hover {
+    background-color: var(--paleta-primary, #1E4437);
+}
+
+/* --- 5. TEXTO Y BOTÓN EMPEZAR --- */
+.bienvenida__texto {
+    padding: 28px 24px 32px;
+    text-align: center;
+}
+
+.bienvenida__titulo {
+    margin: 0 0 8px;
+    color: var(--paleta-primary, #1E4437);
+    font-size: clamp(1.4rem, 3.5vw, 2rem);
+    font-weight: 700;
+}
+
+.bienvenida__descripcion {
+    margin: 0 0 22px;
+    color: var(--paleta-header-footer, #586F57);
+    font-size: 16px;
+}
+
+.bienvenida__empezar {
+    padding: 10px 36px;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--paleta-primary, #1E4437);
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.bienvenida__empezar:hover {
+    background-color: var(--paleta-header-footer, #586F57);
+}
+
+/* Borde visible al navegar con teclado (Tab) en los botones propios */
+.bienvenida__sonido:focus-visible,
+.bienvenida__empezar:focus-visible {
+    outline: 3px solid var(--paleta-color3, #8FAE9A);
+    outline-offset: 2px;
+}
+
+/* --- 6. CELULAR --- */
+@media (max-width: 576px) {
+    .bienvenida__texto {
+        padding: 22px 18px 26px;
+    }
+
+    .bienvenida__descripcion {
+        font-size: 15px;
+    }
+}

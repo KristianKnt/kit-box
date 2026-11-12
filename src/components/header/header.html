@@ -26,6 +26,21 @@
             </a>
             <a class="btn-iniciar-sesion" href="../../tienda/login/login.html"> Iniciar Sesión </a>
 
+            <!-- USUARIO CON SESIÓN: header.js lo muestra (y esconde "Iniciar Sesión") si hay alguien conectado -->
+            <div class="usuario-sesion" hidden>
+                <button type="button" class="usuario-boton" aria-expanded="false" aria-controls="usuario-menu">
+                    <span class="usuario-iniciales" aria-hidden="true"></span>
+                    <span class="usuario-saludo"></span>
+                    <span class="usuario-flecha" aria-hidden="true">&#9662;</span>
+                </button>
+
+                <div id="usuario-menu" class="usuario-menu" hidden>
+                    <p class="usuario-menu-nombre"></p>
+                    <p class="usuario-menu-correo"></p>
+                    <button type="button" class="usuario-menu-salir">Cerrar sesión</button>
+                </div>
+            </div>
+
         </div>
     </div>
 </header>
