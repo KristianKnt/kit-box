@@ -104,7 +104,7 @@ function renderizarCarrito(carrito = obtenerCarrito()) {  // usa lo guardado en 
 
   vacio.style.display = "none";
   lista.innerHTML = `
-    <div class="row g-4">
+    <div class="row g-2">
       ${carrito.map(crearTarjetaCarrito).join("")}  
     </div>
   `;
