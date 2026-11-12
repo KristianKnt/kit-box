@@ -52,12 +52,19 @@ function cerrarSesion() {
     localStorage.removeItem(CLAVE_SESION);
 }
 
-// 5. Dejar la notita de "salúdala" (la deja el login justo antes de llevar al inicio)
+// 5. Sacar el primer nombre de la persona: "Dayana Marcela Vallejo" -> "Dayana" ("" si no hay nombre)
+//    La usan el header ("Hola, Dayana") y el pop-up de bienvenida ("¡Bienvenido a Kit-Box, Dayana!")
+function obtenerPrimerNombre(nombreCompleto) {
+    const palabras = (nombreCompleto || "").trim().split(/\s+/).filter(Boolean);
+    return palabras.length > 0 ? palabras[0] : "";
+}
+
+// 6. Dejar la notita de "salúdala" (la deja el login justo antes de llevar al inicio)
 function marcarSaludoPendiente() {
     sessionStorage.setItem(CLAVE_SALUDO_PENDIENTE, "si");
 }
 
-// 6. Leer la notita y botarla, para que el saludo salga UNA sola vez.
+// 7. Leer la notita y botarla, para que el saludo salga UNA sola vez.
 //    Devuelve true si había saludo pendiente.
 function tomarSaludoPendiente() {
     const haySaludo = sessionStorage.getItem(CLAVE_SALUDO_PENDIENTE) !== null;

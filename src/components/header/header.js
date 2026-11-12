@@ -33,7 +33,7 @@ function sacarNombreEIniciales(nombreCompleto) {
   const segundaLetra = palabras.length > 1 ? palabras[1][0] : "";
 
   return {
-    primerNombre: palabras[0],
+    primerNombre: obtenerPrimerNombre(nombreCompleto),   // viene de js/sesion.js
     iniciales: (primeraLetra + segundaLetra).toUpperCase()
   };
 }
