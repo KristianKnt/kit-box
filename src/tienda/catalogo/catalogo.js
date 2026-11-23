@@ -9,25 +9,21 @@ function obtenerRutaImagen(ruta) {
 
 /* Trae los productos: primero mira el localStorage (lo que guarda el admin)
    y si no hay nada, los pide al JSON. Devuelve la lista de productos. */
+const api_URL_productos = 'http://localhost:8080/api/productos'
 async function cargarProductos() {
     try {
-        const guardados = localStorage.getItem("kitbox_productos");
 
-        if (guardados !== null) {
-            return JSON.parse(guardados);
-        }
-
-        const respuesta = await fetch("../../data/productos.json");
-        if (!respuesta.ok) {
-            throw new Error(`Error al cargar el JSON: ${respuesta.status}`);
-        }
-        return await respuesta.json();
+        const response = await fetch (api_URL_productos);
+        const data= await response.json();
+        console.log(data);
+        return data.content;
 
     } catch (error) {
-        console.error("Error al cargar los productos:", error);
+        console.error("Error al fetch de la API:", error);
         return []; // si falla, devolvemos una lista vacía para que la página no se rompa
     }
 }
+
 
 
 /* Pinta las tarjetas de la lista que le pasemos.
