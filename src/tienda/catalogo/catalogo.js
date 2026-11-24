@@ -1,4 +1,3 @@
-
 /* Función para obtener la ruta correcta de las imágenes */
 function obtenerRutaImagen(ruta) {
     // Las rutas del JSON empiezan por src/assets/...
@@ -10,13 +9,14 @@ function obtenerRutaImagen(ruta) {
 /* Trae los productos: primero mira el localStorage (lo que guarda el admin)
    y si no hay nada, los pide al JSON. Devuelve la lista de productos. */
 const api_URL_productos = 'http://localhost:8080/api/productos'
-async function cargarProductos() {
+export async function cargarProductos() {
     try {
 
         const response = await fetch (api_URL_productos);
         const data= await response.json();
-        console.log(data);
+        console.log(data.content);
         return data.content;
+
 
     } catch (error) {
         console.error("Error al fetch de la API:", error);
@@ -122,7 +122,7 @@ function pintarTarjetas(productos) {
 
         btnAgregar.addEventListener("click", () => {
             agregarProducto(producto);
-
+            
             mostrarMensajeExito(producto.nombre);
             actualizarContadorCarrito();
 

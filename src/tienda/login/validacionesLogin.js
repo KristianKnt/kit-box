@@ -16,14 +16,32 @@ function buscarUsuarioPorCorreo(correo) {
 
 // 2. Iniciar sesión: el correo debe existir y la contraseña coincidir.
 //    Devuelve la sesión si todo está bien, o null si no.
-function iniciarSesion(correo, contrasena) {
-    const usuario = buscarUsuarioPorCorreo(correo);
 
-    if (usuario === null || usuario.contrasena !== contrasena) {
-        return null;
+async function iniciarSesion(correo, contrasena) {
+    // const usuario = buscarUsuarioPorCorreo(correo);
+
+    // if (usuario === null || usuario.contrasena !== contrasena) {
+    //     return null;
+    // }
+
+    // return guardarSesion(usuario);
+
+    try {
+        const response = await fetch ("http://localhost:8080/auth/login", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                username: correo.trim(),
+                password: contrasena
+            })
+        })
+        const data = await response.json();
+        localStorage.setItem("kitbox_token", data.token)
+        return data
+    } catch (error) {
+        console.error("Error al iniciar sesión ", error)
     }
 
-    return guardarSesion(usuario);
 }
 
 // ------------------------------- FORMULARIO DE INICIO DE SESIÓN -------------------------------
