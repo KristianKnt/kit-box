@@ -1,3 +1,4 @@
+import { obtenerProductos } from "../../../tienda/servicios/productos.js";
 
 export async function inicializarCarrusel(contenedor) {
   const carrusel = contenedor.querySelector(
@@ -22,19 +23,8 @@ export async function inicializarCarrusel(contenedor) {
   }
 
   try {
-    // 1. Obtener todos los productos del archivo JSON.
-    const rutaJSON = new URL(
-      "../../../data/productos.json",
-      import.meta.url
-    );
-
-    const respuesta = await fetch(rutaJSON);
-
-    if (!respuesta.ok) {
-      throw new Error(`Error HTTP: ${respuesta.status}`);
-    }
-
-    const productos = await respuesta.json();
+    // 1. Obtener los productos vigentes desde el backend.
+    const productos = await obtenerProductos();
 
     // 2. Conservar solamente los productos destacados.
     const productosDestacados = productos.filter(
@@ -73,7 +63,7 @@ export async function inicializarCarrusel(contenedor) {
 
           <div class="kit-card__pie">
             <p class="kit-card__precio">
-              ${producto.precio.toLocaleString("es-CO", {
+              ${Number(producto.precio).toLocaleString("es-CO", {
       style: "currency",
       currency: "COP",
       maximumFractionDigits: 0

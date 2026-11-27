@@ -1,34 +1,17 @@
+import { cargarProductos } from "../servicios/productos.js";
+
+export { cargarProductos };
+
 /* Función para obtener la ruta correcta de las imágenes */
 function obtenerRutaImagen(ruta) {
-    // Las rutas del JSON empiezan por src/assets/...
-    // Reemplazamos "src/" por "../../" para llegar desde catalogo.html
+    // Las rutas almacenadas por el backend empiezan por src/assets/...
+    // Reemplazamos "src/" por "../../" para llegar desde catalogo.html.
     return ruta.replace(/^src\//, "../../");
 }
 
-
-/* Trae los productos: primero mira el localStorage (lo que guarda el admin)
-   y si no hay nada, los pide al JSON. Devuelve la lista de productos. */
-const api_URL_productos = 'http://localhost:8080/api/productos'
-export async function cargarProductos() {
-    try {
-
-        const response = await fetch (api_URL_productos);
-        const data= await response.json();
-        console.log(data.content);
-        return data.content;
-
-
-    } catch (error) {
-        console.error("Error al fetch de la API:", error);
-        return []; // si falla, devolvemos una lista vacía para que la página no se rompa
-    }
-}
-
-
-
 /* Pinta las tarjetas de la lista que le pasemos.
    La usa filtros-catalogos.js cada vez que cambia la búsqueda o la categoría. */
-function pintarTarjetas(productos) {
+export function pintarTarjetas(productos) {
     // 1. Obtener el contenedor del HTML
     const contenedor = document.getElementById("lista-productos");
 
