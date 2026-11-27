@@ -1,3 +1,5 @@
+import { cargarProductos, pintarTarjetas } from "./catalogo.js";
+
 /* ===== FILTROS DEL CATÁLOGO kit-box =====
    Buscador + categorías + orden + "solo con stock".
    Usa cargarProductos() y pintarTarjetas() de catalogo.js,
@@ -133,7 +135,24 @@ function actualizarCatalogo() {
 
     // Mensaje de "no encontramos nada"
     const sinResultados = document.getElementById("sin-resultados");
-    if (sinResultados) sinResultados.hidden = productos.length > 0;
+    if (sinResultados) {
+        const titulo = sinResultados.querySelector(".catalogo-vacio-titulo");
+        const texto = sinResultados.querySelector(".catalogo-vacio-texto");
+        const limpiar = document.getElementById("limpiar-filtros");
+        const catalogoVacio = todosLosProductos.length === 0;
+
+        if (catalogoVacio) {
+            if (titulo) titulo.textContent = "El catálogo está vacío";
+            if (texto) texto.textContent = "No hay productos registrados actualmente.";
+            if (limpiar) limpiar.hidden = true;
+        } else {
+            if (titulo) titulo.textContent = "No encontramos kits con esa búsqueda";
+            if (texto) texto.textContent = "Prueba con otra palabra o mira todas las categorías.";
+            if (limpiar) limpiar.hidden = false;
+        }
+
+        sinResultados.hidden = productos.length > 0;
+    }
 
     // La "x" del buscador solo aparece si hay texto escrito
     const borrar = document.getElementById("borrar-busqueda");
@@ -224,10 +243,31 @@ function conectarEventos() {
 /* ---------- ARRANQUE DE LA PÁGINA ---------- */
 
 async function iniciarCatalogo() {
-    todosLosProductos = await cargarProductos(); // función de catalogo.js
-    pintarCategorias();
-    conectarEventos();
-    actualizarCatalogo();
+    const sinResultados = document.getElementById("sin-resultados");
+    const titulo = sinResultados?.querySelector(".catalogo-vacio-titulo");
+    const texto = sinResultados?.querySelector(".catalogo-vacio-texto");
+    const limpiar = document.getElementById("limpiar-filtros");
+
+    if (sinResultados) sinResultados.hidden = false;
+    if (titulo) titulo.textContent = "Cargando catálogo...";
+    if (texto) texto.textContent = "Estamos consultando los productos disponibles.";
+    if (limpiar) limpiar.hidden = true;
+
+    try {
+        todosLosProductos = await cargarProductos();
+        pintarCategorias();
+        conectarEventos();
+        actualizarCatalogo();
+    } catch (error) {
+        console.error("No se pudo cargar el catálogo desde el backend:", error);
+        todosLosProductos = [];
+        pintarCategorias();
+        if (titulo) titulo.textContent = "No se pudo cargar el catálogo";
+        if (texto) texto.textContent = "Verifica la conexión con el backend e inténtalo nuevamente.";
+        if (limpiar) limpiar.hidden = true;
+        if (sinResultados) sinResultados.hidden = false;
+        conectarEventos();
+    }
 }
 
 document.addEventListener("DOMContentLoaded", iniciarCatalogo);

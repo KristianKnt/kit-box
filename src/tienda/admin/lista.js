@@ -1,6 +1,5 @@
 
-// import { guardarProductos, obtenerProductosGuardados } from "./storage.js";
-import {cargarProductos} from "../catalogo/catalogo.js"
+import { cargarProductos, crearProducto } from "../servicios/productos.js";
 
 export const productos=[];
 
@@ -16,11 +15,6 @@ export async function cargarProductosIniciales() {
 
         const productosGuardados= await cargarProductos(); //obtenemos del local los productoe que se han guardado antes
 
-        // const respuesta = await fetch("../../data/productos.json"); //peticion a json
-        // const datos= await respuesta.json(); // traemos la resupuesta y la pasamos  a objeto JS
-        // productos.push(...datos);//agregamos a la lista de productos
-        // console.log(JSON.stringify(productos,null,2)); //imprimimos en formato JSON la lista. Sin filtros y con dos espacios de sangria
-        
         productos.push(...productosGuardados);//agregamos a la lista de productos
 
     } catch (error) {
@@ -28,8 +22,6 @@ export async function cargarProductosIniciales() {
         
     }
 }
-const api_URL_productos = 'http://localhost:8080/api/productos'
-
 export async function agregarProducto(producto) {
 
 const kitbox_token = localStorage.getItem("kitbox_token");  // mirar si es necesario ************************
@@ -40,17 +32,9 @@ const kitbox_token = localStorage.getItem("kitbox_token");  // mirar si es neces
         // console.log(JSON.stringify(productos, null, 2));
 
         try {
-            const response = await fetch (api_URL_productos, {
-                method: "POST",
-                headers: {"Content-Type": "application/json", "Authorization": `Bearer ${kitbox_token}`},
-                body: JSON.stringify(producto)
-            });
-
-            if(!response.ok){
-                throw new Error(`Error HTTP: ${response.status}`);
-
-            }
-            return await response.json();
+            const resultado = await crearProducto(producto, kitbox_token);
+            productos.push(resultado);
+            return resultado;
 
         } catch (error) {
             console.error(`Error creando producto ${error.message}`)
