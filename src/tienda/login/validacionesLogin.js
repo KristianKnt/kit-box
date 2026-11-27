@@ -8,16 +8,24 @@
 // ------------------------------- LOCALSTORAGE DE LA SESIÓN -------------------------------
 
 // 1. Buscar en kitbox_usuarios al usuario que tenga ese correo (null si no existe)
-function buscarUsuarioPorCorreo(correo) {
-    const correoBuscado = correo.trim().toLowerCase();
 
-    return obtenerUsuarios().find(usuario => usuario.correo === correoBuscado) || null;
-}
+    // ANITGUO INICIAR SESION
+
+
+// function buscarUsuarioPorCorreo(correo) {
+//     const correoBuscado = correo.trim().toLowerCase();
+
+//     return obtenerUsuarios().find(usuario => usuario.correo === correoBuscado) || null;
+// }
 
 // 2. Iniciar sesión: el correo debe existir y la contraseña coincidir.
 //    Devuelve la sesión si todo está bien, o null si no.
 
-async function iniciarSesion(correo, contrasena) {
+    // ANITGUO INICIAR SESION
+
+
+// async function iniciarSesion(correo, contrasena) {
+
     // const usuario = buscarUsuarioPorCorreo(correo);
 
     // if (usuario === null || usuario.contrasena !== contrasena) {
@@ -26,8 +34,29 @@ async function iniciarSesion(correo, contrasena) {
 
     // return guardarSesion(usuario);
 
+    // ANITGUO INICIAR SESION
+
+//     try {
+//         const response = await fetch ("http://localhost:8080/auth/login", {
+//             method: "POST",
+//             headers: {"Content-Type": "application/json"},
+//             body: JSON.stringify({
+//                 username: correo.trim(),
+//                 password: contrasena
+//             })
+//         })
+//         const data = await response.json();
+//         localStorage.setItem("kitbox_token", data.token)
+//         return data
+//     } catch (error) {
+//         console.error("Error al iniciar sesión ", error)
+//     }
+
+// }
+
+async function iniciarSesion(correo, contrasena) {
     try {
-        const response = await fetch ("http://localhost:8080/auth/login", {
+        const response = await fetch("http://localhost:8080/auth/login", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
@@ -35,13 +64,27 @@ async function iniciarSesion(correo, contrasena) {
                 password: contrasena
             })
         })
+        if (!response.ok) {
+            return null;
+        }
         const data = await response.json();
         localStorage.setItem("kitbox_token", data.token)
-        return data
+        const respuestaCliente = await fetch(
+            `http://localhost:8080/api/cliente/correo/${encodeURIComponent(correo.trim())}`,
+            { headers: { "Authorization": `Bearer ${data.token}` } }
+        );
+        if (!respuestaCliente.ok) {
+            return null;
+        }
+        const cliente = await respuestaCliente.json();
+        return guardarSesion({
+            nombreCompleto: `${cliente.nombre} ${cliente.apellido}`,
+            correo: cliente.correo
+        });
     } catch (error) {
         console.error("Error al iniciar sesión ", error)
+        return null;
     }
-
 }
 
 // ------------------------------- FORMULARIO DE INICIO DE SESIÓN -------------------------------
@@ -178,7 +221,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Al enviar el formulario
-    formulario.addEventListener("submit", (event) => {
+    formulario.addEventListener("submit", async (event) => {
         event.preventDefault();
         limpiarAlerta();
 
@@ -190,7 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        const sesion = iniciarSesion(campos.correo.value, campos.contrasena.value);
+        const sesion = await iniciarSesion(campos.correo.value, campos.contrasena.value);
 
         // El mismo mensaje si el correo no existe o si la contraseña está mal:
         // así nadie puede averiguar qué correos están registrados
