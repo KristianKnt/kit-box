@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
         apellido: document.getElementById("registro-apellido"),
         correo: document.getElementById("registro-correo"),
         telefono: document.getElementById("registro-telefono"),
-        contrasena: document.getElementById("registro-contrasena"),
-        confirmarContrasena: document.getElementById("registro-confirmar-contrasena")
+        contrasenia: document.getElementById("registro-contrasenia"),
+        confirmarContrasenia: document.getElementById("registro-confirmar-contrasenia")
     };
 
     // Mostrar el mensaje, marcar visualmente y activar la burbuja nativa del navegador.
@@ -153,7 +153,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Validar todos los campos antes de enviar el formulario.
-    formulario.addEventListener("submit", (event) => {
+
+    formulario.addEventListener("submit", async (event) => {
         const camposValidos = Object.values(campos).map(validarCampo);
         const formularioValido = camposValidos.every(Boolean);
 
@@ -173,17 +174,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
             event.preventDefault();
 
-            const usuario = crearUsuario(
-                `${campos.nombre.value} ${campos.apellido.value}`,
-                campos.telefono.value,
-                campos.correo.value,
-                campos.contrasena.value
-            );
+            // const usuario = crearUsuario(
+            //     `${campos.nombre.value} ${campos.apellido.value}`,
+            //     campos.telefono.value,
+            //     campos.correo.value,
+            //     campos.contrasena.value
+            // );
 
-            if (!registrarUsuario(usuario)) {
-                mostrarError(campos.correo, "Este correo ya está registrado.");
-                return;
+            // if (!registrarUsuario(usuario)) {
+            //     mostrarError(campos.correo, "Este correo ya está registrado.");
+            //     return;
+            // }
+
+            try {
+                await enviarUsuario();
+            } catch (error) {
+                console.error("Error al enviar usuario ", error)
             }
+
 
             //Mostrar la ventana emergente de alerta
             mostrarAlertaBonita("¡Cuenta creada exitosamente!");
@@ -202,7 +210,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
     });
+
     // Función para crear un contenedor tipo alert sin pojnerle estilos css
+
     function mostrarAlertaBonita(mensaje) {
         // 1. fondo
         const overlay = document.createElement('div');
