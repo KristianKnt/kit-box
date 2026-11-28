@@ -1,4 +1,4 @@
-const API_URL_CLIENTE = "http://localhost:8080/api/cliente";
+const API_URL_CLIENTE = "https://kit-box.cristian-rojascapera5.workers.dev:8080/api/cliente";
 
 const formulario = document.getElementById("formulario-perfil");
 const mensajeGeneral = document.getElementById("mensaje-perfil");

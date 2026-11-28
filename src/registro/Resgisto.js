@@ -1,7 +1,9 @@
 const CLAVE_USUARIOS = "kitbox_usuarios";
 
 // 1. Obtener la lista de usuarios guardados (lista vacía si todavía no hay ninguno)
-const api_URL_cliente = 'http://localhost:8080/api/cliente'
+//const api_URL_cliente = 'http://localhost:8080/api/cliente'
+const api_URL_cliente = 'https://kit-box.cristian-rojascapera5.workers.dev/api/cliente'
+
 
 async function obtenerUsuarios() {
 
@@ -77,7 +79,7 @@ async function enviarUsuario() {      // (nombreCompleto, telefono, correo, cont
     // contrasena: contrasena
 
     try {
-        const response = await fetch("http://localhost:8080/auth/register", {
+        const response = await fetch("https://kit-box.cristian-rojascapera5.workers.dev/auth/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(usuario1)

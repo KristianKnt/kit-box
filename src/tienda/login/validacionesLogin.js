@@ -4,7 +4,7 @@
 
 async function iniciarSesion(correo, contrasena) {
     try {
-        const response = await fetch("http://localhost:8080/auth/login", {
+        const response = await fetch("https://kit-box.cristian-rojascapera5.workers.dev:8080/auth/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -21,7 +21,7 @@ async function iniciarSesion(correo, contrasena) {
         localStorage.setItem("kitbox_token", data.token);
 
         const respuestaCliente = await fetch(
-            `http://localhost:8080/api/cliente/correo/${encodeURIComponent(correo.trim())}`,
+            `https://kit-box.cristian-rojascapera5.workers.dev/api/cliente/correo/${encodeURIComponent(correo.trim())}`,
             { headers: { "Authorization": `Bearer ${data.token}` } }
         );
 
