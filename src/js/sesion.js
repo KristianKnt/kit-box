@@ -14,11 +14,13 @@ const CLAVE_SESION = "kitbox_sesion";
 // Va en sessionStorage: se borra sola cuando se cierra el navegador.
 const CLAVE_SALUDO_PENDIENTE = "kitbox_saludo_pendiente";
 
-// 1. Guardar la sesión. OJO: solo nombre y correo, NUNCA la contraseña
+// 1. Guardar la sesión. OJO: nunca guardar la contraseña
 function guardarSesion(usuario) {
     const sesion = {
+        id: usuario.id || null,
         nombreCompleto: usuario.nombreCompleto,
         correo: usuario.correo,
+        rol: usuario.rol || "CLIENTE",
         fechaInicio: new Date().toISOString()
     };
 
@@ -50,6 +52,7 @@ function haySesionActiva() {
 // 4. Cerrar la sesión
 function cerrarSesion() {
     localStorage.removeItem(CLAVE_SESION);
+    localStorage.removeItem("kitbox_token");
 }
 
 // 5. Sacar el primer nombre de la persona: "Dayana Marcela Vallejo" -> "Dayana" ("" si no hay nombre)

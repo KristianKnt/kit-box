@@ -1,0 +1,204 @@
+/* ===== FORMULARIO DE ACTUALIZAR PERFIL =====
+   Todo va dentro de .tarjeta-perfil y #formulario-perfil para no afectar el header, el footer ni otras páginas.
+   La paleta viene de ../../css/global.css */
+
+.tarjeta-perfil {
+    background-color: var(--paleta-formulario, #EFEBE2);
+    border: 1px solid var(--paleta-color3, #8FAE9A);
+    font-family: var(--fuente-principal);
+}
+
+.titulo-perfil {
+    margin: 0;
+    font-weight: 700;
+    color: var(--paleta-primary);
+}
+
+#formulario-perfil {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    font-family: var(--fuente-principal);
+}
+
+/* Campos en dos columnas; los que llevan .perfil-campo-completo ocupan todo el ancho */
+#formulario-perfil .perfil-campos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 18px;
+}
+
+#formulario-perfil .perfil-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+#formulario-perfil .perfil-campo-completo {
+    grid-column: 1 / -1;
+}
+
+#formulario-perfil label {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--paleta-primary);
+}
+
+#formulario-perfil label span {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: color-mix(in srgb, var(--paleta-primary) 70%, transparent);
+}
+
+#formulario-perfil input {
+    width: 100%;
+    height: 50px;
+    padding: 0 16px;
+    border: 1px solid color-mix(in srgb, var(--paleta-primary) 22%, #FFFFFF);
+    border-radius: 6px;
+    background-color: #FFFFFF;
+    font-family: inherit;
+    font-size: 1rem; /* 16px: evita que el celular haga zoom al escribir */
+    color: var(--paleta-primary);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#formulario-perfil input::placeholder {
+    color: color-mix(in srgb, var(--paleta-primary) 55%, #FFFFFF);
+}
+
+#formulario-perfil input:focus {
+    outline: none;
+    border-color: var(--paleta-color3);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--paleta-color3) 35%, transparent);
+}
+
+/* Estados de validación JS */
+#formulario-perfil input.is-invalid {
+    border-color: #DC3545;
+}
+
+#formulario-perfil input.is-invalid:focus {
+    box-shadow: 0 0 0 3px color-mix(in srgb, #DC3545 25%, transparent);
+}
+
+#formulario-perfil input.is-valid {
+    border-color: #198754;
+}
+
+#formulario-perfil small {
+    display: block;
+    font-size: 0.8rem;
+    color: color-mix(in srgb, var(--paleta-primary) 75%, transparent);
+}
+
+#formulario-perfil .perfil-error {
+    color: #B02A37;
+}
+
+#formulario-perfil .perfil-error:empty {
+    display: none;
+}
+
+.perfil-separador {
+    grid-column: 1 / -1;
+    margin: 4px 0;
+    border: 0;
+    border-top: 1px solid color-mix(in srgb, var(--paleta-color3, #8FAE9A) 55%, transparent);
+}
+
+/* Botón principal de guardar */
+.perfil-boton {
+    width: 100%;
+    height: 52px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--paleta-botones);
+    color: #FFFFFF;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.perfil-boton:hover {
+    background-color: var(--paleta-primary);
+}
+
+.perfil-boton:active {
+    transform: translateY(1px);
+}
+
+.perfil-mensaje {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.perfil-mensaje:empty {
+    display: none;
+}
+
+/* ===== Zona de peligro: Eliminar cuenta ===== */
+.zona-eliminar {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid color-mix(in srgb, var(--paleta-color3, #8FAE9A) 55%, transparent);
+    font-family: var(--fuente-principal);
+}
+
+.zona-eliminar-titulo {
+    margin: 0 0 6px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #8A3B2B; /* mismo rojizo suave del header.css */
+}
+
+.zona-eliminar-texto {
+    margin: 0 0 16px;
+    font-size: 0.85rem;
+    color: color-mix(in srgb, var(--paleta-primary) 75%, transparent);
+}
+
+.perfil-boton-eliminar {
+    width: 100%;
+    height: 48px;
+    border: 1px solid #8A3B2B;
+    border-radius: 6px;
+    background-color: transparent;
+    color: #8A3B2B;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+}
+
+.perfil-boton-eliminar:hover {
+    background-color: #8A3B2B;
+    color: #FFFFFF;
+}
+
+.perfil-boton-eliminar:active {
+    transform: translateY(1px);
+}
+
+/* Celular: todos los campos a una columna */
+@media (max-width: 576px) {
+    #formulario-perfil .perfil-campos {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+.icono-modal-seguridad {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: color-mix(in srgb, var(--paleta-color3, #8FAE9A) 35%, transparent);
+    border: 2px solid var(--paleta-color3, #8FAE9A);
+    font-size: 1.5rem;
+}

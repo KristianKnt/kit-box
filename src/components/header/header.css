@@ -236,6 +236,7 @@
 
 /* Borde visible al navegar con teclado (Tab) */
 .usuario-boton:focus-visible,
+.usuario-menu-actualizar:focus-visible,
 .usuario-menu-salir:focus-visible {
   outline: 3px solid var(--paleta-color3, #8FAE9A);
   outline-offset: 2px;
@@ -284,4 +285,25 @@
   .saludo-sesion {
     transition: none;
   }
+}
+
+/*Actualizar datos del usuario*/
+.usuario-menu-actualizar {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 16px;
+  border-bottom: 1px solid color-mix(in srgb, var(--paleta-color3, #8FAE9A) 35%, transparent);
+  color: var(--paleta-primary);
+  font-family: var(--fuente-principal);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.usuario-menu-actualizar:hover {
+  background-color: color-mix(in srgb, var(--paleta-color3, #8FAE9A) 25%, transparent);
+  color: var(--paleta-primary);
 }

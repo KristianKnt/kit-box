@@ -2,87 +2,44 @@
 // INICIO DE SESIÓN: localStorage de la sesión 
 // ===================================================================================
 
-// Las funciones de la sesión (guardarSesion, obtenerSesion, cerrarSesion...) y la clave
-// CLAVE_SESION están en js/sesion.js, porque también las usa el header en todas las páginas.
-
-// ------------------------------- LOCALSTORAGE DE LA SESIÓN -------------------------------
-
-// 1. Buscar en kitbox_usuarios al usuario que tenga ese correo (null si no existe)
-
-    // ANITGUO INICIAR SESION
-
-
-// function buscarUsuarioPorCorreo(correo) {
-//     const correoBuscado = correo.trim().toLowerCase();
-
-//     return obtenerUsuarios().find(usuario => usuario.correo === correoBuscado) || null;
-// }
-
-// 2. Iniciar sesión: el correo debe existir y la contraseña coincidir.
-//    Devuelve la sesión si todo está bien, o null si no.
-
-    // ANITGUO INICIAR SESION
-
-
-// async function iniciarSesion(correo, contrasena) {
-
-    // const usuario = buscarUsuarioPorCorreo(correo);
-
-    // if (usuario === null || usuario.contrasena !== contrasena) {
-    //     return null;
-    // }
-
-    // return guardarSesion(usuario);
-
-    // ANITGUO INICIAR SESION
-
-//     try {
-//         const response = await fetch ("http://localhost:8080/auth/login", {
-//             method: "POST",
-//             headers: {"Content-Type": "application/json"},
-//             body: JSON.stringify({
-//                 username: correo.trim(),
-//                 password: contrasena
-//             })
-//         })
-//         const data = await response.json();
-//         localStorage.setItem("kitbox_token", data.token)
-//         return data
-//     } catch (error) {
-//         console.error("Error al iniciar sesión ", error)
-//     }
-
-// }
-
 async function iniciarSesion(correo, contrasena) {
     try {
         const response = await fetch("http://localhost:8080/auth/login", {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 username: correo.trim(),
                 password: contrasena
             })
-        })
+        });
+
         if (!response.ok) {
             return null;
         }
+
         const data = await response.json();
-        localStorage.setItem("kitbox_token", data.token)
+        localStorage.setItem("kitbox_token", data.token);
+
         const respuestaCliente = await fetch(
             `http://localhost:8080/api/cliente/correo/${encodeURIComponent(correo.trim())}`,
             { headers: { "Authorization": `Bearer ${data.token}` } }
         );
+
         if (!respuestaCliente.ok) {
             return null;
         }
+
         const cliente = await respuestaCliente.json();
+
+        // Guardamos también el rol ("ADMIN" o "CLIENTE") que viene del backend
         return guardarSesion({
-            nombreCompleto: `${cliente.nombre} ${cliente.apellido}`,
-            correo: cliente.correo
+            id: cliente.id,
+            nombreCompleto: `${cliente.nombre} ${cliente.apellido}`.trim(),
+            correo: cliente.correo,
+            rol: cliente.rol
         });
     } catch (error) {
-        console.error("Error al iniciar sesión ", error)
+        console.error("Error al iniciar sesión ", error);
         return null;
     }
 }
@@ -97,26 +54,18 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    if (typeof obtenerUsuarios !== "function") {
-        console.error("Falta cargar ResgistoLocalStorage.js antes de validacionesLogin.js.");
-        return;
-    }
-
     const campos = {
         correo: document.getElementById("inputEmail"),
         contrasena: document.getElementById("inputPassword")
     };
 
-    // Las validaciones las hace este JS, no las burbujas del navegador
     formulario.noValidate = true;
 
-    // Espacio para la alerta de Bootstrap, justo encima del formulario
     const contenedorAlerta = document.createElement("div");
     contenedorAlerta.id = "alerta-login";
     contenedorAlerta.setAttribute("aria-live", "polite");
     formulario.before(contenedorAlerta);
 
-    // Un mensaje de error de Bootstrap (invalid-feedback) debajo de cada campo
     Object.values(campos).forEach(campo => {
         const elementoError = document.createElement("div");
         elementoError.id = `error-${campo.id}`;
@@ -125,7 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
         campo.setAttribute("aria-describedby", elementoError.id);
     });
 
-    // Mostrar el error debajo de SU campo y marcarlo en rojo
     function mostrarError(campo, mensaje) {
         document.getElementById(`error-${campo.id}`).textContent = mensaje;
         campo.classList.add("is-invalid");
@@ -133,15 +81,12 @@ document.addEventListener("DOMContentLoaded", () => {
         return false;
     }
 
-    // Quitar el error de un campo
     function limpiarError(campo) {
         document.getElementById(`error-${campo.id}`).textContent = "";
         campo.classList.remove("is-invalid");
         campo.removeAttribute("aria-invalid");
     }
 
-    // Mostrar una alerta de Bootstrap. tipo: "danger", "success" o "info".
-    // Se arma con textContent (no innerHTML) porque el nombre lo escribió el usuario.
     function mostrarAlerta(tipo, titulo, mensaje) {
         const alerta = document.createElement("div");
         alerta.className = `alert alert-${tipo} alert-dismissible fade show`;
@@ -165,7 +110,6 @@ document.addEventListener("DOMContentLoaded", () => {
         contenedorAlerta.replaceChildren();
     }
 
-    // Validar cada campo
     function validarCampo(campo) {
         const valor = campo.value.trim();
 
@@ -188,7 +132,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return true;
     }
 
-    // Si ya hay una sesión abierta, avisarlo y dar la opción de cerrarla
     function mostrarSesionActiva() {
         const sesion = obtenerSesion();
 
@@ -203,6 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
         botonSalir.textContent = "Cerrar sesión";
         botonSalir.addEventListener("click", () => {
             cerrarSesion();
+            localStorage.removeItem("kitbox_token");
             limpiarAlerta();
             campos.correo.focus();
         });
@@ -211,7 +155,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     mostrarSesionActiva();
 
-    // Mientras escribe: si el campo ya estaba en rojo, revisar otra vez para quitar el error
     Object.values(campos).forEach(campo => {
         campo.addEventListener("input", () => {
             if (campo.classList.contains("is-invalid")) {
@@ -235,8 +178,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const sesion = await iniciarSesion(campos.correo.value, campos.contrasena.value);
 
-        // El mismo mensaje si el correo no existe o si la contraseña está mal:
-        // así nadie puede averiguar qué correos están registrados
         if (sesion === null) {
             mostrarAlerta("danger", "Correo o contraseña incorrectos.", "Verifica tus datos e inténtalo de nuevo.");
             campos.contrasena.value = "";
@@ -244,15 +185,26 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        mostrarAlerta("success", `¡Hola, ${sesion.nombreCompleto}!`, "Iniciaste sesión. Te llevamos al inicio...");
         formulario.reset();
 
-        // Notita para que el inicio salude una sola vez (ver js/sesion.js y header.js)
-        marcarSaludoPendiente();
+        // Identificamos si es ADMIN o CLIENTE
+        const esAdmin = sesion.rol === "ADMIN";
+        const rutaDestino = esAdmin
+            ? "../admin/admin.html"   
+            : "../../../index.html";
 
-        // Después de 2 segundos, ir a la página de inicio
+        const mensajeDestino = esAdmin
+            ? "¡Felicidades por iniciar sesión! Te llevamos al panel de administrador..."
+            : "¡Felicidades por iniciar sesión! Te llevamos al inicio...";
+
+        mostrarAlerta("success", `¡Hola, ${sesion.nombreCompleto}!`, mensajeDestino);
+
+        if (!esAdmin) {
+            marcarSaludoPendiente();
+        }
+
         setTimeout(() => {
-            window.location.href = "../../index.html";
+            window.location.href = rutaDestino;
         }, 2000);
     });
 });
