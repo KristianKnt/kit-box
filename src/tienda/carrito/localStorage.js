@@ -82,9 +82,9 @@ function eliminarProducto(id) {
     const carrito = obtenerCarrito();
 
     const carritoActualizado = carrito.filter(
-        producto => producto.id !== id
+        producto => String(producto.id) !== String(id)
     );
-
+    
     guardarCarrito(carritoActualizado);
 }
 
