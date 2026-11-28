@@ -1,4 +1,9 @@
-const API_URL_PRODUCTOS = "http://localhost:8080/api/productos";
+// para local
+//const API_URL_PRODUCTOS = "http://localhost:8080/api/productos";
+// para main
+//const API_URL_PRODUCTOS = "https://kit-box.diana-lizeth-ocampo.workers.dev/api/productos"; // URL del endpoint de productos en el backend
+// para deploy
+const API_URL_PRODUCTOS = "https://kit-box.cristian-rojascapera5.workers.dev/api/productos"; // URL del endpoint de productos en el backend
 
 /**
  * Obtiene los productos vigentes desde el backend.
