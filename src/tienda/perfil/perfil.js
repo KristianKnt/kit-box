@@ -267,24 +267,18 @@ formulario.addEventListener("submit", async (e) => {
       return;
     }
 
+    
+
     // Si solo cambió nombre, apellido, teléfono o dirección:
     // Actualiza la sesión local para que el header muestre el nombre nuevo sin cerrar sesión
     const sesionActual = obtenerSesion();
-    if (sesionActual) {
-      const sesionNueva = {
-        ...sesionActual,
-        nombreCompleto: `${datosActualizados.nombre} ${datosActualizados.apellido}`.trim(),
-        correo: datosActualizados.correo,
-      };
-
-      for (let i = 0; i < localStorage.length; i++) {
-        const clave = localStorage.key(i);
-        if (localStorage.getItem(clave)?.includes(sesionActual.correo)) {
-          localStorage.setItem(clave, JSON.stringify(sesionNueva));
-          break;
-        }
-      }
-    }
+if (sesionActual) {
+  guardarSesion({
+    ...sesionActual,
+    nombreCompleto: `${datosActualizados.nombre} ${datosActualizados.apellido}`.trim(),
+    correo: datosActualizados.correo,
+  });
+}
 
     // Limpia los campos de contraseña y muestra confirmación
     campos.contrasenia.value = "";
