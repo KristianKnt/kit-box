@@ -4,32 +4,25 @@
 
 async function iniciarSesion(correo, contrasena) {
     try {
-        const response = await fetch("https://kit-box.cristian-rojascapera5.workers.dev:8080/auth/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                username: correo.trim(),
-                password: contrasena
-            })
+        const [{ API_ENDPOINTS }, { get, post }] = await Promise.all([
+            import("../../js/config/api.js"),
+            import("../../js/services/http.js")
+        ]);
+
+        const data = await post(API_ENDPOINTS.login, {
+            username: correo.trim(),
+            password: contrasena
         });
 
-        if (!response.ok) {
-            return null;
+        if (!data?.token) {
+            throw new Error("El servidor no devolvió un token de sesión.");
         }
 
-        const data = await response.json();
         localStorage.setItem("kitbox_token", data.token);
 
-        const respuestaCliente = await fetch(
-            `https://kit-box.cristian-rojascapera5.workers.dev/api/cliente/correo/${encodeURIComponent(correo.trim())}`,
-            { headers: { "Authorization": `Bearer ${data.token}` } }
+        const cliente = await get(
+            `${API_ENDPOINTS.clientes}/correo/${encodeURIComponent(correo.trim())}`
         );
-
-        if (!respuestaCliente.ok) {
-            return null;
-        }
-
-        const cliente = await respuestaCliente.json();
 
         // Guardamos también el rol ("ADMIN" o "CLIENTE") que viene del backend
         return guardarSesion({

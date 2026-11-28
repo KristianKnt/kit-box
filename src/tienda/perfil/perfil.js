@@ -1,4 +1,5 @@
-const API_URL_CLIENTE = "https://kit-box.cristian-rojascapera5.workers.dev:8080/api/cliente";
+import { API_ENDPOINTS } from "../../js/config/api.js";
+import { del, get, put } from "../../js/services/http.js";
 
 const formulario = document.getElementById("formulario-perfil");
 const mensajeGeneral = document.getElementById("mensaje-perfil");
@@ -149,15 +150,6 @@ function validarFormularioCompleto() {
 // =========================================================================
 // 2. CARGAR DATOS DEL CLIENTE LOGUEADO DESDE LA API
 // =========================================================================
-function obtenerHeadersAuth() {
-  const token = localStorage.getItem("kitbox_token");
-  const headers = { "Content-Type": "application/json" };
-  if (token) {
-    headers["Authorization"] = `Bearer ${token}`;
-  }
-  return headers;
-}
-
 async function cargarDatosPerfil() {
   const sesion = typeof obtenerSesion === "function" ? obtenerSesion() : null;
 
@@ -167,12 +159,8 @@ async function cargarDatosPerfil() {
   }
 
   try {
-    const response = await fetch(API_URL_CLIENTE, {
-      headers: obtenerHeadersAuth(),
-    });
-    if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
-
-    listaClientes = await response.json();
+    const respuesta = await get(API_ENDPOINTS.clientes);
+    listaClientes = Array.isArray(respuesta) ? respuesta : respuesta?.content || [];
 
     // Busca el cliente logueado por correo
     clienteActual = listaClientes.find(
@@ -235,18 +223,10 @@ formulario.addEventListener("submit", async (e) => {
   }
 
   try {
-    const response = await fetch(`${API_URL_CLIENTE}/${clienteActual.id}`, {
-      method: "PUT",
-      headers: obtenerHeadersAuth(),
-      body: JSON.stringify(datosActualizados),
-    });
-
-    if (!response.ok) {
-      const errorTexto = await response.text();
-      throw new Error(errorTexto || `Error HTTP: ${response.status}`);
-    }
-
-    const clienteRespuesta = await response.json();
+    const clienteRespuesta = await put(
+      `${API_ENDPOINTS.clientes}/${encodeURIComponent(clienteActual.id)}`,
+      datosActualizados
+    );
     clienteActual = { ...clienteActual, ...clienteRespuesta };
 
     // Si cambió correo o contraseña, cerramos sesión y mostramos el modal estático
@@ -306,14 +286,7 @@ btnConfirmarEliminar?.addEventListener("click", async () => {
   if (!clienteActual?.id) return;
 
   try {
-    const response = await fetch(`${API_URL_CLIENTE}/${clienteActual.id}`, {
-      method: "DELETE",
-      headers: obtenerHeadersAuth(),
-    });
-
-    if (!response.ok) {
-      throw new Error(`Error HTTP: ${response.status}`);
-    }
+    await del(`${API_ENDPOINTS.clientes}/${encodeURIComponent(clienteActual.id)}`);
 
     if (typeof cerrarSesion === "function") {
       cerrarSesion();

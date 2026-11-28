@@ -189,7 +189,13 @@ document.addEventListener("DOMContentLoaded", () => {
             try {
                 await enviarUsuario();
             } catch (error) {
-                console.error("Error al enviar usuario ", error)
+                console.error("Error al enviar usuario ", error);
+                const mensajeRegistro = document.getElementById("mensaje-registro");
+                if (mensajeRegistro) {
+                    mensajeRegistro.textContent = error.message || "No se pudo crear la cuenta.";
+                    mensajeRegistro.style.color = "#d9534f";
+                }
+                return;
             }
 
 
