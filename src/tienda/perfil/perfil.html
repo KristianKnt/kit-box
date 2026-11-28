@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil | kit-box</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../components/header/header.css">
+    <link rel="stylesheet" href="../../components/footer/footer.css">
+    <link rel="stylesheet" href="perfil.css">
+    <link rel="icon" type="image/svg+xml" href="../../assets/imagenes/nosotros/Logo.svg">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <div id="header"></div>
+
+    <main class="container my-5" data-papel-relleno="15">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-9 col-lg-7">
+
+                <section class="tarjeta-perfil p-4 p-md-5 rounded-4 shadow-sm">
+                    <h1 class="h3 text-center mb-2 titulo-perfil">Actualizar mis datos</h1>
+                    <p class="text-center small mb-4"
+                        style="color: color-mix(in srgb, var(--paleta-primary) 75%, transparent);">
+                        Modifica tu información personal o cambia tu contraseña
+                    </p>
+
+                    <form id="formulario-perfil" novalidate>
+                        <div class="perfil-campos">
+                            <!-- Nombre y Apellido -->
+                            <div class="perfil-campo">
+                                <label for="perfil-nombre">Nombre</label>
+                                <input type="text" id="perfil-nombre" name="nombre" placeholder="Ej: Diana" required>
+                                <small id="error-perfil-nombre" class="perfil-error"></small>
+                            </div>
+
+                            <div class="perfil-campo">
+                                <label for="perfil-apellido">Apellido</label>
+                                <input type="text" id="perfil-apellido" name="apellido" placeholder="Ej: Ocampo"
+                                    required>
+                                <small id="error-perfil-apellido" class="perfil-error"></small>
+                            </div>
+
+                            <!-- Correo -->
+                            <div class="perfil-campo perfil-campo-completo">
+                                <label for="perfil-correo">Correo electrónico</label>
+                                <input type="email" id="perfil-correo" name="correo" placeholder="ejemplo@correo.com"
+                                    required>
+                                <small id="error-perfil-correo" class="perfil-error"></small>
+                            </div>
+
+                            <!-- Teléfono y Dirección -->
+                            <div class="perfil-campo">
+                                <label for="perfil-telefono">Teléfono</label>
+                                <input type="tel" id="perfil-telefono" name="telefono" placeholder="Ej: 3001234567"
+                                    required>
+                                <small id="error-perfil-telefono" class="perfil-error"></small>
+                            </div>
+
+                            <div class="perfil-campo">
+                                <label for="perfil-direccion">Dirección de envío</label>
+                                <input type="text" id="perfil-direccion" name="direccion"
+                                    placeholder="Ej: Calle 30 # 25 - 14" required>
+                                <small id="error-perfil-direccion" class="perfil-error"></small>
+                            </div>
+
+                            <hr class="perfil-separador">
+
+                            <!-- Contraseña (opcional al editar) -->
+                            <div class="perfil-campo">
+                                <label for="perfil-contrasenia">Nueva contraseña <span>(opcional)</span></label>
+                                <input type="password" id="perfil-contrasenia" name="contrasenia"
+                                    placeholder="Mínimo 8 caracteres">
+                                <small id="error-perfil-contrasenia" class="perfil-error"></small>
+                            </div>
+
+                            <div class="perfil-campo">
+                                <label for="perfil-confirmar-contrasenia">Confirmar contraseña</label>
+                                <input type="password" id="perfil-confirmar-contrasenia" name="confirmarContrasenia"
+                                    placeholder="Repite la contraseña">
+                                <small id="error-perfil-confirmar-contrasenia" class="perfil-error"></small>
+                            </div>
+                        </div>
+
+                        <p id="mensaje-perfil" class="perfil-mensaje text-center fw-semibold"></p>
+
+                        <button type="submit" class="perfil-boton" id="btn-guardar-perfil">
+                            Guardar cambios
+                        </button>
+                    </form>
+
+                    <!-- Zona de eliminar cuenta -->
+                    <div class="zona-eliminar">
+                        <h2 class="zona-eliminar-titulo">Eliminar cuenta</h2>
+                        <p class="zona-eliminar-texto">
+                            Al eliminar tu cuenta se borrarán tus datos de forma permanente y se cerrará tu sesión.
+                        </p>
+                        <button type="button" class="perfil-boton-eliminar" data-bs-toggle="modal"
+                            data-bs-target="#modalConfirmarEliminar">
+                            Eliminar mi cuenta
+                        </button>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal de confirmación para eliminar cuenta -->
+    <div class="modal fade" id="modalConfirmarEliminar" tabindex="-1" aria-labelledby="tituloModalEliminar"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content tarjeta-perfil">
+                <div class="modal-header border-0">
+                    <h3 class="modal-title h5 fw-bold" id="tituloModalEliminar" style="color: #8A3B2B;">
+                        ¿Seguro que deseas eliminar tu cuenta?
+                    </h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-0" style="color: var(--paleta-primary);">
+                        Esta acción no se puede deshacer. Perderás el acceso con este correo electrónico.
+                    </p>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn text-white" id="btn-confirmar-eliminar"
+                        style="background-color: #8A3B2B;">
+                        Sí, eliminar cuenta
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal estático cuando se cambia correo o contraseña -->
+  <div class="modal fade" id="modalReinicioSesion" data-bs-backdrop="static" data-bs-keyboard="false"
+    tabindex="-1" aria-labelledby="tituloModalReinicio" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content tarjeta-perfil text-center p-3">
+        <div class="modal-header border-0 justify-content-center pb-0">
+          <div class="icono-modal-seguridad mb-2">
+            &#128274;
+          </div>
+        </div>
+        <div class="modal-body">
+          <h3 class="modal-title h5 fw-bold mb-2" id="tituloModalReinicio" style="color: var(--paleta-primary);">
+            ¡Datos actualizados con éxito!
+          </h3>
+          <p class="mb-0" style="color: color-mix(in srgb, var(--paleta-primary) 85%, transparent); font-size: 0.95rem;">
+            Como modificaste tu correo o contraseña, por seguridad debes volver a iniciar sesión con tus nuevas credenciales.
+          </p>
+        </div>
+        <div class="modal-footer border-0 justify-content-center pt-2">
+          <button type="button" class="perfil-boton px-4" id="btn-reiniciar-sesion" style="height: 46px;">
+            Iniciar sesión ahora
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- FOOTER -->
+    <div id="footer"></div>
+
+    <!-- SCRIPTS -->
+    <script src="../../js/sesion.js"></script>
+    <script src="../../js/components.js"></script>
+    <script type="module" src="perfil.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
