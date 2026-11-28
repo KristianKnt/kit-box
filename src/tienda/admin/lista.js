@@ -1,5 +1,6 @@
 
-import { cargarProductos, crearProducto } from "../servicios/productos.js";
+import { cargarProductos, crearProducto, eliminarProductoAPI } from "../servicios/productos.js";
+import { pintarProductos } from "./tabla.js"
 
 export const productos=[];
 
@@ -22,6 +23,7 @@ export async function cargarProductosIniciales() {
         
     }
 }
+
 export async function agregarProducto(producto) {
 
 const kitbox_token = localStorage.getItem("kitbox_token");  // mirar si es necesario ************************
@@ -43,12 +45,21 @@ const kitbox_token = localStorage.getItem("kitbox_token");  // mirar si es neces
         }
 }
 
-export function eliminarProducto(id){
+export async function eliminarProducto(id){
+
+const kitbox_token = localStorage.getItem("kitbox_token"); 
+
+    await eliminarProductoAPI (id, kitbox_token)
+    console.log(id,productos)
     const indexBuscar=productos.findIndex((producto)=> producto.id===id);
     if(indexBuscar !== -1){
         productos.splice(indexBuscar,1);
-        guardarProductos(productos);
+        // guardarProductos(productos);
+    
     }
+
+    productos.length=0
+    await cargarProductosIniciales();
 }
 
 //manejo id

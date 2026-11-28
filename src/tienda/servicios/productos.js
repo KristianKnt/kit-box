@@ -42,3 +42,18 @@ export async function crearProducto(producto, token) {
 
     return respuesta.json();
 }
+
+export async function eliminarProductoAPI(id, token){
+
+    const response = await fetch (`${API_URL_PRODUCTOS}/${id}`, {
+        method: "DELETE",
+        headers: {"Authorization": ` Bearer ${token}`}
+        });
+
+        if (!response.ok) {
+        throw new Error(`Error HTTP ${respuesta.status}`);
+    }
+}
+
+
+
