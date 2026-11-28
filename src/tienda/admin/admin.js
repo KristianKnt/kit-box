@@ -1,6 +1,6 @@
-import { productos, cargarProductosIniciales, agregarProducto, eliminarProducto } from "./lista.js"  //se agrega productos
+import { productos, cargarProductosIniciales, eliminarProducto } from "./lista.js"  //se agrega productos
 import { pintarProductos } from "./tabla.js"
-
+import { agregarProducto } from "../servicios/productos.js"  //se agrega productos
 // Esperamos a que el HTML esté disponible.
 document.addEventListener("DOMContentLoaded", async () => {
     const formulario = document.getElementById("formulario-producto");
@@ -48,8 +48,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             return;
         }
 
+        //const productos = await obtenerProductos(); // Obtenemos la lista actualizada de productos desde la API
+
         // Agregamos el producto a la lista.
-        await agregarProducto(producto);
+        const result = await agregarProducto(producto);
+        
+        productos.push(result); // Agregamos el producto devuelto por la API a la lista de productos
         pintarProductos(productos);
         activarBotonEliminar();
 
@@ -71,7 +75,7 @@ function activarBotonEliminar() {
                 pintarProductos(productos);
                 activarBotonEliminar();
             } catch (error) {
-                console.error ("No se pudo eliminar el producto ", error)
+                console.error("No se pudo eliminar el producto ", error)
             }
         })
     })

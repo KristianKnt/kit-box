@@ -1,5 +1,5 @@
 
-import { cargarProductos, crearProducto, eliminarProductoAPI } from "../servicios/productos.js";
+import { cargarProductos,eliminarProductoAPI } from "../servicios/productos.js";
 import { pintarProductos } from "./tabla.js"
 
 export const productos=[];
@@ -24,26 +24,7 @@ export async function cargarProductosIniciales() {
     }
 }
 
-export async function agregarProducto(producto) {
 
-const kitbox_token = localStorage.getItem("kitbox_token");  // mirar si es necesario ************************
-
-        // producto.id=generarID(producto);
-        // productos.push(producto)
-        // guardarProductos(productos);
-        // console.log(JSON.stringify(productos, null, 2));
-
-        try {
-            const resultado = await crearProducto(producto, kitbox_token);
-            productos.push(resultado);
-            return resultado;
-
-        } catch (error) {
-            console.error(`Error creando producto ${error.message}`)
-            throw error; // para que quien llama sepa que falló
-
-        }
-}
 
 export async function eliminarProducto(id){
 

@@ -113,30 +113,26 @@ document.addEventListener("DOMContentLoaded", () => {
         // 2. ¿Se tocó el botón de Eliminar?
         const botonEliminar = e.target.closest('[data-accion="eliminar"]');
         if (botonEliminar) {
-            const idProducto = botonEliminar.dataset.id;
             
+            const idProducto = botonEliminar.dataset.id;
+            console.log("Se tocó el botón de eliminar",idProducto);
             // Verificamos si el ID existe en el botón
             if (!idProducto) {
                 console.error("El ID del producto es nulo. Revisa el atributo data-id en tu HTML.");
                 return;
             }
 
-            // Validamos y llamamos a la función de eliminación real que tengas disponible
-            if (typeof eliminarProductoDelCarrito === "function") {
-                eliminarProductoDelCarrito(idProducto);
-            } else if (typeof eliminarProducto === "function") {
-                const producto = obtenerCarrito().find(item => item.id === idProducto);
-                eliminarProducto(idProducto);
-                renderizarCarrito();
-                if (producto) {
-                    mostrarMensajeEliminado(producto.nombre);
-                }
-            
-            
-            } else {
-                console.error("No se encontró ninguna función de eliminación (ni eliminarProductoDelCarrito ni eliminarProducto).");
-            }
+            const carrito = obtenerCarrito();
+            const producto = carrito.find(item => String(item.id) === String(idProducto));
+            const carritoActualizado = carrito.filter(item => String(item.id) !== String(idProducto));
+
+            guardarCarrito(carritoActualizado);
+            renderizarCarrito();
+            actualizarContadorCarrito();
             return;
+        }
+        if(producto) {
+            mostrarMensajeEliminado(producto.nombre);
         }
     });
 });
